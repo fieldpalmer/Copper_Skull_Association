@@ -24,5 +24,11 @@ const loadEventHandlers = () => {
 	$(document).on("click", "#btnBook", e => {
 		// when user clicks schedule appointment load appointment template
 		$("#main").load("templates/appointment.html");
+	});
+
+	$(document).on("click", "#btnPay", e => {
+		// when user clicks the appointment verify every field and payment information
+		// then load the workorder
+		$("#main").load("templates/workorder.html");
 	})
 }
