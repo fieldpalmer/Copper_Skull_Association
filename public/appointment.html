@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mobile Mechanic</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Mobile Mechanic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -29,47 +29,67 @@
     <li><a href="mobile.html">Contact Us</a></li>
   </ul>
 
-	<div class="parallax-container">
-		<div class="section no-pad-bot">
-    	<div class="container">
-    		<br><br><br>
-    		<h2 class="header center orange-text text-lighten-2">Copper Skull Association</h2>
-    		<div class="row center">
-    			<h5 class="header cyan-text text-lighten-3">Copper Skull Association is a business dedicated to bring automotive services directly to your house. Skip going to the shop and schedule an appointment with us.</h5>
-    		</div>
-    	</div>
+  <div class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br><br>
+        <h2 class="header center orange-text text-lighten-2">Copper Skull Association</h2>
+        <div class="row center">
+          <h5 class="header cyan-text text-lighten-3">Copper Skull Association is a business dedicated to bring automotive services directly to your house. Skip going to the shop and schedule an appointment with us.</h5>
+        </div>
+      </div>
     </div>
     <div class="parallax"><img src="http://allstarautoservice.net/wp-content/uploads/2015/06/engine-repair.jpg"></div>
   </div>
 
   <div class="section">
-  	<div class="container white">
-      <h3>Estimate Information</h3>
-        <table>
-          <tbody>
-            <tr>
-              <th>Car</th>
-              <th>Oil Type</th>
-              <th>Oil Weight</th>
-              <th>Oil Capacity (Quarts)</th>
-              <th>Labor & Parts Cost</th>
-            </tr>
-            <tr>
-              <!-- Display car information -->
-              <td id="carInfo">2011 Toyota 4Runner 4.0L</td>
-              <!-- Display oil type -->
-              <td id="oilType">Full Synthetic</td>
-              <!-- Display oil weight-->
-              <td id="oilWeight">5w30</td>
-              <!-- Display oil capacity -->
-              <td id="oilCapacity">5.5</td>
-              <!-- Display total cost -->
-              <td id="totalCost">$48.50</td>
-            </tr>
-          </tbody>
-        </table><br><br>
-        <button id="btnBook" class="btn right">Schedule an appointment</button><br><br><br>
-		</div>
+    <div class="container">
+      <h3 class="center">Select a day and time for your appointment</h3>
+      <p class="flow-text center">Our operating hours are from 9 - 5 Monday through Friday</p>
+      <br>
+      <br>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input type="text" class="datepicker">
+          <label>Select a day</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input type="text" class="timepicker">
+          <label>Select a time</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Therer will be a section to select a technician -->
+
+  <!-- Payment section -->
+  <div class="section">
+    <div class="container ">
+      <h3 class="center">Payment Information</h3>
+      <div class="row">
+        <div class="input-field col s12 m4">
+          <input type="text">
+          <label>Name on card</label>
+        </div>
+        <div class="input-field col s12 m4">
+          <input type="number">
+          <label>Card Number</label>
+        </div>
+        <div class="input-field col s6 m2">
+          <input type="number" placeholder="00/00">
+          <label>Expiration date</label>
+        </div>
+        <div class="input-field col s6 m2">
+          <input type="number" placeholder="123">
+          <label>CVC</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section center">
+    <button id="btnPay" class="btn-large blue waves-effect waves-light">Book appointment</button><br><br><br>
   </div>
 
   <div class="parallax-container">
@@ -82,8 +102,8 @@
     </div>
   </div>
 
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
   $(document).ready(function(){
        M.AutoInit();
