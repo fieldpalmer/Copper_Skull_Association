@@ -7,7 +7,7 @@ const loadEventHandlers = () => {
 	// handle get a quote button click
 	$(document).on("click", "#btnQuote", e => {
 		// when user clicks on get quote button, load quote template
-		$('#main').load('templates/quote.html');
+		$("#main").load('templates/quote.html');
 
 		// remove button
 		$("#btnQuote").remove();
@@ -18,6 +18,11 @@ const loadEventHandlers = () => {
 		// send information to database
 		// calculate cost
 		// insert information to template
-		$('#main').load('templates/estimate.html');
+		$("#main").load('templates/estimate.html');
+	});
+
+	$(document).on("click", "#btnBook", e => {
+		// when user clicks schedule appointment load appointment template
+		$("#main").load("templates/appointment.html");
 	})
 }
