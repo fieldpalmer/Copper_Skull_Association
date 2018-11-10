@@ -21,8 +21,7 @@ $(document).ready(function(){
 		// when user clicks schedule appointment load appointment template
 		$("#main").load("templates/appointment.html", function () {
 			console.log("Appointment loaded");
-			$('.datepicker').datepicker();
-			$('.timepicker').timepicker();
+			M.AutoInit();
 		});
 	});
 
