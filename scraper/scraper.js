@@ -23,7 +23,47 @@ const getOilInfo = (url, callback) => {
 	});
 }
 
+const getCarYear = (url, cb) => {
+	request("https://oil.pennzoil.com/" + url + "?format=json",
+		(err, res, body) => {
+			if (err) throw err;
+			body = JSON.parse(body);
+
+			let years = {
+				year: Object.values(body),
+				link: Object.keys(body)
+			};
+
+			years.year.shift();
+			years.link.shift();
+			console.log(body)
+			cb(body);
+		})
+}
+
+const getCarMake = (callback) => {
+	request("https://oil.pennzoil.com/us/en_US/browse",
+		(err, res, body) => {
+			if (err) throw err;
+			let $ = cheerio.load(body);
+
+			let makes = [];
+
+			let makeLinks = $('.scroll a');
+
+			for(var i = 0; i < makeLinks.length; i++){
+				makes.push({
+					make: makeLinks[i].children[0].data,
+					link: makeLinks[i].attribs.href
+				})
+			}
+
+			callback(makes);
+		});
+}
+
 module.exports = {
-	getOilInfo
+	getCarYear,
+	getCarMake
 }
 
