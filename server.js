@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 
 const db = require('./models');
@@ -12,10 +13,11 @@ app.use(express.json());
 app.use(express.static('public'));
 
 require('./routes/apiRoutes')(app);
+require('./routes/user-api-routes')(app);
 
 let syncOptions = { force: false };
 
-if (process.env.NODE_ENV === 'test') {
+if (env === 'test' || env === 'development') {
   syncOptions.force = true;
 }
 
