@@ -11,8 +11,9 @@ const setEventHandler = () => {
 	});
 
 	$(document).on('click', 'a', function(){
-		let carYear = $(this).data('year');
-		// displayModel(carYear);
+		let carYear = $(this).text();
+		let carYearLink = $(this).data('year');
+		console.log(carYearLink);
 	})
 }
 
@@ -27,16 +28,16 @@ const displayYear = car => {
 		let years = car.year; // year array
 		$('#app').load('/templates/year.html', function() {
 			let row = $('<div>').addClass('row');
-			years.forEach(year => {
+			for(let i = 0; i < car.year.length; i++) {
 				let div = $('<div>').addClass('col-md-2');
-				let y = $('<a>').attr('data-year', year);
+				let y = $('<a>').attr('data-year', car.link[i]);
 
-				y.text(year);
+				y.text(car.year[i]);
 				y.attr('href', '#');
 
 				div.append(y);
 				row.append(div);
-			});
+			}
 			$('#year').append(row);
 		});
 	});
