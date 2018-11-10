@@ -23,6 +23,23 @@ const getOilInfo = (url, callback) => {
 	});
 }
 
+// function gets all the models for the given car
+const getCarModel = (url, cb) => {
+	request("https://oil.pennzoil.com/" + url + "?format=json",
+		(err, res, body) => {
+			if (err) throw err;
+			body = JSON.parse(body);
+
+			let models = {
+				model: Object.values(body),
+				link: Object.keys(body)
+			}
+
+			cb(models);
+		})
+}
+
+// function gets the car year for a given make
 const getCarYear = (url, cb) => {
 	request("https://oil.pennzoil.com/" + url + "?format=json",
 		(err, res, body) => {
@@ -41,6 +58,7 @@ const getCarYear = (url, cb) => {
 		})
 }
 
+// function gets all the makes from website
 const getCarMake = (callback) => {
 	request("https://oil.pennzoil.com/us/en_US/browse",
 		(err, res, body) => {
@@ -64,6 +82,7 @@ const getCarMake = (callback) => {
 
 module.exports = {
 	getCarYear,
-	getCarMake
+	getCarMake,
+	getCarModel
 }
 
