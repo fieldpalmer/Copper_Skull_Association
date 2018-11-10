@@ -6,7 +6,7 @@ const fs = require('fs');
 // functions takes two parameters url and call back function
 // It returns an object {oilType: , galCapacity: }
 const getOilInfo = (url, callback) => {
-	request(url, (err, res, body) => {
+	request("https://oil.pennzoil.com/" + url, (err, res, body) => {
 		if (err) throw err;
 		let $ = cheerio.load(body);
 
@@ -16,7 +16,8 @@ const getOilInfo = (url, callback) => {
 
 		let info = {
 			oilType: oilType,
-			galCapacity: galCapacity
+			galCapacity: `${galCapacity} (g)`,
+			quartsCapacity: `${galCapacity * 4} (q)`
 		}
 
 		callback(info);
@@ -83,6 +84,7 @@ const getCarMake = (callback) => {
 module.exports = {
 	getCarYear,
 	getCarMake,
-	getCarModel
+	getCarModel,
+	getOilInfo
 }
 

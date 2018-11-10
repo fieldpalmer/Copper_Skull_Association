@@ -35,6 +35,15 @@ app.post('/api/model', (req, res) => {
 	}
 })
 
+app.post('/api/car', (req, res) => {
+	let url = req.body.url;
+	if(url) {
+		scraper.getOilInfo(url, info => {
+			res.json(info);
+		})
+	}
+})
+
 app.get('/', (req, res) => {
 	res.sendFile(__dirname, '/public/index.html');
 })
