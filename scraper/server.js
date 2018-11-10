@@ -23,9 +23,17 @@ app.post('/api/year', (req, res) => {
 			res.json(year);
 		});
 	}
-	console.log(req.body);
-})
+});
 
+app.post('/api/model', (req, res) => {
+	let url = req.body.url;
+	console.log(url);
+	if(url) {
+		scraper.getCarModel(url, models => {
+			res.json(models);
+		})
+	}
+})
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname, '/public/index.html');
