@@ -13,7 +13,34 @@ const setEventHandler = () => {
 	$(document).on('click', 'a', function(){
 		let carYear = $(this).text();
 		let carYearLink = $(this).data('year');
-		console.log(carYearLink);
+
+		displayModel({carYear: carYear, carYearLink: carYearLink});
+	})
+}
+
+const displayModel = car => {
+	$.ajax('/api/model/', {
+		method: 'POST',
+		data: {
+			carYear: car.carYear,
+			url: car.carYearLink
+		}
+	}).then(models => {
+		console.log(models);
+		$("#app").load('/templates/model.html', function(){
+			let row = $('<div>').addClass('row');
+			for(let i = 0; i < models.model.length; i++){
+				let col = $('<div>').addClass('col-md-2');
+				let model = $('<a>').attr('data-model', models.link[i]);
+
+				model.text(models.model[i]);
+				model.attr('href', '#');
+
+				col.append(model);
+				row.append(col);
+			}
+			$('#model').append(row);
+		});
 	})
 }
 
@@ -25,7 +52,6 @@ const displayYear = car => {
 			url: car.makeLink
 		}
 	}).then(car => {
-		let years = car.year; // year array
 		$('#app').load('/templates/year.html', function() {
 			let row = $('<div>').addClass('row');
 			for(let i = 0; i < car.year.length; i++) {
