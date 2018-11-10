@@ -6,7 +6,9 @@ $(document).ready(function(){
 		$("#main").load('templates/quote.html', function(){
 			// remove button
 			$("#btnQuote").remove();
-			$("#services").html('');
+			$("#services").hide();
+			$("#hideThis").hide();
+			$("#contactSection").hide();
 		});
 	});
 
