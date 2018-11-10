@@ -4,17 +4,35 @@ $(() => {
 })
 
 const setEventHandler = () => {
-	$(document).on('click', 'a', function(){
+	$(document).on('click', '#make a', function(){
 		let makeLink = $(this).data('make');
 		let makeName = $(this).text();
 		displayYear({makeName: makeName, makeLink: makeLink});
 	});
 
-	$(document).on('click', 'a', function(){
+	$(document).on('click', '#year a', function(){
 		let carYear = $(this).text();
 		let carYearLink = $(this).data('year');
 
 		displayModel({carYear: carYear, carYearLink: carYearLink});
+	});
+
+	$(document).on('click', '#model a', function(){
+		let modelLink = $(this).data('model');
+		let modelName = $(this).text();
+		displayCar({modelLink: modelLink, modelName: modelName});
+	})
+}
+
+const displayCar = car => {
+	$.ajax('/api/car/', {
+		method: "POST",
+		data: {
+			url: car.modelLink,
+			modelName: car.modelName
+		}
+	}).then(info => {
+		console.log(info);
 	})
 }
 
@@ -26,7 +44,6 @@ const displayModel = car => {
 			url: car.carYearLink
 		}
 	}).then(models => {
-		console.log(models);
 		$("#app").load('/templates/model.html', function(){
 			let row = $('<div>').addClass('row');
 			for(let i = 0; i < models.model.length; i++){
