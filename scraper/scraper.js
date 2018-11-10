@@ -54,7 +54,6 @@ const getCarYear = (url, cb) => {
 
 			years.year.shift();
 			years.link.shift();
-			console.log(years)
 			cb(years);
 		})
 }
