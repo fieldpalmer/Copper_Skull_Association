@@ -15,10 +15,15 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Review.associate = function(models) {
-    Review.belongsToMany(user, {
-      through: 'user',
-      foreignKey: 'technician',
-      as: 'userID'
+    Review.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      }
+    });
+    Review.belongsTo(models.Technician, {
+      foreignKey: {
+        allowNull: false,
+      }
     });
   };
 
