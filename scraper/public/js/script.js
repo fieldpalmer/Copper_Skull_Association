@@ -32,7 +32,22 @@ const displayCar = car => {
 			modelName: car.modelName
 		}
 	}).then(info => {
-		console.log(info);
+		$('#app').load('/templates/car.html', function() {
+			let html = $('<div>').addClass('card');
+			let body = $('<div>').addClass('card-body');
+			let title = $('<h5>').addClass('card-title');
+			let content = $('<p>').addClass('card-text');
+
+			title.text(`${info.car.year} ${info.car.make} ${info.car.model}`);
+			content.text(`Your car takes ${info.info.quartsCapacity} of ${info.info.oilType}`);
+
+			body.append(title);
+			body.append(content);
+			html.append(body);
+
+			$('#car').append(html);
+			console.log(info)
+		})
 	})
 }
 
