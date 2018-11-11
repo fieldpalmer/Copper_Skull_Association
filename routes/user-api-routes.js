@@ -58,4 +58,15 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/api/review/:custID/:techID', function(req, res) {
+    db.Review.create({
+      rating: req.body.rating,
+      reviewText: req.body.reviewText,
+      technicianID: req.params.custID,
+      custID: req.params.techID
+    }).then(function(result){
+      res.json(result);
+    })
+  })
+
 };
