@@ -2,7 +2,6 @@ const db = require('../models');
 
 module.exports = function(app) {
   app.post('/api/register', function(req, res) {
-    console.log(req);
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
@@ -54,8 +53,8 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(dbUser) {
-      res.json(dbUser);
-    });
+        res.json(dbUser);
+      });
   });
 
 };

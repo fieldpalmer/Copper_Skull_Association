@@ -16,11 +16,14 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Order.associate = function(models) {
-    Order.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // Order.belongsTo(models.User, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
+
+    Order.belongsTo(models.User, { as: 'technicianId', foreignKey: 'UserId'});
+    Order.belongsTo(models.User, { as: 'userId', foreignKey: 'UserId'});
 
     //belongs to product
   };

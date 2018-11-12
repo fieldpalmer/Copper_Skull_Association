@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 require('./routes/apiRoutes')(app);
 require('./routes/user-api-routes')(app);
+require('./routes/tech-api-routes')(app);
 
 let syncOptions = { force: false };
 
