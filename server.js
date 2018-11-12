@@ -12,8 +12,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static('public'));
 
-require('./routes/apiRoutes')(app);
 require('./routes/user-api-routes')(app);
+require('./routes/tech-api-routes')(app);
+require('./routes/order-api-routes')(app);
+require('./routes/certs-api-routes')(app);
+require('./routes/review-api-routes')(app);
 
 let syncOptions = { force: false };
 
