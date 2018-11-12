@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 node_modules/
+=======
+node_modules/
+.env/
+config/config.json
+**/.DS_Store
+
+
+>>>>>>> 5e83f7b127e0c34e2f2666ae24687cc8309508cb

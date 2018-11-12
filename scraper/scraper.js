@@ -6,7 +6,7 @@ const fs = require('fs');
 // functions takes two parameters url and call back function
 // It returns an object {oilType: , galCapacity: }
 const getOilInfo = (url, callback) => {
-	request(url, (err, res, body) => {
+	request("https://oil.pennzoil.com/" + url, (err, res, body) => {
 		if (err) throw err;
 		let $ = cheerio.load(body);
 
@@ -16,13 +16,31 @@ const getOilInfo = (url, callback) => {
 
 		let info = {
 			oilType: oilType,
-			galCapacity: galCapacity
+			galCapacity: `${galCapacity} (g)`,
+			quartsCapacity: `${galCapacity * 4} (q)`
 		}
 
 		callback(info);
 	});
 }
 
+// function gets all the models for the given car
+const getCarModel = (url, cb) => {
+	request("https://oil.pennzoil.com/" + url + "?format=json",
+		(err, res, body) => {
+			if (err) throw err;
+			body = JSON.parse(body);
+
+			let models = {
+				model: Object.values(body),
+				link: Object.keys(body)
+			}
+
+			cb(models);
+		})
+}
+
+// function gets the car year for a given make
 const getCarYear = (url, cb) => {
 	request("https://oil.pennzoil.com/" + url + "?format=json",
 		(err, res, body) => {
@@ -36,11 +54,11 @@ const getCarYear = (url, cb) => {
 
 			years.year.shift();
 			years.link.shift();
-			console.log(body)
-			cb(body);
+			cb(years);
 		})
 }
 
+// function gets all the makes from website
 const getCarMake = (callback) => {
 	request("https://oil.pennzoil.com/us/en_US/browse",
 		(err, res, body) => {
@@ -64,6 +82,8 @@ const getCarMake = (callback) => {
 
 module.exports = {
 	getCarYear,
-	getCarMake
+	getCarMake,
+	getCarModel,
+	getOilInfo
 }
 

@@ -3,10 +3,13 @@ $(document).ready(function(){
 	// handle get a quote button click
 	$(document).on("click", "#btnQuote", function() {
 		// when user clicks on get quote button, load quote template
-		$("#main").load('templates/quote.html');
-
-		// remove button
-		$("#btnQuote").remove();
+		$("#main").load('templates/quote.html', function(){
+			// remove button
+			$("#btnQuote").remove();
+			$("#services").hide();
+			$("#hideThis").hide();
+			$("#contactSection").hide();
+		});
 	});
 
 	$(document).on("click", "#btnQuoteMe", function() {
