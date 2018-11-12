@@ -1,6 +1,18 @@
 const db = require('../models');
 
 module.exports = function(app) {
+  app.post('/api/technician', function(req, res) {
+    //spread operator '...'
+    let user = {...req.body};
+    user.Technician = {}
+
+    db.User.create(user, {
+      include: [db.Technician]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
   app.put('/api/technician', function(req, res) {
     db.Technician.update(
       req.body,
