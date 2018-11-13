@@ -1,30 +1,4 @@
-// $(() => {
-// 	displayMake();
-// 	setEventHandler();
-// })
-
-const setEventHandler = () => {
-	$(document).on('click', '#make a', function(){
-		let makeLink = $(this).data('make');
-		let makeName = $(this).text();
-		displayYear({makeName: makeName, makeLink: makeLink});
-	});
-
-	$(document).on('click', '#year a', function(){
-		let carYear = $(this).text();
-		let carYearLink = $(this).data('year');
-
-		displayModel({carYear: carYear, carYearLink: carYearLink});
-	});
-
-	$(document).on('click', '#model a', function(){
-		let modelLink = $(this).data('model');
-		let modelName = $(this).text();
-		displayCar({modelLink: modelLink, modelName: modelName});
-	})
-}
-
-const displayCar = car => {
+const getOilInfo = car => {
 	$.ajax('/api/car/', {
 		method: "POST",
 		data: {
@@ -32,6 +6,10 @@ const displayCar = car => {
 		}
 	}).then(info => {
 		console.log(info);
+		$('#services').formSelect();
+		$("select#services").change(function(){
+			console.log($(this).val());
+		})
 	})
 }
 
@@ -50,7 +28,7 @@ const displayModel = (car, loc) => {
 		$('#model').change(function(e){
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val();
-			displayCar({url: link});
+			getOilInfo({url: link});
 		})
 	})
 }

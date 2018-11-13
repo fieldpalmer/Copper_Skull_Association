@@ -2,15 +2,7 @@
 	<div class="container white">
 		<h3 class="center">Enter vehicle information</h3><br>
     <div class="row">
-      <h5 class="center">Enter VIN</h5>
       <div class="col s12">
-        <div class="input-field">
-          <input type="text" >
-          <label>VIN</label>
-        </div>
-      </div>
-      <div class="col s12">
-        <h5 class="center">OR</h5><br>
         <div class="row">
           <div class="input-field col s6 m3">
             <select id="make">
@@ -34,9 +26,13 @@
       </div>
       <div class="col s12">
         <div class="input-field">
-          <select>
+          <select id="services" multiple>
             <option value="" disabled selected>Select a service</option>
             <option value="oil">Oil and Filter</option>
+            <option value="rotation">Tire Rotation</option>
+            <option value="air filter">Air filter replacement</option>
+            <option value="wiper">Wiper blades replacement</option>
+            <option value="bulb">Bulb replacement</option>
           </select>
           <label>Select a service</label>
         </div>
