@@ -7,7 +7,7 @@ const passport = require("./config/passport");
 const db = require('./models');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -23,6 +23,7 @@ require('./routes/tech-api-routes')(app);
 require('./routes/order-api-routes')(app);
 require('./routes/certs-api-routes')(app);
 require('./routes/review-api-routes')(app);
+require('./routes/oil-api-routes')(app);
 
 let syncOptions = { force: false };
 
