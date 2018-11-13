@@ -26,7 +26,6 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-// require('./routes/apiRoutes')(app);
 require('./routes/user-api-routes')(app);
 require('./routes/tech-api-routes')(app);
 require('./routes/order-api-routes')(app);
