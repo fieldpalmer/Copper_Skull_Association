@@ -6,6 +6,12 @@ const session = require("express-session");
 const passport = require("./config/passport");
 const db = require('./models');
 
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+
+const stripe = require("stripe")(keySecret);
+const bodyParser = require("body-parser");
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -17,7 +23,10 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/apiRoutes')(app);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+// require('./routes/apiRoutes')(app);
 require('./routes/user-api-routes')(app);
 require('./routes/tech-api-routes')(app);
 require('./routes/order-api-routes')(app);
