@@ -51,28 +51,24 @@ const displayCar = car => {
 	})
 }
 
-const displayModel = car => {
+const displayModel = (car, loc) => {
 	$.ajax('/api/model/', {
 		method: 'POST',
 		data: {
-			carYear: car.carYear,
-			url: car.carYearLink
+			url: car.yearLink
 		}
 	}).then(models => {
-		$("#app").load('/templates/model.html', function(){
-			let row = $('<div>').addClass('row');
-			for(let i = 0; i < models.model.length; i++){
-				let col = $('<div>').addClass('col-md-2');
-				let model = $('<a>').attr('data-model', models.link[i]);
-
-				model.text(models.model[i]);
-				model.attr('href', '#');
-
-				col.append(model);
-				row.append(col);
-			}
-			$('#model').append(row);
-		});
+		console.log(models);
+		loc.html('<option value="" disabled selected>Model</option>');
+		for(let i = 0; i < models.model.length; i++) {
+			loc.append(`<option value='${models.link[i]}'>${models.model[i]}</option>`)
+		}
+		loc.formSelect();
+		$('#model').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
+			let link = $(this).val();
+			console.log(link);
+		})
 	})
 }
 
@@ -91,7 +87,7 @@ const displayYear = (car, loc) => {
 		$('#year').change(function(e){
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val();
-			console.log(link);
+			displayModel({yearLink: link}, $("select#model"))
 		})
 	});
 }
