@@ -16,14 +16,12 @@ module.exports = function(sequelize, DataTypes) {
 
   Review.associate = function(models) {
     Review.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false,
-      }
+      as: 'technicianReviewed',
+      foreignKey: 'technician_id'
     });
-    Review.belongsTo(models.Technician, {
-      foreignKey: {
-        allowNull: false,
-      }
+    Review.belongsTo(models.User, {
+      as: 'customerAuthor',
+      foreignKey: 'customer_id'
     });
   };
 
