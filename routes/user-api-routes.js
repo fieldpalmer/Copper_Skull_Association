@@ -5,7 +5,7 @@ var path = require("path");
 
 module.exports = function(app) {
 
-  //takes object with email and passport
+  //takes object with email and password
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/members");
   });
