@@ -63,9 +63,9 @@ module.exports = function(sequelize, DataTypes) {
   //     onDelete: 'cascade'
   //   });
 
-    // User.hasMany(models.Vehicle, {
-    //   onDelete: 'cascade'
-    // });
+    User.hasMany(models.Vehicle, {
+      onDelete: 'cascade'
+    });
   };
 
   return User;

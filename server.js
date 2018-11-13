@@ -17,6 +17,7 @@ require('./routes/tech-api-routes')(app);
 require('./routes/order-api-routes')(app);
 require('./routes/certs-api-routes')(app);
 require('./routes/review-api-routes')(app);
+require('./routes/vehicle-api-routes')(app);
 
 let syncOptions = { force: false };
 
