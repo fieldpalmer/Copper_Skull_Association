@@ -88,6 +88,11 @@ const displayYear = (car, loc) => {
 			loc.append(`<option value='${car.link[i]}'>${car.year[i]}</option>`)
 		}
 		loc.formSelect();
+		$('#year').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
+			let link = $(this).val();
+			console.log(link);
+		})
 	});
 }
 
@@ -97,7 +102,8 @@ const displayMake = loc => {
 			loc.append(`<option value='${car.link}'>${car.make}</option>`);
 		})
 		loc.formSelect();
-		$('#make').change(function(){
+		$('#make').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val();
 			displayYear({makeLink: link}, $("select#year"));
 		})
