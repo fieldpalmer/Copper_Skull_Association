@@ -1,5 +1,6 @@
 $(document).ready(function(){
   M.AutoInit();
+
 	// handle get a quote button click
 	$(document).on("click", "#btnQuote", function() {
 		// when user clicks on get quote button, load quote template
@@ -9,6 +10,8 @@ $(document).ready(function(){
 			$("#services").hide();
 			$("#hideThis").hide();
 			$("#contactSection").hide();
+
+			displayMake($("select#make"));
 		});
 	});
 
