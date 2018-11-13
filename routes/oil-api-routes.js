@@ -31,7 +31,7 @@ module.exports = app => {
 
 		if(url) {
 			scraper.getOilInfo(url, info => {
-				res.json({car: car, info: info});
+				res.json(info);
 			})
 		}
 	})
