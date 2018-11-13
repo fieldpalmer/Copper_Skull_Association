@@ -51,39 +51,44 @@ const displayCar = car => {
 	})
 }
 
-const displayModel = car => {
+const displayModel = (car, loc) => {
 	$.ajax('/api/model/', {
 		method: 'POST',
 		data: {
-			carYear: car.carYear,
-			url: car.carYearLink
+			url: car.yearLink
 		}
 	}).then(models => {
-		$("#app").load('/templates/model.html', function(){
-			let row = $('<div>').addClass('row');
-			for(let i = 0; i < models.model.length; i++){
-				let col = $('<div>').addClass('col-md-2');
-				let model = $('<a>').attr('data-model', models.link[i]);
-
-				model.text(models.model[i]);
-				model.attr('href', '#');
-
-				col.append(model);
-				row.append(col);
-			}
-			$('#model').append(row);
-		});
+		console.log(models);
+		loc.html('<option value="" disabled selected>Model</option>');
+		for(let i = 0; i < models.model.length; i++) {
+			loc.append(`<option value='${models.link[i]}'>${models.model[i]}</option>`)
+		}
+		loc.formSelect();
+		$('#model').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
+			let link = $(this).val();
+			console.log(link);
+		})
 	})
 }
 
-const displayYear = car => {
+const displayYear = (car, loc) => {
 	$.ajax('/api/year/', {
 		method: "POST",
 		data: {
 			url: car.makeLink
 		}
 	}).then(car => {
-		console.log(car);
+		loc.html('<option value="" disabled selected>Year</option>');
+		for(let i = 0; i < car.year.length; i++){
+			loc.append(`<option value='${car.link[i]}'>${car.year[i]}</option>`)
+		}
+		loc.formSelect();
+		$('#year').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
+			let link = $(this).val();
+			displayModel({yearLink: link}, $("select#model"))
+		})
 	});
 }
 
@@ -92,10 +97,11 @@ const displayMake = loc => {
 		makes.forEach(car => {
 			loc.append(`<option value='${car.link}'>${car.make}</option>`);
 		})
-		M.AutoInit();
-		$('#make').change(function(){
+		loc.formSelect();
+		$('#make').change(function(e){
+			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val();
-			displayYear({makeLink: link});
+			displayYear({makeLink: link}, $("select#year"));
 		})
 	});
 }
