@@ -76,14 +76,18 @@ const displayModel = car => {
 	})
 }
 
-const displayYear = car => {
+const displayYear = (car, loc) => {
 	$.ajax('/api/year/', {
 		method: "POST",
 		data: {
 			url: car.makeLink
 		}
 	}).then(car => {
-		console.log(car);
+		loc.html('<option value="" disabled selected>Year</option>');
+		for(let i = 0; i < car.year.length; i++){
+			loc.append(`<option value='${car.link[i]}'>${car.year[i]}</option>`)
+		}
+		loc.formSelect();
 	});
 }
 
@@ -92,10 +96,10 @@ const displayMake = loc => {
 		makes.forEach(car => {
 			loc.append(`<option value='${car.link}'>${car.make}</option>`);
 		})
-		M.AutoInit();
+		loc.formSelect();
 		$('#make').change(function(){
 			let link = $(this).val();
-			displayYear({makeLink: link});
+			displayYear({makeLink: link}, $("select#year"));
 		})
 	});
 }
