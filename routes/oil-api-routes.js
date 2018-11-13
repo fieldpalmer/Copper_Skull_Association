@@ -9,8 +9,6 @@ module.exports = app => {
 	app.post('/api/year', (req, res) => {
 		let url = req.body.url;
 
-		car.make = req.body.makeName;
-
 		if(url) {
 			scraper.getCarYear(url, year => {
 				res.json(year);
@@ -21,8 +19,6 @@ module.exports = app => {
 	app.post('/api/model', (req, res) => {
 		let url = req.body.url;
 
-		car.year = req.body.carYear;
-
 		if(url) {
 			scraper.getCarModel(url, models => {
 				res.json(models);
@@ -32,8 +28,6 @@ module.exports = app => {
 
 	app.post('/api/car', (req, res) => {
 		let url = req.body.url;
-
-		car.model = req.body.modelName;
 
 		if(url) {
 			scraper.getOilInfo(url, info => {
