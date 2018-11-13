@@ -14,6 +14,10 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+
+    Technician.hasMany(models.Certification, {
+      onDelete: 'cascade'
+    });
   };
 
   return Technician;

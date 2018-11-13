@@ -54,7 +54,12 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.hasMany(models.Order, {
-      onDelete: 'cascade'
+      as: 'technician',
+      foreignKey: 'technician_id'
+    });
+    User.hasMany(models.Order, {
+      as: 'customer',
+      foreignKey: 'customer_id'
     });
 
   //   User.hasMany(models.Review, {

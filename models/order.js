@@ -1,5 +1,4 @@
 module.exports = function(sequelize, DataTypes) {
-
   const Order = sequelize.define('Order', {
 
     jobComplete: {
@@ -21,10 +20,12 @@ module.exports = function(sequelize, DataTypes) {
   Order.associate = function(models) {
 
     Order.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-      
+      as: 'technician',
+      foreignKey: 'technician_id'
+    });
+    Order.belongsTo(models.User, {
+      as: 'customer',
+      foreignKey: 'customer_id'
     });
 
     //belongs to product
