@@ -1,20 +1,20 @@
 window.car = {};
 // function takes an obj
-const getOilInfo = car => {
+const getOilInfo = obj => {
 	// send a post request to server with make/year/model link
 	$.ajax('/api/car/', {
 		method: "POST",
 		data: {
-			url: car.url
+			url: obj.url
 		}
 	}).then(info => {
 		// when server returns a response
-		console.log(info);
+		car.info = info;
 		$('#services').formSelect(); // initiate materialize styles
 		// when user select a service
 		$("select#services").change(function(){
 			let services = $(this).val(); // store user services choice in array
-			console.log(services);
+			car.services = services;
 		})
 	})
 }
@@ -41,6 +41,7 @@ const displayModel = (car, loc) => {
 
 		// when user selects a model
 		$('select#model').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store make/year/model link
 			window.car.model = $(this).find(":selected").text();
@@ -71,6 +72,7 @@ const displayYear = (car, loc) => {
 
 		// when user selects a year
 		$('select#year').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store car make & year link
 			window.car.year = $(this).find(":selected").text();
@@ -87,13 +89,14 @@ const displayMake = loc => {
 		// after recieving response from server with car makes
 		// loop through each result and append it to the make options
 		makes.forEach(car => {
-			loc.append(`<option value='${car.link}' data-make=${car.make}>${car.make}</option>`);
+			loc.append(`<option value='${car.link}'>${car.make}</option>`);
 		})
 
 		loc.formSelect(); // initiate materialize styles
 
 		// when a user selects a make
 		$('select#make').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store the link
 			car.make = $(this).find(":selected").text();
