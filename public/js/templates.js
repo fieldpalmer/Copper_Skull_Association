@@ -4,8 +4,13 @@ $(document).ready(function(){
 	// handle get a quote button click
 	$(document).on("click", "#btnQuote", function() {
 		// when user clicks on get quote button, load quote template
+		// remove button
+		$("#btnQuote").remove();
+		$("#services").hide();
+		$("#hideThis").hide();
+		$("#contactSection").hide();
+
 		$("#main").load('templates/quote.html', function(){
-			M.AutoInit();
 			// initiate mapquest search
 			placeSearch({
 		    key: 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24',
@@ -14,12 +19,6 @@ $(document).ready(function(){
 		      'address'
 		    ]
 		  });
-
-			// remove button
-			$("#btnQuote").remove();
-			$("#services").hide();
-			$("#hideThis").hide();
-			$("#contactSection").hide();
 
 			displayMake($("select#make"));
 		});
@@ -39,8 +38,8 @@ $(document).ready(function(){
 			showErrMessage("You must select a service")
 		}
 		// check if user has entered a valid address
-		else if(car.address.length < 10) {
-			showErrMessage("You must enter your adress (street, city, zipcode)");
+		else if(breakAddress(car.address) === false) {
+			showErrMessage("You must enter your adress");
 		}
 		// if everything passes...
 		else {
@@ -67,8 +66,3 @@ $(document).ready(function(){
 		$("#main").load("templates/workorder.html");
 	})
 });
-
-const showErrMessage = msg => {
-	$("#errMessage").text(msg);
-	$("#errMessage").show();
-}
