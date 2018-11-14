@@ -27,7 +27,7 @@ $(document).ready(function(){
 	$(document).on("click", "#btnQuoteMe", function() {
 		// before loading the estimate template validate user input
 		// variables store user address information
-		car.address = $('#txtAddress').val().trim();
+		let address = $('#txtAddress').val().trim();
 
 		// check if user has entered their vehicle's information
 		if(!car.make || !car.year || !car.model) {
@@ -38,11 +38,12 @@ $(document).ready(function(){
 			showErrMessage("You must select a service")
 		}
 		// check if user has entered a valid address
-		else if(breakAddress(car.address) === false) {
+		else if(breakAddress(address) === false) {
 			showErrMessage("You must enter your adress");
 		}
 		// if everything passes...
 		else {
+			car.adress = breakAddress(address);
 			// load  estimate
 			$("#main").load('templates/estimate.html', function() {
 				$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
@@ -54,15 +55,17 @@ $(document).ready(function(){
 
 	$(document).on("click", "#btnBook", function() {
 		// when user clicks schedule appointment load appointment template
+		// add a save for later button
 		$("#main").load("templates/appointment.html", function () {
-			console.log("Appointment loaded");
 			M.AutoInit();
 		});
 	});
 
 	$(document).on("click", "#btnPay", function() {
 		// when user clicks the appointment verify every field and payment information
-		// then load the workorder
+		// when the user has verified their dates
+		// send the car information to server
+		// make work order on server and let them enter pay information
 		$("#main").load("templates/workorder.html");
 	})
 });
