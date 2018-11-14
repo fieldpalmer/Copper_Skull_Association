@@ -5,6 +5,16 @@ $(document).ready(function(){
 	$(document).on("click", "#btnQuote", function() {
 		// when user clicks on get quote button, load quote template
 		$("#main").load('templates/quote.html', function(){
+			M.AutoInit();
+			// initiate mapquest search
+			placeSearch({
+		    key: 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24',
+		    container: document.querySelector('#txtAddress'),
+		    collection: [
+		      'address'
+		    ]
+		  });
+
 			// remove button
 			$("#btnQuote").remove();
 			$("#services").hide();
@@ -18,9 +28,7 @@ $(document).ready(function(){
 	$(document).on("click", "#btnQuoteMe", function() {
 		// before loading the estimate template validate user input
 		// variables store user address information
-		let street = $('#txtStreet').val().trim();
-		let city = $('#txtCity').val().trim();
-		let zipcode = $('#txtZipcode').val().trim();
+		car.address = $('#txtAddress').val().trim();
 
 		// check if user has entered their vehicle's information
 		if(!car.make || !car.year || !car.model) {
@@ -31,18 +39,11 @@ $(document).ready(function(){
 			showErrMessage("You must select a service")
 		}
 		// check if user has entered a valid address
-		else if(street.length < 5 || city.length < 3 || zipcode < 5) {
+		else if(car.address.length < 10) {
 			showErrMessage("You must enter your adress (street, city, zipcode)");
 		}
 		// if everything passes...
 		else {
-			// set global car.address
-			car.address = {
-				street: street,
-				city: city,
-				zipcode: zipcode
-			}
-
 			// load  estimate
 			$("#main").load('templates/estimate.html', function() {
 				$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
