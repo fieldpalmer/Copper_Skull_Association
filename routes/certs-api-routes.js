@@ -5,7 +5,8 @@ module.exports = function(app) {
     db.Certification.findAll({
       where: {
         TechnicianId: req.params.techid
-      }
+      },
+      include: [{model: db.Technician}]
     }).then(function(certs){
       res.json(certs);
     });
