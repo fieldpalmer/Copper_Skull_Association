@@ -1,3 +1,4 @@
+window.car = {};
 // function takes an obj
 const getOilInfo = car => {
 	// send a post request to server with make/year/model link
@@ -39,9 +40,10 @@ const displayModel = (car, loc) => {
 		loc.formSelect(); // initiane materialize styles
 
 		// when user selects a model
-		$('#model').change(function(e){
+		$('select#model').change(function(e){
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store make/year/model link
+			window.car.model = $(this).find(":selected").text();
 			getOilInfo({url: link}); // call getOilInfo function
 		})
 	})
@@ -68,9 +70,10 @@ const displayYear = (car, loc) => {
 		loc.formSelect(); // initiate materialize styles
 
 		// when user selects a year
-		$('#year').change(function(e){
+		$('select#year').change(function(e){
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store car make & year link
+			window.car.year = $(this).find(":selected").text();
 			displayModel({yearLink: link}, $("select#model")); // call displayModel function
 		})
 	});
@@ -84,15 +87,16 @@ const displayMake = loc => {
 		// after recieving response from server with car makes
 		// loop through each result and append it to the make options
 		makes.forEach(car => {
-			loc.append(`<option value='${car.link}'>${car.make}</option>`);
+			loc.append(`<option value='${car.link}' data-make=${car.make}>${car.make}</option>`);
 		})
 
 		loc.formSelect(); // initiate materialize styles
 
 		// when a user selects a make
-		$('#make').change(function(e){
+		$('select#make').change(function(e){
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store the link
+			car.make = $(this).find(":selected").text();
 			displayYear({makeLink: link}, $("select#year")); // call displayYear function
 		})
 	});
