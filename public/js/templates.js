@@ -105,9 +105,14 @@ $(document).ready(function(){
 					let job = data.jobDescription;
 					let cost = data.laborCost;
 					let status = data.jobComplete;
+					appointment = date + ' at ' + time
 
 					$('#calculator').load('templates/workorder.html', function() {
-
+						$('#confirmation').text(confirmNum);
+						$('#description').text(job);
+						$('#cost').text(`$${cost}`);
+						$('#tech').text('Not Chosen');
+						$('#appointment').text(appointment);
 					})
 				});
 				// when response
