@@ -19,7 +19,7 @@ $(document).ready(function(){
 		      'address'
 		    ]
 		  });
-
+		 // M.AutoInit()
 			displayMake($("select#make"));
 		});
 	});
@@ -32,6 +32,9 @@ $(document).ready(function(){
 		let lastName = $('#txtLastName').val().trim();
 		let phone = $('#txtPhone').val().trim();
 		let email = $('#txtEmail').val().trim();
+
+		// validateCarInfo(car);
+		// validateUserInfo(customer);
 
 		// check if user has entered their vehicle's information
 		if(!car.make || !car.year || !car.model) {
@@ -49,6 +52,12 @@ $(document).ready(function(){
 		}
 		// if everything passes...
 		else {
+			// remove any letters from quartsCapacity and parse it
+			let cost = parseFloat(car.info.quartsCapacity.replace(/[^\d\.]*/g, '')) * 6; // oil cost
+			cost += 5 // oil filter
+			cost += 15 // labor
+			cost = cost.toFixed(2);
+			// set car.customer information
 			car.customer = {
 				firstName: firstName,
 				lastName: lastName,
@@ -56,12 +65,13 @@ $(document).ready(function(){
 				email: email,
 				address: breakAddress(address)
 			}
+			car.laborCost = cost // set labor cost
 			// load  estimate
 			$("#main").load('templates/estimate.html', function() {
 				$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 				$('#oilType').text(car.info.oilType);
 				$('#oilCapacity').text(car.info.quartsCapacity);
-				$('#totalCost').text(parseFloat(`$ car.info.quartsCapacity.replace(/[^\d\.]*/g, '')) * 5.0`);
+				$('#totalCost').text(`$${cost}`);
 			});
 		}
 	});
@@ -79,6 +89,19 @@ $(document).ready(function(){
 		// when the user has verified their dates
 		// send the car information to server
 		// make work order on server and let them enter pay information
-		$("#main").load("templates/workorder.html");
+		let date = $('#txtDate').val().trim();
+		let time = $('#txtTime').val().trim();
+		let appointment = {
+			date: date,
+			time: time
+		}
+		if(!date || !time) {
+			showErrMessage("Please select a day and a time");
+		} else {
+			car.appointment = appointment;
+			// send information to server
+			// when response
+			// $("#main").load("templates/workorder.html");
+		}
 	})
 });
