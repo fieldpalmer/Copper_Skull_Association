@@ -1,30 +1,44 @@
 <div class="section">
-	<div class="container center">
-    <h3>Thank you for your business</h3>
-    <p class="flow-text">Here's your work order information</p>
-    <table class="responsive-table">
-      <tbody>
-        <tr>
-          <th>Order #</th>
-          <th>Service Type</th>
-          <th>Scheduled date</th>
-          <th>Technician</th>
-        </tr>
-        <!-- Load work order information below -->
-        <tr>
-          <td>123</td>
-          <td>Oil Change</td>
-          <td>11/12/18 at 9:30AM</td>
-          <td>Tech Name</td>
-        </tr>
-      </tbody>
-    </table><br>
-    <p>An email has been sent with your work order information. Including information to contact your technician.</p>
-  </div>
-</div>
-<div class="section">
-  <div class="container center">
-    <p class="flow-text">Would you like to create an account to manage your work orders?</p>
-    <button class="btn-large blue waves-effect waves-light" id="btnGetAccount">Create Account</button>
-  </div><br><br><br>
+	<div class="container ">
+    <div class="row">
+      <div class="col s12 ">
+        <div class="card-panel large">
+          <div class="card-content">
+            <h3>Thank you for your business</h3>
+            <p class="flow-text">Here's your work order information:</p>
+            <table class="">
+              <tbody>
+                <tr>
+                  <th>Comfirmation Number</th>
+                  <td id="confirmation">123</td>
+                </tr>
+                <tr>
+                  <th>Job Description</th>
+                  <td id="description">Oil</td>
+                </tr>
+                <tr>
+                  <th>Total Cost</th>
+                  <td id="cost">$123.20</td>
+                </tr>
+                <tr>
+                  <th>Technician</th>
+                  <td id="tech">N/A</td>
+                </tr>
+                <tr>
+                  <th>Appointment date</th>
+                  <td id="appointment">2 Dec, 2018 at 9:30 AM</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>An email has been sent with your work order information. Including information to contact your technician.</p>
+            <p>Create an account to manage your appointments</p>
+            <div class="card-action center">
+              <button class="btn blue waves-effect waves-light left" id="btnCreateAccount">Create Account</button>
+              <button class="btn green waves-effect waves-light right" id="btnPrint">Print</button>
+              <br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

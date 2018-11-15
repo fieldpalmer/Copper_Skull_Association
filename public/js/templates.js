@@ -47,12 +47,18 @@ $(document).ready(function(){
 				quartsCapacity: car.info.quartsCapacity
 			}).then(function(response) {
 				console.log(response);
+				car.uid = response.id;
+				car.laborCost = response.cost;
 				// load  estimate
 				$("#calculator").load('templates/estimate.html', function() {
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
+<<<<<<< HEAD
 					$('#totalCost').text(`$${response}`);
+=======
+					$('#totalCost').text(`$${response.cost}`);
+>>>>>>> master
 				});
 			});
 		}
@@ -81,9 +87,41 @@ $(document).ready(function(){
 			showErrMessage("Please select a day and a time");
 		} else {
 			car.appointment = appointment;
-			// send information to server
-			// when response
-			// $("#main").load("templates/workorder.html");
+
+			if(!isAvailable(date, time)) {
+				showErrMessage("You must select an upcoming date and a time between 9 - 5");
+			} else {
+				console.log("Booked!!")
+				// send information to server for work order
+				/*
+				send the following information to server:
+					- user id
+					- services
+					- tech selected
+					- labor cost (should send the qts again)
+				*/
+				$.post("/api/orders", {
+					jobDescription: car.services.join(', '),
+					laborCost: car.laborCost,
+					customer_id: car.uid
+				}).then(data => {
+					let confirmNum = data.id;
+					let job = data.jobDescription;
+					let cost = data.laborCost;
+					let status = data.jobComplete;
+					appointment = date + ' at ' + time
+
+					$('#calculator').load('templates/workorder.html', function() {
+						$('#confirmation').text(confirmNum);
+						$('#description').text(job);
+						$('#cost').text(`$${cost}`);
+						$('#tech').text('Not Chosen');
+						$('#appointment').text(appointment);
+					})
+				});
+				// when response
+				// $("#main").load("templates/workorder.html");
+			}
 		}
 	})
 });
