@@ -24,25 +24,36 @@ $(document).ready(function(){
 		}
 		// if everything passes...
 		else {
+			let customer = {
+				firstName: firstName,
+				lastName: lastName,
+				phone: phone,
+				email: email,
+				address: breakAddress(address)
+			}
+
+			car.customer = customer;
+
 			// get a quote from the server by sending quarts capacity
 			$.post("/api/quote", {
-				info: car.info.quartsCapacity
+				name: `${customer.firstName} ${customer.lastName}`,
+				phone: customer.phone,
+				email: customer.email,
+				address: address,
+				year: car.year,
+				make: car.make,
+				model: car.model,
+				services: car.services.join(', '),
+				quartsCapacity: car.info.quartsCapacity
 			}).then(function(response) {
 				console.log(response);
 				// load  estimate
-				car.customer = {
-					firstName: firstName,
-					lastName: lastName,
-					phone: phone,
-					email: email,
-					address: breakAddress(address)
-				}
-				$("#calculator").load('templates/estimate.html', function() {
-					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
-					$('#oilType').text(car.info.oilType);
-					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(`$${response}`);
-				});
+				// $("#calculator").load('templates/estimate.html', function() {
+				// 	$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
+				// 	$('#oilType').text(car.info.oilType);
+				// 	$('#oilCapacity').text(car.info.quartsCapacity);
+				// 	$('#totalCost').text(`$${response}`);
+				// });
 			});
 		}
 	});
