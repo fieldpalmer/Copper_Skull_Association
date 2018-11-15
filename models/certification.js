@@ -24,8 +24,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-
-    // Certification.belongsTo(models.User);
   };
 
   return Certification;
