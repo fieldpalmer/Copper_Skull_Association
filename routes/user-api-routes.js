@@ -53,7 +53,8 @@ module.exports = function(app) {
     db.User.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [{model: db.Vehicle}]
     }).then(function(dbUser) {
       res.json(dbUser);
     });

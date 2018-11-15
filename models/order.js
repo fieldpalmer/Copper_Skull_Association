@@ -1,6 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   const Order = sequelize.define('Order', {
-
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     jobComplete: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,8 +24,19 @@ module.exports = function(sequelize, DataTypes) {
     laborCost: {
       type: DataTypes.DECIMAL,
       allowNull: false
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    time: {
+      type: DataTypes.TIME,
+      allowNull: false
+    },
+    vehicle: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-
   });
 
   Order.associate = function(models) {
@@ -25,6 +47,10 @@ module.exports = function(sequelize, DataTypes) {
     Order.belongsTo(models.User, {
       as: 'customer',
       foreignKey: 'customer_id'
+    });
+
+    Order.hasOne(models.Vehicle, {
+      onDelete: 'cascade'
     });
 
     //belongs to product

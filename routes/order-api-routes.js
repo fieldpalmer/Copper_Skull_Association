@@ -25,6 +25,7 @@ module.exports = function(app) {
         id: req.params.id
       },
       include: [
+        // {model: db.Vehicle},
         {model: db.User, as: 'customer'},
         {
           model: db.User, as: 'technician',
