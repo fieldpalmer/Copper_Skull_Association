@@ -1,19 +1,20 @@
+window.car = {};
 // function takes an obj
-const getOilInfo = car => {
+const getOilInfo = obj => {
 	// send a post request to server with make/year/model link
 	$.ajax('/api/car/', {
 		method: "POST",
 		data: {
-			url: car.url
+			url: obj.url
 		}
 	}).then(info => {
 		// when server returns a response
-		console.log(info);
+		car.info = info;
 		$('#services').formSelect(); // initiate materialize styles
 		// when user select a service
 		$("select#services").change(function(){
 			let services = $(this).val(); // store user services choice in array
-			console.log(services);
+			car.services = services;
 		})
 	})
 }
@@ -39,9 +40,11 @@ const displayModel = (car, loc) => {
 		loc.formSelect(); // initiane materialize styles
 
 		// when user selects a model
-		$('#model').change(function(e){
+		$('select#model').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store make/year/model link
+			window.car.model = $(this).find(":selected").text();
 			getOilInfo({url: link}); // call getOilInfo function
 		})
 	})
@@ -68,9 +71,11 @@ const displayYear = (car, loc) => {
 		loc.formSelect(); // initiate materialize styles
 
 		// when user selects a year
-		$('#year').change(function(e){
+		$('select#year').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store car make & year link
+			window.car.year = $(this).find(":selected").text();
 			displayModel({yearLink: link}, $("select#model")); // call displayModel function
 		})
 	});
@@ -90,9 +95,11 @@ const displayMake = loc => {
 		loc.formSelect(); // initiate materialize styles
 
 		// when a user selects a make
-		$('#make').change(function(e){
+		$('select#make').change(function(e){
+			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store the link
+			car.make = $(this).find(":selected").text();
 			displayYear({makeLink: link}, $("select#year")); // call displayYear function
 		})
 	});
