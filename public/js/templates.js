@@ -11,26 +11,25 @@ $(document).ready(function(){
 		let phone = $('#txtPhone').val().trim();
 		let email = $('#txtEmail').val().trim();
 
-		console.log(window.car);
-		$.post("/api/quote", {
-			info: car.info.quartsCapacity
-		}).then(function(response) {
-			console.log(response);
-			if(!car.make || !car.year || !car.model) {
-				showErrMessage("You must select your car make/year/model");
-			}
-			// check if user has selected a service
-			else if (!car.services) {
-				showErrMessage("You must select a service")
-			}
-			// check if user has entered a valid address
-			else if(breakAddress(address) === false) {
-				showErrMessage("You must enter your adress");
-			}
-			// if everything passes...
-			else {
-				car.adress = breakAddress(address);
-					// load  estimate
+		if(!car.make || !car.year || !car.model) {
+			showErrMessage("You must select your car make/year/model");
+		}
+		// check if user has selected a service
+		else if (!car.services) {
+			showErrMessage("You must select a service")
+		}
+		// check if user has entered a valid address
+		else if(breakAddress(address) === false) {
+			showErrMessage("You must enter your adress");
+		}
+		// if everything passes...
+		else {
+			// get a quote from the server by sending quarts capacity
+			$.post("/api/quote", {
+				info: car.info.quartsCapacity
+			}).then(function(response) {
+				console.log(response);
+				// load  estimate
 				car.customer = {
 					firstName: firstName,
 					lastName: lastName,
@@ -38,14 +37,14 @@ $(document).ready(function(){
 					email: email,
 					address: breakAddress(address)
 				}
-				$("#main").load('templates/estimate.html', function() {
+				$("#calculator").load('templates/estimate.html', function() {
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(response);
+					$('#totalCost').text(`$${response}`);
 				});
-			}
-		});
+			});
+		}
 	});
 
 	$(document).on("click", "#btnBook", function() {
