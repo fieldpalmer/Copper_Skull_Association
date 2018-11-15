@@ -82,9 +82,15 @@ $(document).ready(function(){
 			showErrMessage("Please select a day and a time");
 		} else {
 			car.appointment = appointment;
-			// send information to server
-			// when response
-			// $("#main").load("templates/workorder.html");
+
+			if(!isAvailable(date, time)) {
+				showErrMessage("You must select an upcoming date and a time between 9 - 5");
+			} else {
+				console.log("Booked!!")
+				// send information to server
+				// when response
+				// $("#main").load("templates/workorder.html");
+			}
 		}
 	})
 });
