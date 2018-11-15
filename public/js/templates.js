@@ -119,5 +119,8 @@ $(document).ready(function(){
 				// $("#main").load("templates/workorder.html");
 			}
 		}
+	});
+	$(document).on('click', '#btnPrint', function(){
+		window.print();
 	})
 });
