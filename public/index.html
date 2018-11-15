@@ -5,8 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
+  <script src="js/templates.js"></script>
 </head>
 
 <body>
@@ -27,7 +30,7 @@
         </div>
       </nav>
     </div>
-  
+
     <!-- sidebar nav on shrink -->
     <ul class="sidenav" id="mobile-demo">
       <li class="active"><a href="index.html">Home</a></li>
@@ -36,7 +39,7 @@
       <li><a href="contact.html">Contact Us</a></li>
       <li><a href="auth.html">Login/Register</a></li>
     </ul>
-    
+
     <!-- welcome jumbotron header  -->
     <div class="parallax-container">
       <div class="section no-pad-bot">
@@ -49,12 +52,12 @@
               Learn More
             </a>
           </div>
-          
+
         </div>
       </div>
       <div class="parallax"><img src="http://bertinotsauto.com/files/bigstock/2016/02/Mechanic-checking-oil-level-in-104495669.jpg"></div>
     </div>
-  
+
     <!-- how does it work container  -->
     <div class="container">
       <div class="section">
@@ -80,7 +83,7 @@
               </p>
             </div>
           </div>
-  
+
           <div class="col s12 m4">
             <div class="icon-block">
               <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
@@ -92,7 +95,7 @@
               </p>
             </div>
           </div>
-  
+
           <div class="col s12 m4">
             <div class="icon-block">
               <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">favorite_border</i></h2>
@@ -107,7 +110,7 @@
         </div>
       </div>
     </div>
-  
+
     <!-- customer/technician portal -->
     <div class="parallax-container">
       <h2 class="header center cyan-text text-lighten-4">Discover What We Can Do For You</h2>
@@ -116,12 +119,12 @@
         <div class="section">
           <!-- customer portal -->
           <div class="col s6">
-            
+
             <div class="card">
               <div class="card-content center-align">
                 <h5>Are you a car owner looking for a hassle-free car care experience?</h5>
                 <br>
-                <a class="indigo darken-4 btn-large">
+                <a class="indigo darken-4 btn-large" href="/userView.html">
                   Yes, I'd Like Service
                 </a>
               </div>
@@ -149,32 +152,32 @@
       </div>
     </div>
     <div class="parallax"><img src="./images/car-932455_1920.jpg"></div>
-  
+
     </div>
-  
+
     <!-- reviews & promos section -->
     <div class="container" style="height: 50vh;">
-  
+
       <div class="row center">
         <!-- customer reviews -->
         <div class="col s12 m6">
           <p class="blockquote flow-text indigo-text text-darken-4">
-            <i>"This was the greatest car care exprience of my entire life. 
-            This business model will undoubtedly revolutionize the way cars and 
+            <i>"This was the greatest car care exprience of my entire life.
+            This business model will undoubtedly revolutionize the way cars and
             automobiles are serviced"<br>-Jane<br>Car Owner</i>
           </p>
         </div>
       <!-- technician reviews -->
         <div class="col s12 m6">
           <p class="blockquote flow-text indigo-text text-darken-4">
-            <i>"I love making my own hours and using my skills to help out my neighbors 
-            with their cars. It doesn't hurt that I'm getting a ton of experience and 
+            <i>"I love making my own hours and using my skills to help out my neighbors
+            with their cars. It doesn't hurt that I'm getting a ton of experience and
             making great extra cash on the side!"<br>-John<br>Technician</i>
           </p>
         </div>
       </div>
-    </div>    
-  
+    </div>
+
     <!-- get in touch section  -->
     <div class="row flex">
       <div class="col s5 flex">
@@ -205,18 +208,18 @@
           </div>
         </div>
       </div>
-  
+
       <div class="col s7 flex">
         <div class="parallax-container" id="quote-reveal-container">
           <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
         </div>
-          
+
       </div>
-  
+
     </div>
 
   </div>
-  
+
 <!-- footer section -->
     <footer class="section indigo darken-4 white-text">
 
@@ -235,21 +238,20 @@
 
         <div class="col s12 m4 offset-m4">
           <a href="index.html"><img src="images/mobileMechLogo2.png"></a>
-          
+
         </div>
       </div>
 
     </footer>
-	
+
 <!-- my scripts -->
 
-	<script src="./js/script.js"></script>
+	<script src="/js/script.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-    $(document).ready(function(){
-        M.AutoInit();
-    });
-    </script>
+  <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+  <script src="/js/functions.js"></script>
+  <script src="/js/car.js"></script>
+  <script src="/js/cleave.js"></script>
 </body>
 </html>
