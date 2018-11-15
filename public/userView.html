@@ -6,7 +6,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+ 	<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="/js/templates.js"></script>
 </head>
 <body>
@@ -134,11 +134,12 @@
 	</div>
 
 <!-- get a quote section  -->
-	<div class="section">
-		<div class="container center" id="getQuote">
+	<div class="section" id="getQuote">
+		<div class="container center">
 			<h3>Get a Free Quote Now</h3>
 			<p class="flow-text">We're here to make your car ownership expreience as enjoyable as possible. Get a free quote by entering your car's info into our handy calculator.</p>
 		</div>
+		<div id="calculator"></div>
 	</div>
 
 <!-- reviews and promo section -->
@@ -175,15 +176,16 @@
 <footer class="section indigo darken-4 white-text">
 	<div class="row">
 		<div class="col s12 m3 offset-m9">
-			<a href="index.html"><img src="images/mobileMechLogo2.png"></a>
+			<a href="/"><img src="images/mobileMechLogo2.png"></a>
 		</div>
 	</div>
 </footer>
 
 <!-- my scripts -->
 
+<script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/functions.js"></script>
 <script src="/js/car.js"></script>
-
 </body>
 </html>
