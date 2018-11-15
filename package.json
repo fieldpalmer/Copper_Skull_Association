@@ -1,0 +1,37 @@
+{
+  "name": "copper_skull_association",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "cheerio": "^1.0.0-rc.2",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "sequelize": "^4.41.2",
+    "stripe": "^6.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fieldpalmer/Copper_Skull_Association.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fieldpalmer/Copper_Skull_Association/issues"
+  },
+  "homepage": "https://github.com/fieldpalmer/Copper_Skull_Association#readme"
+}

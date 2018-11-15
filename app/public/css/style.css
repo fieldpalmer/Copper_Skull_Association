@@ -1,0 +1,41 @@
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: #444;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+#quote-form {
+  background-color: rgba(255, 255, 255, 0.756);
+  color: black;
+}
+
+.flex {
+  display: inline-flex;
+}
+
+#quote-reveal-container {
+  width: 100%;
+}

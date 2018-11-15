@@ -5,56 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-    
-    <!-- <script id="orders-template" type="text/x-handlebars-template">
-    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
-    <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
-      <div class="row flex" id="job-display">
-        {{#each order_data}}
-          {{#unless this.jobComplete}}
-            <div class="col s12 m4 l3 flex">
-              <div class="card sticky-action">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src={{this.carImgSrc}}>
-                </div>
-                <div class="card-action">
-                  <span class="card-title activator grey-text text-darken-4">{{this.jobDescription}}<i class="material-icons right">add</i></span>
-                  <p><a href="#" id="saveJobBtn">Save Job</a></p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">{{this.Vehicle}}<i class="material-icons small right">close</i></span>
-                  <p>{{this.User}}</p>
-                </div>
-              </div>
-            </div>
-          {{/unless}}
-        {{/each}}
-      </div>
-    </div>
-  </script> -->
-
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 </head>
+
 <body>
+  <!-- top nav bar -->
+  <div class="navbar-fixed">
+    <nav class="indigo darken-4" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo"><img src="images/mobileMechLogo2.png"></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down green-text">
+          <li><a href="workorder.html">Get Serviced Now</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="auth.html">Login/Register</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
-<!-- top nav bar -->
-<div class="navbar-fixed">
-  <nav class="indigo darken-4" role="navigation">
-    <div class="nav-wrapper container">
-      <a href="index.html" class="brand-logo"><img src="images/mobileMechLogo2.png"></a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down green-text">
-        <li><a href="workorder.html">Get Serviced Now</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="auth.html">Login/Register</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
-
-<!-- sidebar nav on shrink -->
+  <!-- sidebar nav on shrink -->
   <ul class="sidenav" id="mobile-demo">
     <li class="active"><a href="index.html">Home</a></li>
     <li><a href="workorder.html">Get Serviced Now</a></li>
@@ -68,7 +40,6 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br><br>
-        
         <h1 class="header center cyan-text text-lighten-4">A New World of <br>Automobile Maintenance</h1>
         <br><br>
         <div class="row center">

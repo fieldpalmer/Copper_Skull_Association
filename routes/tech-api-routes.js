@@ -33,7 +33,8 @@ module.exports = function(app) {
     db.Technician.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.User]
     }).then(function(dbTechnician) {
       res.json(dbTechnician);
     });
