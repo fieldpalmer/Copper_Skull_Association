@@ -33,3 +33,19 @@ const breakAddress = address => {
 		}
 	}
 }
+
+// function checks if user has entered a valid time and date
+// returns true or false
+const isAvailable = (date, time) => {
+	let today = moment().format('MMM D, Y'); // stores today's date
+	let isBeforeToday = moment(date).isBefore(today); // boolean (if date is before today)
+	// checks if user enter time betwee 9:00 AM - 5:00 PM
+	let isTime = moment(time, 'hh:mm A').isBetween(moment('09:00 AM', 'hh:mm A'), moment('05:00 PM', 'hh:mm A'));
+	// If user selects an invalid data or time
+	if(isBeforeToday || !isTime){
+		return false;
+	}
+	else {
+		return true; // return true
+	}
+}
