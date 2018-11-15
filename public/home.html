@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mobile Mechanic</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    
+    <!-- <script id="orders-template" type="text/x-handlebars-template">
+    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+    <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
+      <div class="row flex" id="job-display">
+        {{#each order_data}}
+          {{#unless this.jobComplete}}
+            <div class="col s12 m4 l3 flex">
+              <div class="card sticky-action">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src={{this.carImgSrc}}>
+                </div>
+                <div class="card-action">
+                  <span class="card-title activator grey-text text-darken-4">{{this.jobDescription}}<i class="material-icons right">add</i></span>
+                  <p><a href="#" id="saveJobBtn">Save Job</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{this.Vehicle}}<i class="material-icons small right">close</i></span>
+                  <p>{{this.User}}</p>
+                </div>
+              </div>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  </script> -->
+
+</head>
+<body>
+
+<!-- top nav bar -->
+<div class="navbar-fixed">
+  <nav class="indigo darken-4" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo"><img src="images/mobileMechLogo2.png"></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down green-text">
+        <li><a href="workorder.html">Get Serviced Now</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="auth.html">Login/Register</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- sidebar nav on shrink -->
+  <ul class="sidenav" id="mobile-demo">
+    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="workorder.html">Get Serviced Now</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="auth.html">Login/Register</a></li>
+	</ul>
+  
+  <!-- welcome jumbotron header  -->
+	<div class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br><br>
+        
+        <h1 class="header center cyan-text text-lighten-4">A New World of <br>Automobile Maintenance</h1>
+        <br><br>
+        <div class="row center">
+          <a class="btn-large waves-effect waves-light cyan lighten-1" href="#about">
+            Learn More
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    <div class="parallax"><img src="http://bertinotsauto.com/files/bigstock/2016/02/Mechanic-checking-oil-level-in-104495669.jpg"></div>
+  </div>
+
+  <!-- how does it work container  -->
+  <div class="container">
+    <div class="section">
+      <div class="row center">
+        <h5 class="indigo-text text-darken-4" style="padding-left: 15%; padding-right: 15%" >
+          Mobile Mechanic connects car owners and technicians for convenient, transparent, and enjoyable auto service.
+        </h5>
+        <h4 class="header orange-text text-darken-3">
+          Providing a better car care experience for everyone
+        </h4>
+      </div>
+      <hr>
+      <!-- icons section -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">mood</i></h2>
+            <h5 class="center">Personal & Professional</h5>
+            <p class="light">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
+            <h5 class="center">Convenient & Reliable</h5>
+            <p class="light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">favorite_border</i></h2>
+            <h5 class="center">Enjoyable & Affordable</h5>
+            <p class="light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- customer/technician portal -->
+  <div class="parallax-container">
+    <h2 class="header center cyan-text text-lighten-4">Discover What We Can Do For You</h2>
+    <div class="container">
+    <div class="row">
+      <div class="section">
+        <!-- customer portal -->
+        <div class="col s6">
+          
+          <div class="card">
+            <div class="card-content center-align">
+              <h5>Are you a car owner looking for a hassle-free car care experience?</h5>
+              <br>
+              <a class="indigo darken-4 btn-large">
+                Yes, I'd Like Service
+              </a>
+            </div>
+            <div class="card-action center-align">
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <!-- technician portal -->
+        <div class="col s6">
+          <div class="card">
+            <div class="card-content center-align">
+              <h5>Are you an automotive technician looking for a side-hustle?</h5>
+              <br>
+              <a class="btn-large orange darken-4">
+                Yes, I'm Ready To Work
+              </a>
+            </div>
+            <div class="card-action center-align">
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="parallax"><img src="./images/car-932455_1920.jpg"></div>
+
+  </div>
+
+  <!-- reviews & promos section -->
+  <div class="container" style="height: 50vh;">
+
+    <div class="row center">
+      <!-- customer reviews -->
+      <div class="col s12 m6">
+        <p class="blockquote flow-text indigo-text text-darken-4">
+          <i>"This was the greatest car care exprience of my entire life. 
+          This business model will undoubtedly revolutionize the way cars and 
+          automobiles are serviced"<br>-Jane<br>Car Owner</i>
+        </p>
+      </div>
+    <!-- technician reviews -->
+      <div class="col s12 m6">
+        <p class="blockquote flow-text indigo-text text-darken-4">
+          <i>"I love making my own hours and using my skills to help out my neighbors 
+          with their cars. It doesn't hurt that I'm getting a ton of experience and 
+          making great extra cash on the side!"<br>-John<br>Technician</i>
+        </p>
+      </div>
+    </div>
+  </div>    
+
+  <!-- get in touch section  -->
+	<div class="row flex">
+		<div class="col s5 flex">
+      <div class="section white" id="contactSection">
+        <div class="container">
+          <h3 id="contact">Contact Us</h3>
+          <hr>
+          <p class="flow-text">Your satisfaction is our motivation. Don't hesitate to get in touch with questions or comments!</p>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12 m4">
+                  <input type="text" id="txtFeedName">
+                  <label>Name</label>
+                </div>
+                <div class="input-field col s12 m8">
+                  <input type="email" id="txtFeedEmail">
+                  <label>Email</label>
+                </div>
+                <div class="input-field col s12">
+                  <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
+                  <label>Message/Feedback</label>
+                </div>
+              </div>
+              <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<div class="col s7 flex">
+			<div class="parallax-container" id="quote-reveal-container">
+				<div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
+			</div>
+				
+		</div>
+
+  </div>
+  
+<!-- footer section -->
+    <footer class="section indigo darken-4 white-text">
+
+      <div class="row">
+
+        <div class="col s12 m4">
+          <div class="container">
+            <ul>
+              <li><a class="white-text" href="workorder.html">Get Serviced Now</a></li>
+              <li><a class="white-text" href="about.html">About Us</a></li>
+              <li><a class="white-text" href="contact.html">Contact Us</a></li>
+              <li><a class="white-text" href="auth.html">Login/Register</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col s12 m4 offset-m4">
+          <a href="index.html"><img src="images/mobileMechLogo2.png"></a>
+          
+        </div>
+      </div>
+
+    </footer>
+	
+<!-- my scripts -->
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        M.AutoInit();
+    });
+    </script>
+</body>
+</html>
