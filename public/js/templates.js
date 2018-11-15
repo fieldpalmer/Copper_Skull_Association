@@ -48,12 +48,12 @@ $(document).ready(function(){
 			}).then(function(response) {
 				console.log(response);
 				// load  estimate
-				// $("#calculator").load('templates/estimate.html', function() {
-				// 	$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
-				// 	$('#oilType').text(car.info.oilType);
-				// 	$('#oilCapacity').text(car.info.quartsCapacity);
-				// 	$('#totalCost').text(`$${response}`);
-				// });
+				$("#calculator").load('templates/estimate.html', function() {
+					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
+					$('#oilType').text(car.info.oilType);
+					$('#oilCapacity').text(car.info.quartsCapacity);
+					$('#totalCost').text(`$${response}`);
+				});
 			});
 		}
 	});

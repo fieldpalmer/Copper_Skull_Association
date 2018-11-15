@@ -26,12 +26,32 @@ module.exports = function(app) {
       },
       include: [
         // {model: db.Vehicle},
-        {model: db.User, as: 'customer'},
+        {model: db.User, as: 'customer', attributes: { exclude: ['password'] }},
         {
           model: db.User, as: 'technician',
           include: [{model: db.Technician}]
         }
       ]
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
+
+  app.get('/api/orders/tech/:techid', function(req, res) {
+    db.Order.findAll({
+      where: {
+        technician_id: req.params.techid
+      }
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
+
+  app.get('/api/orders/customer/:custid', function(req, res) {
+    db.Order.findAll({
+      where: {
+        customer_id: req.params.custid
+      }
     }).then(function(dbOrder) {
       res.json(dbOrder);
     });
