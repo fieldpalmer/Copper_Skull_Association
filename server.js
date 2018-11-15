@@ -34,11 +34,12 @@ require('./routes/review-api-routes')(app);
 require('./routes/vehicle-api-routes')(app);
 require('./routes/stripe-api-routes')(app);
 require('./routes/oil-api-routes')(app);
+require('./routes/quote-api-routes')(app);
 
 let syncOptions = { force: false };
 
 if (env === 'test' || env === 'development') {
-  syncOptions.force = true;
+  // syncOptions.force = true;
 }
 
 db.sequelize.sync(syncOptions).then(function() {
