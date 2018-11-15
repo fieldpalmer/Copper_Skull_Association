@@ -54,11 +54,7 @@ $(document).ready(function(){
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
-<<<<<<< HEAD
-					$('#totalCost').text(`$${response}`);
-=======
 					$('#totalCost').text(`$${response.cost}`);
->>>>>>> master
 				});
 			});
 		}

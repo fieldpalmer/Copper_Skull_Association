@@ -28,10 +28,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     phone: {
       type: DataTypes.STRING,
       validate: {
@@ -90,6 +86,19 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+  //Re adding the information to be returned with user authentication without password showing
+  User.prototype.toJSON = function() {
+    return {
+      id: this.id,
+      email: this.email,
+      name: this.name,
+      location: this.location,
+      phone: this.phone,
+      correspondence: this.correspondence,
+      role: this.role
+    }
+  }
 
   return User;
 };
