@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mobile Mechanic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Login or Register to access exclusive features</h3>
+        <div class="row">
+            <ul class="tabs blue">
+                <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
+                <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
+            </ul>
+            <div id="login" class="col s12">
+                <div class="input-field">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email-input" type="email" class="validate">
+                                <label for="email-input">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="password-input" type="password" class="validate">
+                                <label for="password-input">Password</label>
+                            </div>
+                        </div>
+                        <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div id="register" class="col s12">
+                <div class="input-field">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first-name" type="text" class="validate">
+                                <label for="first-name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last-name" type="text" class="validate">
+                                <label for="last-name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="email-input" type="email" class="validate">
+                                <label for="email-input">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="email-confirm" type="email" class="validate">
+                                    <label for="email-confirm">Email Confirmation</label>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="password-input" type="password" class="validate">
+                                <label for="password-input">Password</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password-confirm" type="password" class="validate">
+                                <label for="password-confirm">Password Confirmation</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="role" type="radio" checked />
+                                        <span>I Need Maintenance</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="role" type="radio" />
+                                        <span>I Provide Maintenance</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s6">
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="role" type="radio" required/>
+                                        <span>I agree to the Terms & Conditions</span>
+                                    </label>
+                                </p>
+                                <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function(){
+       M.AutoInit();
+  });
+  </script>
+</body>
+</html>

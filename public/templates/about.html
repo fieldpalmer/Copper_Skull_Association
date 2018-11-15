@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mobile Mechanic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+</head>
+<body>
+    
+<!-- welcome jumbotron header  -->
+<div class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br><br>
+        <h1 class="header center cyan-text text-lighten-4">Mobile Mechanics</h1>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="http://bertinotsauto.com/files/bigstock/2016/02/Mechanic-checking-oil-level-in-104495669.jpg"></div>
+  </div>
+  
+  <!-- who are we container  -->
+  <div class="container">
+    <div class="section">
+  
+      <div class="row center">
+        <h5 class="indigo-text text-darken-4" style="padding-left: 15%; padding-right: 15%" >
+          Who are we?
+        </h5>
+        <h4 class="header orange-text text-darken-3">
+          A passionate group of professional committed to problem-solving and efficient operation
+        </h4>
+        <!-- reviews & promos section -->
+        <div class="container" style="height: 50vh;">
+          <!-- company reviews -->
+          <div class="col s12 m6">
+            <p class="blockquote flow-text indigo-text text-darken-4">
+              <i>"This is the greatest idea I've ever heard, I will camp out to be first investor in line"<br>-Bill Gates</i>
+            </p>
+          </div>
+          <div class="col s12 m6">
+            <p class="blockquote flow-text indigo-text text-darken-4">
+              <i>"I cannot wait to use this product! I've been waiting for something like this for a long time."<br>-Oprah<br></i>
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <hr>
+      
+      <div class="col s5 flex">
+        <div class="section white" id="contactSection">
+          <div class="container">
+            <h3 id="contact">Contact Us</h3>
+            <hr>
+            <p class="flow-text">Your satisfaction is our motivation. Don't hesitate to get in touch with questions or comments!</p>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m4">
+                    <input type="text" id="txtFeedName">
+                    <label>Name</label>
+                  </div>
+                  <div class="input-field col s12 m8">
+                    <input type="email" id="txtFeedEmail">
+                    <label>Email</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
+                    <label>Message/Feedback</label>
+                  </div>
+                </div>
+                <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col s7 flex">
+        <div class="parallax-container" id="quote-reveal-container">
+            <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+      
+  
+  
+  
+<!-- footer section -->
+<footer class="section indigo darken-4 white-text">
+
+    <div class="row">
+
+      <div class="col s12 m4">
+        <div class="container">
+          <ul>
+            <li><a class="white-text" href="workorder.html">Get Serviced Now</a></li>
+            <li><a class="white-text" href="about.html">About Us</a></li>
+            <li><a class="white-text" href="contact.html">Contact Us</a></li>
+            <li><a class="white-text" href="auth.html">Login/Register</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col s12 m4 offset-m4">
+        <a href="index.html"><img src="images/mobileMechLogo2.png"></a>
+        
+      </div>
+    </div>
+
+  </footer>
+
+<!-- my scripts -->
+
+<script src="./js/script.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      M.AutoInit();
+  });
+  </script>
+</body>
+</html>

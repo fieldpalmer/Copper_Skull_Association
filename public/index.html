@@ -1,169 +1,255 @@
-<!DOCTYPE html>
+s<!DOCTYPE html>
 <html>
 <head>
-  <title>Mobile Mechanic</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
-  <script src="js/templates.js"></script>
+	<title>Mobile Mechanic</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 </head>
+
 <body>
 
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#">Technician Portal</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li class="active"><a href="index.html">Home</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Technician Portal</a></li>
-  </ul>
-
-  <div class="parallax-container">
-    <div class="section no-pad-bot">
-    <div class="container">
-      <br><br><br>
-      <h2 class="header center orange-text text-lighten-2">Mobile Mechanics</h2>
-      <div class="row center">
-        <h5 class="header pink-text text-lighten-2">Copper Skull Association is a business dedicated to bring automotive services directly to your house. Skip going to the shop and schedule an appointment with us.</h5>
-      </div>
-      <div class="row center">
-        <button class="btn-large blue waves-effect waves-ligh" id="btnQuote">Get a quote</button>
-      </div>
-    </div>
-  </div>
-    <div class="parallax"><img src="https://thompsoncars.files.wordpress.com/2014/05/oil-change.jpg"></div>
-  </div>
-
-  <div class="container" id="main">
-    <div class="section">
-      <h3 class="center">How does it work?</h3>
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">list_alt</i></h2>
-            <h5 class="center">Get a quote</h5>
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">calendar_today</i></h2>
-            <h5 class="center">Schedule an appointment</h5>
-
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">done</i></h2>
-            <h5 class="center">Get car fixed</h5>
-
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="parallax-container">
-    <div class="parallax"><img src="http://allstarautoservice.net/wp-content/uploads/2015/06/engine-repair.jpg"></div>
-  </div>
-
-  <div class="section white" id="services">
-    <div class="container center">
-      <h3>Services</h3>
-      <p class="light flow-text">We're a business that provide basic maintenance needs. </p>
-      <div class="row center-align">
-        <div class="col s12 m6 ">
-          <ul class="collection with-header">
-            <li class="collection-header blue white-text"><h4 >Services Available</h4></li>
-
-            <li class="collection-item avatar valign-wrapper">
-              <img src="https://cdn4.iconfinder.com/data/icons/bold-car-element-1/512/drawing8-512.png" class="circle">
-              <p class=" flow-text">Oil Change</p>
-            </li>
-            <li class="collection-item avatar valign-wrapper right-align">
-              <img src="https://s3.amazonaws.com/mediaspigot-photos/2633/12/11141825/125-Point-Inspection.png" class="circle">
-              <p class="flow-text">Tire Rotation</p>
-            </li>
-            <li class="collection-item avatar valign-wrapper right-align">
-              <img class="circle" src="https://cdn4.iconfinder.com/data/icons/wsd-automobile/512/wsd_cars_30-512.png">
-              <p class="flow-text">Air Filter Replacements</p>
-            </li>
-            <li class="collection-item avatar valign-wrapper right-align">
-              <img src="https://png.pngtree.com/svg/20150625/wiper_blade_477744.png" class="circle">
-              <p class="flow-text">Wiper Blades Replacements</p>
-            </li>
-            <li class="collection-item avatar valign-wrapper right-align">
-              <img src="https://cdn0.iconfinder.com/data/icons/car-parts-and-items-1/100/carset10-512.png" class="circle">
-              <p class="flow-text">Bulb Replacements</p>
-            </li>
+  <div id="main">
+    <!-- top nav bar -->
+    <div class="navbar-fixed">
+      <nav class="indigo darken-4" role="navigation">
+        <div class="nav-wrapper container">
+          <a href="index.html" class="brand-logo"><img src="images/mobileMechLogo2.png"></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down green-text">
+            <li><a id="top-nav-work" href="#">Get Serviced Now</a></li>
+            <li><a id="top-nav-about" href="#">About Us</a></li>
+            <li><a id="top-nav-contact"href="#">Contact Us</a></li>
+            <li><a id="top-nav-auth" href="#">Login/Register</a></li>
           </ul>
         </div>
-        <div class="col s12 m6">
-          <div class="card">
-            <div class="card-image">
-              <img class="responsive-img" src="https://d3vl3jxeh4ou3u.cloudfront.net/How%20Much%20Does%20a%20Mechanic%20Make.jpg">
+      </nav>
+    </div>
+  
+    <!-- sidebar nav on shrink -->
+    <ul class="sidenav" id="mobile-demo">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="workorder.html">Get Serviced Now</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="auth.html">Login/Register</a></li>
+    </ul>
+    
+    <!-- welcome jumbotron header  -->
+    <div class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br><br>
+          <h1 class="header center cyan-text text-lighten-4">A New World of <br>Automobile Maintenance</h1>
+          <br><br>
+          <div class="row center">
+            <a class="btn-large waves-effect waves-light cyan lighten-1" href="#about">
+              Learn More
+            </a>
+          </div>
+          
+        </div>
+      </div>
+      <div class="parallax"><img src="http://bertinotsauto.com/files/bigstock/2016/02/Mechanic-checking-oil-level-in-104495669.jpg"></div>
+    </div>
+  
+    <!-- how does it work container  -->
+    <div class="container">
+      <div class="section">
+        <div class="row center">
+          <h5 class="indigo-text text-darken-4" style="padding-left: 15%; padding-right: 15%" >
+            Mobile Mechanic connects car owners and technicians for convenient, transparent, and enjoyable auto service.
+          </h5>
+          <h4 class="header orange-text text-darken-3">
+            Providing a better car care experience for everyone
+          </h4>
+        </div>
+        <hr>
+        <!-- icons section -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">mood</i></h2>
+              <h5 class="center">Personal & Professional</h5>
+              <p class="light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
             </div>
           </div>
+  
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
+              <h5 class="center">Convenient & Reliable</h5>
+              <p class="light">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
+            </div>
+          </div>
+  
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">favorite_border</i></h2>
+              <h5 class="center">Enjoyable & Affordable</h5>
+              <p class="light">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- customer/technician portal -->
+    <div class="parallax-container">
+      <h2 class="header center cyan-text text-lighten-4">Discover What We Can Do For You</h2>
+      <div class="container">
+      <div class="row">
+        <div class="section">
+          <!-- customer portal -->
+          <div class="col s6">
+            
+            <div class="card">
+              <div class="card-content center-align">
+                <h5>Are you a car owner looking for a hassle-free car care experience?</h5>
+                <br>
+                <a class="indigo darken-4 btn-large">
+                  Yes, I'd Like Service
+                </a>
+              </div>
+              <div class="card-action center-align">
+                <a href="#">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <!-- technician portal -->
+          <div class="col s6">
+            <div class="card">
+              <div class="card-content center-align">
+                <h5>Are you an automotive technician looking for a side-hustle?</h5>
+                <br>
+                <a class="btn-large orange darken-4">
+                  Yes, I'm Ready To Work
+                </a>
+              </div>
+              <div class="card-action center-align">
+                <a href="#">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/car-932455_1920.jpg"></div>
+  
+    </div>
+  
+    <!-- reviews & promos section -->
+    <div class="container" style="height: 50vh;">
+  
+      <div class="row center">
+        <!-- customer reviews -->
+        <div class="col s12 m6">
+          <p class="blockquote flow-text indigo-text text-darken-4">
+            <i>"This was the greatest car care exprience of my entire life. 
+            This business model will undoubtedly revolutionize the way cars and 
+            automobiles are serviced"<br>-Jane<br>Car Owner</i>
+          </p>
+        </div>
+      <!-- technician reviews -->
+        <div class="col s12 m6">
+          <p class="blockquote flow-text indigo-text text-darken-4">
+            <i>"I love making my own hours and using my skills to help out my neighbors 
+            with their cars. It doesn't hurt that I'm getting a ton of experience and 
+            making great extra cash on the side!"<br>-John<br>Technician</i>
+          </p>
+        </div>
+      </div>
+    </div>    
+  
+    <!-- get in touch section  -->
+    <div class="row flex">
+      <div class="col s5 flex">
+        <div class="section white" id="contactSection">
+          <div class="container">
+            <h3 id="contact">Contact Us</h3>
+            <hr>
+            <p class="flow-text">Your satisfaction is our motivation. Don't hesitate to get in touch with questions or comments!</p>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m4">
+                    <input type="text" id="txtFeedName">
+                    <label>Name</label>
+                  </div>
+                  <div class="input-field col s12 m8">
+                    <input type="email" id="txtFeedEmail">
+                    <label>Email</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
+                    <label>Message/Feedback</label>
+                  </div>
+                </div>
+                <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col s7 flex">
+        <div class="parallax-container" id="quote-reveal-container">
+          <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
+        </div>
+          
+      </div>
+  
+    </div>
 
+  </div>
+  
+<!-- footer section -->
+    <footer class="section indigo darken-4 white-text">
+
+      <div class="row">
+
+        <div class="col s12 m4">
+          <div class="container">
+            <ul>
+              <li><a class="white-text" href="workorder.html">Get Serviced Now</a></li>
+              <li><a class="white-text" href="about.html">About Us</a></li>
+              <li><a class="white-text" href="contact.html">Contact Us</a></li>
+              <li><a class="white-text" href="auth.html">Login/Register</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col s12 m4 offset-m4">
+          <a href="index.html"><img src="images/mobileMechLogo2.png"></a>
+          
         </div>
       </div>
 
-    </div>
-  </div>
+    </footer>
+	
+<!-- my scripts -->
 
-  <div class="parallax-container" id="hideThis">
-    <div class="parallax"><img src="https://media-cf.assets-cdk.com/websites/content/babac346f67345b9a63a53188e489bfa_c113x0-887x667.jpg"></div>
-  </div>
-
-  <div class="section white" id="contactSection">
-    <div class="container">
-      <h3 id="contact">Contact Us</h3>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12 m4">
-              <input type="text" id="txtFeedName">
-              <label>Name</label>
-            </div>
-            <div class="input-field col s12 m8">
-              <input type="email" id="txtFeedEmail">
-              <label>Email</label>
-            </div>
-            <div class="input-field col s12">
-              <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
-              <label>Message/Feedback</label>
-            </div>
-          </div>
-          <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
-  <script src="/js/functions.js"></script>
-  <script src="/js/car.js"></script>
+	<script src="./js/script.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        M.AutoInit();
+    });
+    </script>
 </body>
 </html>
