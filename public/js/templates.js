@@ -2,6 +2,7 @@ $(document).ready(function(){
   M.AutoInit();
 
   displayQuoteTemplate('#calculator');
+
 	$(document).on("click", "#btnQuoteMe", function() {
 		// before loading the estimate template validate user input
 		// variables store user address information
@@ -29,7 +30,7 @@ $(document).ready(function(){
 			}
 			// if everything passes...
 			else {
-				car.adress = breakAddress(address);
+				car.address = breakAddress(address);
 					// load  estimate
 				car.customer = {
 					firstName: firstName,
@@ -76,4 +77,30 @@ $(document).ready(function(){
 			// $("#main").load("templates/workorder.html");
 		}
 	})
+
+	$(document).on("click", "#registerBtn", function() {
+
+		let newUser = {
+			fName: $("#fName").val().trim(),
+			lName: $("#lName").val().trim(),
+			email: $("#email").val().trim(),
+			phone: $("#phone").val().trim(),
+			areaCode: $("#areaCode").val().trim(),
+			password: $("#password").val().trim(),
+		}
+
+		$.post("/api/register", newUser).then(function(response) {
+			console.log(response);
+		});
+
+		$("#fName").val("");
+		$("#lName").val("");
+		$("#email").val("");
+		$("#phone").val("");
+		$("#areaCode").val("");
+		$("#password").val("");
+		$("#pwConfirm").val("");
+		 
+	});
+
 });
