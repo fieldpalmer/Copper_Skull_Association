@@ -24,12 +24,32 @@ $(document).ready(function(){
 		});
 	});
 
-	$(document).on("click", "#btnQuoteMe", function() {
-		// before loading the estimate template validate user input
-		// variables store user address information
-		let address = $('#txtAddress').val().trim();
+	$(document).on("click", "#btnBook", function() {
+		// when user clicks schedule appointment load appointment template
+		// add a save for later button
+		$("#main").load("templates/appointment.html", function () {
+			M.AutoInit();
+		});
+	});
 
-		// check if user has entered their vehicle's information
+	$(document).on("click", "#btnPay", function() {
+		// when user clicks the appointment verify every field and payment information
+		// when the user has verified their dates
+		// send the car information to server
+		// make work order on server and let them enter pay information
+		$("#main").load("templates/workorder.html");
+	})
+});
+
+$(document).on("click", "#btnQuoteMe", function() {
+	// before loading the estimate template validate user input
+	// variables store user address information
+	let address = $('#txtAddress').val().trim();
+	console.log(window.car);
+	$.post("/api/quote", {
+		info: car.info.quartsCapacity
+	}).then(function(response) {
+		console.log(response);
 		if(!car.make || !car.year || !car.model) {
 			showErrMessage("You must select your car make/year/model");
 		}
@@ -49,23 +69,8 @@ $(document).ready(function(){
 				$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 				$('#oilType').text(car.info.oilType);
 				$('#oilCapacity').text(car.info.quartsCapacity);
+				$('#totalCost').text(response);
 			});
 		}
 	});
-
-	$(document).on("click", "#btnBook", function() {
-		// when user clicks schedule appointment load appointment template
-		// add a save for later button
-		$("#main").load("templates/appointment.html", function () {
-			M.AutoInit();
-		});
-	});
-
-	$(document).on("click", "#btnPay", function() {
-		// when user clicks the appointment verify every field and payment information
-		// when the user has verified their dates
-		// send the car information to server
-		// make work order on server and let them enter pay information
-		$("#main").load("templates/workorder.html");
-	})
 });
