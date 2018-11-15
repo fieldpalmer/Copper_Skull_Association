@@ -6,6 +6,33 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <script id="orders-template" type="text/x-handlebars-template">
+    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+    <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
+      <div class="row flex" id="job-display">
+        {{#each order_data}}
+          {{#unless this.jobComplete}}
+            <div class="col s12 m4 l3 flex">
+              <div class="card sticky-action">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src={{this.carImgSrc}}>
+                </div>
+                <div class="card-action">
+                  <span class="card-title activator grey-text text-darken-4">{{this.jobDescription}}<i class="material-icons right">add</i></span>
+                  <p><a href="#" id="saveJobBtn">Save Job</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{this.Vehicle}}<i class="material-icons small right">close</i></span>
+                  <p>{{this.User}}</p>
+                </div>
+              </div>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  </script>
 </head>
 <body>
 
@@ -49,7 +76,7 @@
         </div>
         
         <div class="row center">
-          <a class="btn-large waves-effect waves-light cyan lighten-1" href="auth.html">Create Account</a>
+          <a class="btn-large waves-effect waves-light cyan lighten-1" href="#signup">Create Account</a>
         </div>
         
       </div>
@@ -62,10 +89,10 @@
     <h3 class="center">Opportunities for Auto Technicians</h3>
     <div class="row">
 
-      <div class="col s6 m4 l2 offset-l1">
+      <div class="col s12 m4 l2 offset-l1">
         <div class="icon-block">
-          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">settings_applications</i></h2>
-          <h5 class="center">Flexible<br> Schedule</h5>
+          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">date_range</i></h2>
+          <h5 class="center">Flexible Schedule</h5>
           <p class="light">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -74,10 +101,10 @@
         </div>
       </div>
 
-      <div class="col s6 m4 l2">
+      <div class="col s12 m4 l2">
         <div class="icon-block">
-          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">donut_small</i></h2>
-          <h5 class="center">Do What You Like to Do</h5>
+          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">accessibility_new</i></h2>
+          <h5 class="center">Focus on Your Strengths</h5>
           <p class="light">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -86,10 +113,10 @@
         </div>
       </div>
 
-      <div class="col s6 m4 l2">
+      <div class="col s12 m4 l2">
         <div class="icon-block">
-          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">person_add</i></h2>
-          <h5 class="center">Practical Experience</h5>
+          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">library_books</i></h2>
+          <h5 class="center">Learning Opportunities</h5>
           <p class="light">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -97,10 +124,10 @@
           </p>
         </div>
       </div>
-      <div class="col s6 m4 l2 offset-m2">
+      <div class="col s12 m4 l2 offset-m2">
         <div class="icon-block">
-          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">person_add</i></h2>
-          <h5 class="center">Personal Relationships</h5>
+          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">trending_up</i></h2>
+          <h5 class="center">Professional Development</h5>
           <p class="light">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -108,10 +135,10 @@
           </p>
         </div>
       </div>
-      <div class="col s6 m4 l2 offset-s3">
+      <div class="col s12 m4 l2 offset-s3">
         <div class="icon-block">
-          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">person_add</i></h2>
-          <h5 class="center">Fair Equipment Costs</h5>
+          <h2 class="center indigo-text text-darken-4"><i class="medium material-icons">attach_money</i></h2>
+          <h5 class="center">Fair Costs</h5>
           <p class="light">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -143,96 +170,6 @@
         </div>
       </div>
 
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l3 flex">
-        <div class="card sticky-action">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-          </div>
-          <div class="card-action">
-            <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">Save Job</a></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
       <div class="col s12 m4 l3 flex">
         <div class="card sticky-action">
           <div class="card-image waves-effect waves-block waves-light">
@@ -357,7 +294,7 @@
   </div>
 
   <!-- sign up now section  -->
-	<h3 class="center" style="padding-bottom: 10px;">Get Started Today</h3>
+	<h3 id="signup" class="center" style="padding-bottom: 10px;">Get Started Today</h3>
 	<div class="row flex">
 		<div class="col s5 flex">
 			<div class="container">
@@ -436,17 +373,16 @@
 
   </div>
   
-<!-- bottom parallax container -->
-
-  <div class="parallax-container" id="hideThis">
-    <div class="parallax"><img src="https://media-cf.assets-cdk.com/websites/content/babac346f67345b9a63a53188e489bfa_c113x0-887x667.jpg"></div>
-  </div>
-  
 <!-- footer section -->
 
-    <div class="section indigo darken-4 white-text">
-        <h3>Footer</h3>
-    </div>
+    <footer class="section indigo darken-4 white-text">
+      <div class="row">
+        <div class="col s12 m3 offset-m9">
+          <a href="index.html"><img src="images/mobileMechLogo2.png"></a>
+        </div>
+      </div>
+
+    </footer>
 	
 <!-- my scripts -->
 

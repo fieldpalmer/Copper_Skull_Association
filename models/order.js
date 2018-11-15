@@ -18,7 +18,6 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Order.associate = function(models) {
-
     Order.belongsTo(models.User, {
       as: 'technician',
       foreignKey: 'technician_id'

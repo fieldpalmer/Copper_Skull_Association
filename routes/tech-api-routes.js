@@ -8,8 +8,12 @@ module.exports = function(app) {
 
     db.User.create(user, {
       include: [db.Technician]
-    }).then(function(dbUser) {
-      res.json(dbUser);
+    }).then(function() {
+      res.redirect(307, '/api/login');
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      res.status(422).json(err.errors[0].message);
     });
   });
 
@@ -29,7 +33,8 @@ module.exports = function(app) {
     db.Technician.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.User]
     }).then(function(dbTechnician) {
       res.json(dbTechnician);
     });

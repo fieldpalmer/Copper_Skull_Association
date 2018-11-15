@@ -62,17 +62,24 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'customer_id'
     });
 
-  //   User.hasMany(models.Review, {
-  //     onDelete: 'cascade'
-  //   });
+    User.hasMany(models.Review, {
+      as: 'customerAuthor',
+      foreignKey: 'customer_id',
+      onDelete: 'cascade'
+    });
+    User.hasMany(models.Review, {
+      as: 'technicianReviewed',
+      foreignKey: 'technician_id',
+      onDelete: 'cascade'
+    });
 
-  //   User.hasMany(models.Certification, {
-  //     onDelete: 'cascade'
-  //   });
-
-    // User.hasMany(models.Vehicle, {
+    // User.hasMany(models.Certification, {
     //   onDelete: 'cascade'
     // });
+
+    User.hasMany(models.Vehicle, {
+      onDelete: 'cascade'
+    });
   };
 
   User.prototype.validPassword = function(password) {

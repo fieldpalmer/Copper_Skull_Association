@@ -26,12 +26,12 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-// require('./routes/apiRoutes')(app);
 require('./routes/user-api-routes')(app);
 require('./routes/tech-api-routes')(app);
 require('./routes/order-api-routes')(app);
 require('./routes/certs-api-routes')(app);
 require('./routes/review-api-routes')(app);
+require('./routes/vehicle-api-routes')(app);
 require('./routes/stripe-api-routes')(app);
 require('./routes/oil-api-routes')(app);
 
