@@ -87,6 +87,7 @@ $(document).ready(function(){
 			phone: $("#phone").val().trim(),
 			areaCode: $("#areaCode").val().trim(),
 			password: $("#password").val().trim(),
+			picture: $("#picture").src(),
 		}
 
 		$.post("/api/register", newUser).then(function(response) {
@@ -100,6 +101,7 @@ $(document).ready(function(){
 		$("#areaCode").val("");
 		$("#password").val("");
 		$("#pwConfirm").val("");
+		$("#picture").src("");
 		 
 	});
 
