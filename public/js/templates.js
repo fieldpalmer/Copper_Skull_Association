@@ -26,8 +26,12 @@ $(document).ready(function(){
 
 	$(document).on("click", "#btnQuoteMe", function() {
 		// before loading the estimate template validate user input
-		// variables store user address information
+		// variables store user information
 		let address = $('#txtAddress').val().trim();
+		let firstName = $('#txtFirstName').val().trim();
+		let lastName = $('#txtLastName').val().trim();
+		let phone = $('#txtPhone').val().trim();
+		let email = $('#txtEmail').val().trim();
 
 		// check if user has entered their vehicle's information
 		if(!car.make || !car.year || !car.model) {
@@ -38,17 +42,26 @@ $(document).ready(function(){
 			showErrMessage("You must select a service")
 		}
 		// check if user has entered a valid address
-		else if(breakAddress(address) === false) {
-			showErrMessage("You must enter your adress");
+		else if(!firstName || !lastName || !phone) {
+			showErrMessage("You must enter your contact information");
+		} else if (breakAddress(address) === false) {
+			showErrMessage("You must enter your address")
 		}
 		// if everything passes...
 		else {
-			car.adress = breakAddress(address);
+			car.customer = {
+				firstName: firstName,
+				lastName: lastName,
+				phone: phone,
+				email: email,
+				address: breakAddress(address)
+			}
 			// load  estimate
 			$("#main").load('templates/estimate.html', function() {
 				$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 				$('#oilType').text(car.info.oilType);
 				$('#oilCapacity').text(car.info.quartsCapacity);
+				$('#totalCost').text(parseFloat(`$ car.info.quartsCapacity.replace(/[^\d\.]*/g, '')) * 5.0`);
 			});
 		}
 	});
