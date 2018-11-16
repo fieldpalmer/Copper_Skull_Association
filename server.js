@@ -13,7 +13,7 @@ const stripe = require("stripe")(keySecret);
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8088;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
