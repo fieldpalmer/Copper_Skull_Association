@@ -134,7 +134,7 @@ $(document).ready(function(){
 				}).then(function(response) {
 						let confirmNum = response.id;
 						let job = response.jobDescription;
-						let cost = response.laborCost;
+						let cost = '$' + response.laborCost;
 						let status = response.jobComplete;
 						appointment = date + ' at ' + time
 
@@ -152,6 +152,10 @@ $(document).ready(function(){
 			}
 		}
 	})
+
+	$(document).on('click', '#btnCreateAccount', function() {
+		
+	});
 
 	$(document).on("click", "#registerBtn", function() {
 
