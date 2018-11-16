@@ -18,23 +18,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 'Pending'
     },
-
     jobDescription: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-
     laborCost: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     date: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     time: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     vehicle: {
       type: DataTypes.STRING,
@@ -43,6 +39,13 @@ module.exports = function(sequelize, DataTypes) {
     phone: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    quartsCapacity: {
+      type: DataTypes.STRING
     }
   });
 

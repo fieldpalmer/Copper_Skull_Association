@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  M.AutoInit();
-
+	M.AutoInit();
+	
   displayQuoteTemplate('#calculator');
 
 	$(document).on("click", "#btnQuoteMe", function() {
@@ -36,18 +36,23 @@ $(document).ready(function(){
 			car.customer = customer;
 
 			// get a quote from the server by sending quarts capacity
-			$.post("/api/quote", {
-				name: `${customer.firstName} ${customer.lastName}`,
-				phone: customer.phone,
-				email: customer.email,
-				address: address,
-				year: car.year,
-				make: car.make,
-				model: car.model,
-				services: car.services.join(', '),
-				quartsCapacity: car.info.quartsCapacity
-			}).then(function(response) {
-				console.log(response);
+			$.ajax('/api/orders', {
+				method: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					// name: `${customer.firstName} ${customer.lastName}`,
+					firstName: customer.firstName,
+					lastName: customer.lastName,
+					phone: customer.phone,
+					email: customer.email,
+					address: address,
+					car: car.make + ' ' + car.model + ' ' + car.year,
+					services: car.services.join(', '),
+					quartsCapacity: car.info.quartsCapacity
+				}
+			)}).then(function(response) {
+				console.log('response', response);
+				//car.uid is order id
 				car.uid = response.id;
 				car.laborCost = response.cost;
 				// load  estimate
@@ -97,21 +102,47 @@ $(document).ready(function(){
 					- tech selected
 					- labor cost (should send the qts again)
 				*/
-				$.post("/api/orders", {
-					jobDescription: car.services.join(', '),
-					laborCost: car.laborCost,
-					customer_id: car.uid
-				}).then(data => {
-					let confirmNum = data.id;
-					let job = data.jobDescription;
-					let cost = data.laborCost;
-					let status = data.jobComplete;
-					appointment = date + ' at ' + time
+				// $.ajax('/api/orders', {
+				// 	method: 'POST',
+				// 	contentType: 'application/json',
+				// 	data: JSON.stringify({
+				// 		firstName: car.customer.firstName,
+				// 		lastName: car.customer.lastName,
+				// 		address: car.customer.address.street_name + car.customer.address.city + 
+				// 			car.customer.address.state + car.customer.address.zipcode + car.customer.address.country,
+				// 		jobDescription: car.services.join(', '),
+				// 		laborCost: car.laborCost,
+				// 		customer_id: car.customerId,
+				// 		date: car.appointment.date,
+				// 		time: car.appointment.time,
+				// 		vehicle: car.make + ' ' + car.model + ' ' + car.year,
+				// 		phone: car.customer.phone
+				// 	}
+				// )})
+				console.log(car);
+				//updating the order with the date and time the user set
+				$.ajax('/api/orders', {
+					method: 'PUT',
+					dataType: 'json',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						id: car.uid,
+						date: car.appointment.date,
+						time: car.appointment.time,
+						jobComplete: 'Pending'
+					})
+				}).then(function(response) {
+						let confirmNum = response.id;
+						let job = response.jobDescription;
+						let cost = response.laborCost;
+						let status = response.jobComplete;
+						appointment = date + ' at ' + time
 
 					$('#calculator').load('templates/workorder.html', function() {
 						$('#confirmation').text(confirmNum);
 						$('#description').text(job);
-						$('#cost').text(`$${cost}`);
+						// $('#cost').text(`${cost}`);
+						$('#cost').text(cost);
 						$('#tech').text('Not Chosen');
 						$('#appointment').text(appointment);
 					})

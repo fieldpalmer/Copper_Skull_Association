@@ -1,11 +1,12 @@
 const db = require('../models');
 
 module.exports = function(app) {
-  app.post('/api/orders', function(req, res) {
-    db.Order.create(req.body).then(function(dbOrder) {
-      res.json(dbOrder)
-    });
-  });
+  // app.post('/api/orders', function(req, res) {
+  //   console.log(req.body);
+  //   db.Order.create(req.body).then(function(dbOrder) {
+  //     res.json(dbOrder)
+  //   });
+  // });
 
   app.put('/api/orders', function(req, res) {
     db.Order.update(
@@ -15,8 +16,15 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(dbOrder) {
-        res.json(dbOrder);
-      })
+        // res.json(dbOrder);
+        db.Order.findOne({
+          where: {
+            id: req.body.id
+          }
+        }).then(function(dbOrder) {
+          res.json(dbOrder);
+        });
+      });
   });
 
   app.get('/api/orders/:id', function(req, res) {
