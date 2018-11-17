@@ -13,6 +13,7 @@
   <script src="../js/userProfile.js"></script>
 </head>
 
+
 <body>
   <main>
     <!-- top nav bar -->
@@ -74,8 +75,6 @@
       </div>
       <div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
     </div>
-    </script>
-    <div id="app"></div>
     
     <!-- how does it work container  -->
     <div class="container">
@@ -176,95 +175,26 @@
     
         <div class="col s1 m4" id="technicians-list">
           <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
+            {{#each technicians}}
             <li class="collection-item avatar valign-wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Earnheardt-headshot-m-1.jpg" class="circle">
                 <ul>
                   <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
+                      <h5 class="techName">{{this.techName}}</h5>
+                      <p class="techSkills">{{this.techSkills}}</p>
+                      <p class="techRating">{{this.techRating}}</p>
                   </li>
                 </ul>
             </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Joichi_Ito_Headshot_2007.jpg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Babe_Ruth_Red_Sox_1918_headshot_crop.jpg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-          </ul>
+            {{/each}}
+          </ul>         
         </div>
       </div>
     </div>
   </main>
 
+</script>
+<div id="app"></div>
   <!-- footer section -->
   <footer class="section indigo darken-4 white-text">
 
@@ -286,6 +216,7 @@
         <p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
       </div>
     </div>
+ 
 
   </footer>
 

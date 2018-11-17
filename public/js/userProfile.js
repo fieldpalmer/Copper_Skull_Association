@@ -8,16 +8,24 @@ $(document).ready(function() {
     user.id = userData.id;
     user.location = userData.location;
     $.get("/api/vehicle/" + userData.id).then(function(carData){
-      console.log(carData);
+      // console.log(carData);
       user.carMake = carData[0].make;
       user.carModel = carData[0].model;
       user.carYear = carData[0].year;
-      renderTemplate(user);
       $.get("/api/orders/ + userData.id").then(function(orderData){
         user.orders = orderData;
-      })
-    })
-    
+        $.get("/api/technician").then(function(techData){
+          user.technicians = [];
+          for(let i=0; i<10 && i<techData.length; i++){
+            tech = {};
+            tech.techSkills = techData[i].skills;
+            // tech.techRating = techData[i].rating;
+            user.technicians.push(tech);
+          }
+          renderTemplate(user);
+        });
+      });
+    });
   });
 
   function renderTemplate(data) {
