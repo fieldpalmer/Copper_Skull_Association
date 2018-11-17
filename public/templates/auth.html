@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script src="../js/login.js"></script>
 </head>
 
 <body>
@@ -110,7 +111,7 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m6">
-                    <input id="email" type="email">
+                    <input id="emailReg" type="email">
                     <label for="email">Email</label>
                   </div>
                   <div class="input-field col s12 m6">
@@ -120,7 +121,7 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m6">
-                    <input id="password" type="password">
+                    <input id="passwordReg" type="password">
                     <label for="password">Password</label>
                   </div>
                   <div class="input-field col s12 m6">
@@ -129,7 +130,7 @@
                   </div>
                 </div>
                 <center>
-                  <button class="btn waves-effect waves-light orange text-darken-2" type="submit" name="action">Submit</button>
+                  <button id="registerBtn" class="btn waves-effect waves-light orange text-darken-2" type="submit" name="action">Submit</button>
                 </center>
               </div>
             </form>
@@ -165,7 +166,7 @@
 	
 <!-- my scripts -->
 
-	<script src="./js/script.js"></script>
+	<script src="../js/script.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
