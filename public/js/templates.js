@@ -19,9 +19,6 @@ $(document).ready(function(){
    $(document).on("click", "#bottom-nav-contact", () => {loadContact()});
    $(document).on("click", "#bottom-nav-work", () => {loadAuth()});
 
-   // ability to display make when user is on quotes section
-   displayMake($('select#make'));
-
 	$(document).on("click", "#btnQuoteMe", function() {
 		$.post('/api/quote/', {
 			quarts: car.info.quartsCapacity

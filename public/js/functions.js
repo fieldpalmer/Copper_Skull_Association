@@ -49,3 +49,6 @@ const isAvailable = (date, time) => {
 		return true; // return true
 	}
 }
+
+// ability to display make when user is on quotes section
+displayMake($('select#make'));
