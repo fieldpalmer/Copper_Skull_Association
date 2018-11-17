@@ -10,6 +10,56 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script id="page-template" type="text/x-handlebars-template">
+    <!-- jumbotron header -->
+    <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
+    <div class="section">
+      <div class="container">
+        <div class="row valign-wrapper">
+          <div class="col s12 m4">
+            <div class="card" style="border-radius: 5px; background-color: #f9b65385">
+              <div class="card-image">
+                <img src="https://cdn.pixabay.com/photo/2015/12/24/12/59/mechanic-1106773_960_720.jpg" id="userProfPic">
+              </div>
+              <div class="card-content indigo-text text-darken-3">
+                <p>{{techTitle}}</p>
+                <p>{{techLocation}}</p>
+                <p>{{memberSince}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m7">
+            
+            <h1 class="header cyan-text text-lighten-4"> Welcome back, {{techName}}</h1>
+            <div class="row">
+              <h5 class="header orange-text text-lighten-2">What will you do with Mobile Mechanic™ today?</h5>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="https://cdn.pixabay.com/photo/2014/06/04/16/36/car-repair-362150_960_720.jpg"></div>
+  </div>
+  </script>
+
+  <script id="cats-block-partial" type="text/x-handlebars-template">
+    <div class="col s12 m4 l3 flex">
+      <div class="card sticky-action">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+        </div>
+        <div class="card-action">
+          <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
+          <p><a href="#">Save Job</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        </div>
+      </div>
+    </div>
+  </script>
 </head>
 
 <body>
@@ -46,7 +96,7 @@
 
     <!-- jumbotron header -->
 
-    <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
+    <!-- <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="section">
         <div class="container">
           <div class="row valign-wrapper">
@@ -74,7 +124,7 @@
         </div>
       </div>
       <div class="parallax"><img src="https://cdn.pixabay.com/photo/2014/06/04/16/36/car-repair-362150_960_720.jpg"></div>
-    </div>
+    </div> -->
 
     <!-- how does it work container  -->
     <div class="container">
@@ -131,7 +181,7 @@
     </div>
 
     <!-- view work orders section  -->
-    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+    <!-- <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
     <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
       <div class="row flex" id="job-display">
 
@@ -257,7 +307,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     
     <!-- education section section  -->
     <!-- <div class="row flex">
