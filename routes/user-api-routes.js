@@ -7,7 +7,9 @@ module.exports = function(app) {
 
   //takes object with email and password
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json("/profile");
+    console.log(res);
+    // res.json(res);
+    // res.json("/profile");
   });
 
   //do something after successful login
@@ -47,7 +49,7 @@ module.exports = function(app) {
     }
   });
 
-  
+
   app.post('/api/register', function(req, res) {
     console.log(req);
     db.User.create({
@@ -80,7 +82,7 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  
+
   app.delete('/api/users/:id', function(req, res) {
     db.User.destroy({
       where: {
