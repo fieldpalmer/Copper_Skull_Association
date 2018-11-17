@@ -15,7 +15,7 @@ $(document).ready(function() {
         user.carYear = carData[0].year;
       }
       $.get("/api/orders/ + userData.id").then(function(orderData){
-        if(orderData.length > 0){user.orders = orderData};
+        if(orderData.length){user.orders = orderData};
         $.get("/api/technician").then(function(techData){
           if(techData.length > 0){
           user.technicians = [];
