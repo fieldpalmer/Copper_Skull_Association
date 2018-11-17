@@ -3,7 +3,7 @@ require('dotenv').config();
 const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const session = require("express-session");
-const passport = require("./config/passport");
+const passport = require("./config/passport.js");
 const db = require('./models');
 
 const keyPublishable = process.env.PUBLISHABLE_KEY;
