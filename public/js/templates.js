@@ -38,17 +38,25 @@ $(document).ready(function(){
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
 					$('#totalCost').text(`$${response}`);
+
+					if(isLogin){
+						$('#btnBook').text('Schedule Appointment');
+					}
 				});
 			}
 		})
 	});
 
 	$(document).on("click", "#btnBook", function() {
-		// when user clicks schedule appointment load appointment template
-		// add a save for later button
-		$("#calculator").load("templates/appointment.html", function () {
-			M.AutoInit();
-		});
+		// check if user is logged in
+		if(isLogin) {
+			$('#calculator').after($('<div>').attr('id', 'appt'))
+			$("#appt").load("appointment.html", function () {
+				M.AutoInit();
+			});
+		} else {
+			window.location = '/templates/auth.html';
+		}
 	});
 
 	$(document).on("click", "#btnPay", function() {

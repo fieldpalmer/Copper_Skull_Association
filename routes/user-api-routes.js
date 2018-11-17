@@ -7,9 +7,7 @@ module.exports = function(app) {
 
   //takes object with email and password
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    console.log(res);
-    // res.json(res);
-    // res.json("/profile");
+    res.json("/profile");
   });
 
   //do something after successful login

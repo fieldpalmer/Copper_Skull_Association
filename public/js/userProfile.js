@@ -1,32 +1,33 @@
 $(document).ready(function() {
-
-  var user = {};
-
+  window.user = {};
   $.get("/api/user_data").then(function(userData) {
+    sessionStorage.setItem('userName', userData.name); // stores session user
+    sessionStorage.setItem('userEmail', userData.email); // stores session email
     user.name = userData.name;
     user.email = userData.email;
     user.id = userData.id;
     user.location = userData.location;
     $.get("/api/vehicle/" + userData.id).then(function(carData){
-      // console.log(carData);
-      if(carData[0].make){user.carMake = carData[0].make};
-      if(carData[0].make){user.carModel = carData[0].model};
-      if(carData[0].year){user.carYear = carData[0].year};
-      $.get("/api/orders/ + userData.id").then(function(orderData){
-        if(orderData){user.orders = orderData};
-        $.get("/api/technician").then(function(techData){
-          user.technicians = [];
-          for(let i=0; i<10 && i<techData.length; i++){
-            tech = {};
-            if(techData){
-              tech.techSkills = techData[i].skills;
-              // tech.techRating = techData[i].rating;
-              user.technicians.push(tech);
-            }
-          }
-          renderTemplate(user);
-        });
-      });
+      console.log(carData);
+      // if(carData[0].make){user.carMake = carData[0].make};
+      // if(carData[0].model){user.carModel = carData[0].model};
+      // if(carData[0].year){user.carYear = carData[0].year};
+      // $.get("/api/orders/ + userData.id").then(function(orderData){
+      //   if(orderData){user.orders = orderData};
+      //   $.get("/api/technician").then(function(techData){
+      //     user.technicians = [];
+      //     for(let i=0; i<10 && i<techData.length; i++){
+      //       tech = {};
+      //       if(techData){
+      //         tech.techSkills = techData[i].skills;
+      //         // tech.techRating = techData[i].rating;
+      //         user.technicians.push(tech);
+      //       }
+      //     }
+      //     renderTemplate(user);
+      //   });
+      // });
+     renderTemplate(user);
     });
   });
 
