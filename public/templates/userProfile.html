@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script src="../js/userProfile.js"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
     </ul>
 
     <!-- jumbotron header -->
-
+    <script id="user-page-template" type="text/x-handlebars-template">
     <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="section">
         <div class="container">
@@ -54,7 +55,7 @@
                   <img src="../images/dude-with-car.jpg" id="userProfPic">
                 </div>
                 <div class="card-content indigo-text text-darken-3">
-                  <p>{{userCar}}</p>
+                  <p>{{carMake}}</p>
                   <p>{{userLocation}}</p>
                   <p>{{memberSince}}</p>
                 </div>
@@ -62,7 +63,7 @@
             </div>
             <div class="col s12 m7">
               
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{userName}}</h1>
+              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h5>
               </div>
@@ -73,6 +74,8 @@
       </div>
       <div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
     </div>
+    </script>
+    <div id="app"></div>
     
     <!-- how does it work container  -->
     <div class="container">
