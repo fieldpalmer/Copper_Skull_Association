@@ -47,7 +47,7 @@ module.exports = function(app) {
     }
   });
 
-  
+
   app.post('/api/register', function(req, res) {
     console.log(req);
     db.User.create({
@@ -80,7 +80,7 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  
+
   app.delete('/api/users/:id', function(req, res) {
     db.User.destroy({
       where: {

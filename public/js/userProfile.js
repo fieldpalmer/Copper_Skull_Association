@@ -1,8 +1,8 @@
 $(document).ready(function() {
-
-  var user = {};
-
+  window.user = {};
   $.get("/api/user_data").then(function(userData) {
+    sessionStorage.setItem('userName', userData.name); // stores session user
+    sessionStorage.setItem('userEmail', userData.email); // stores session email
     user.name = userData.name;
     user.email = userData.email;
     user.id = userData.id;

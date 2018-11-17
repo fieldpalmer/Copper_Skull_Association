@@ -6,34 +6,23 @@ $(document).ready(function(){
    const loadAbout = () => { $("#main").load("./templates/about.html") }
    const loadContact = () => { $("#main").load("./templates/contact.html") }
    const loadAuth = () => { $("#main").load("./templates/auth.html") }
-   
+
    // top nav loading functions
    $(document).on("click", "#top-nav-work", () => {loadQuote()});
    $(document).on("click", "#top-nav-about", () => {loadAbout()});
    $(document).on("click", "#top-nav-contact", () => {loadContact()});
    $(document).on("click", "#top-nav-work", () => {loadAuth()});
-   
+
    // bottom nav loading functions
    $(document).on("click", "#bottom-nav-work", () => {loadQuote()});
    $(document).on("click", "#bottom-nav-about", () => {loadAbout()});
    $(document).on("click", "#bottom-nav-contact", () => {loadContact()});
    $(document).on("click", "#bottom-nav-work", () => {loadAuth()});
 
-	//displayQuoteTemplate('#calculator');  //getting displayQuoteTemplate is undefined error
-
 	$(document).on("click", "#btnQuoteMe", function() {
-		// before loading the estimate template validate user input
-		// variables store user address information
-		let address = $('#txtAddress').val().trim();
-		let firstName = $('#txtFirstName').val().trim();
-		let lastName = $('#txtLastName').val().trim();
-		let phone = $('#txtPhone').val().trim();
-		let email = $('#txtEmail').val().trim();
-
-		console.log(window.car);
-		$.post("/api/quote", {
-			info: car.info.quartsCapacity
-		}).then(function(response) {
+		$.post('/api/quote/', {
+			quarts: car.info.quartsCapacity
+		}).then(response => {
 			console.log(response);
 			if(!car.make || !car.year || !car.model) {
 				showErrMessage("You must select your car make/year/model");
@@ -42,38 +31,32 @@ $(document).ready(function(){
 			else if (!car.services) {
 				showErrMessage("You must select a service")
 			}
-			// check if user has entered a valid address
-			else if(breakAddress(address) === false) {
-				showErrMessage("You must enter your adress");
-			}
 			// if everything passes...
 			else {
-				car.address = breakAddress(address);
-					// load  estimate
-				car.customer = {
-					firstName: firstName,
-					lastName: lastName,
-					phone: phone,
-					email: email,
-					address: breakAddress(address),
-					quoteId: response.id
-				}
-				$("#main").load('templates/estimate.html', function() {
+				$("#calculator").load('/templates/estimate.html', function() {
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(response.quoteAmt);
+					$('#totalCost').text(`$${response}`);
+
+					if(isLogin){
+						$('#btnBook').text('Schedule Appointment');
+					}
 				});
 			}
-		});
+		})
 	});
 
 	$(document).on("click", "#btnBook", function() {
-		// when user clicks schedule appointment load appointment template
-		// add a save for later button
-		$("#calculator").load("templates/appointment.html", function () {
-			M.AutoInit();
-		});
+		// check if user is logged in
+		if(isLogin) {
+			$('#calculator').after($('<div>').attr('id', 'appt'))
+			$("#appt").load("appointment.html", function () {
+				M.AutoInit();
+			});
+		} else {
+			window.location = '/templates/auth.html';
+		}
 	});
 
 	$(document).on("click", "#btnPay", function() {
@@ -95,6 +78,9 @@ $(document).ready(function(){
 			// when response
 			// $("#main").load("templates/workorder.html");
 		}
+	});
+	$(document).on('click', '#btnPrint', function(){
+		window.print();
 	})
 
 	$(document).on("click", "#registerBtn", function(event) {
@@ -108,6 +94,7 @@ $(document).ready(function(){
 			password: $("#passwordReg").val().trim(),
 			// picture: $("#picture").src()
 		}
+		console.log(newUser);
 
 		$.post("/api/register", newUser).then(function(response) {
 			console.log(response);
@@ -122,7 +109,7 @@ $(document).ready(function(){
 		$("#passwordReg").val("");
 		$("#pwConfirm").val("");
 		// $("#picture").src("");
-		 
+
 	});
 
 });
