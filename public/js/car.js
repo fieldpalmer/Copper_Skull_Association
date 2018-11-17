@@ -105,5 +105,5 @@ const displayMake = loc => {
 	});
 }
 
-
+displayMake();
 
