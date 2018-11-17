@@ -40,5 +40,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/technician', function(req, res){
+    db.Technician.findAll({
+      include: [db.User]
+    }).then(function(technicians){
+      res.json(technicians);
+    });
+  });
+
 
 };

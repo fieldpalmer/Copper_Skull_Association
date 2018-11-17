@@ -19,7 +19,7 @@ $(document).ready(function(){
    $(document).on("click", "#bottom-nav-contact", () => {loadContact()});
    $(document).on("click", "#bottom-nav-work", () => {loadAuth()});
 
-	displayQuoteTemplate('#calculator');
+	//displayQuoteTemplate('#calculator');  //getting displayQuoteTemplate is undefined error
 
 	$(document).on("click", "#btnQuoteMe", function() {
 		// before loading the estimate template validate user input
@@ -55,13 +55,14 @@ $(document).ready(function(){
 					lastName: lastName,
 					phone: phone,
 					email: email,
-					address: breakAddress(address)
+					address: breakAddress(address),
+					quoteId: response.id
 				}
 				$("#main").load('templates/estimate.html', function() {
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(response);
+					$('#totalCost').text(response.quoteAmt);
 				});
 			}
 		});
@@ -96,16 +97,16 @@ $(document).ready(function(){
 		}
 	})
 
-	$(document).on("click", "#registerBtn", function() {
-
+	$(document).on("click", "#registerBtn", function(event) {
+		event.preventDefault();
 		let newUser = {
 			fName: $("#fName").val().trim(),
 			lName: $("#lName").val().trim(),
-			email: $("#email").val().trim(),
+			email: $("#emailReg").val().trim(),
 			phone: $("#phone").val().trim(),
-			areaCode: $("#areaCode").val().trim(),
-			password: $("#password").val().trim(),
-			picture: $("#picture").src(),
+			// areaCode: $("#areaCode").val().trim(),
+			password: $("#passwordReg").val().trim(),
+			// picture: $("#picture").src()
 		}
 
 		$.post("/api/register", newUser).then(function(response) {
@@ -114,12 +115,13 @@ $(document).ready(function(){
 
 		$("#fName").val("");
 		$("#lName").val("");
-		$("#email").val("");
+		$("#emailReg").val("");
 		$("#phone").val("");
+		$("#txtAddress").val("");
 		$("#areaCode").val("");
-		$("#password").val("");
+		$("#passwordReg").val("");
 		$("#pwConfirm").val("");
-		$("#picture").src("");
+		// $("#picture").src("");
 		 
 	});
 
