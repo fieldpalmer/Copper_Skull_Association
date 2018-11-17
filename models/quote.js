@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Quote = sequelize.define('Review', {
+  const Quote = sequelize.define('Quote', {
     carMake: {
       type: DataTypes.STRING,
       allowNull: false,

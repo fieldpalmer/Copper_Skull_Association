@@ -27,7 +27,9 @@ module.exports = function(app) {
       quoteAmt: quote,
       oilType: customer.oilType,
       oilAmount: customer.quartsCapacity
-    })
+    }).then(function(response){
+      res.json(response);
+    });
 
     db.User.findOne({
       where: {

@@ -55,13 +55,14 @@ $(document).ready(function(){
 					lastName: lastName,
 					phone: phone,
 					email: email,
-					address: breakAddress(address)
+					address: breakAddress(address),
+					quoteId: response.id
 				}
 				$("#main").load('templates/estimate.html', function() {
 					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 					$('#oilType').text(car.info.oilType);
 					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(response);
+					$('#totalCost').text(response.quoteAmt);
 				});
 			}
 		});
