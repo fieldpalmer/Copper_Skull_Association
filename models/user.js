@@ -6,9 +6,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true
-      }
+      //validate: {
+        //isEmail: true
+      //}
     },
     // The password cannot be null
     password: {
