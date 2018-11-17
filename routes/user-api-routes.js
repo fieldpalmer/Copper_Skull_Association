@@ -20,7 +20,7 @@ module.exports = function(app) {
   //checks their role and sends them to the appropriate profile page
   app.get("/profile", function(req, res) {
     if (!req.user) {
-      res.sendFile(path.join(__dirname), "../public/templates/register.html");
+      res.sendFile(path.join(__dirname), "../public/templates/auth.html/#register");
     }
     else {
       if(req.user.role === "technician"){
