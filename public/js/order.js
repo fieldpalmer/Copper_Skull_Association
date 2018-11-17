@@ -59,4 +59,37 @@ $(document).ready(function() {
   //   }
   //   orderCreate(order);
   // });
+
+  //testing using the quote button saying Update Info
+  $(document).on('click', '#btnQuote', function() {
+    //create input field to enter order id
+
+    $('#order-id').toggle();
+    $('#order-edit-submit').toggle();
+
+  });
+
+  $(document).on('click', '#order-edit-submit', function() {
+
+    let orderId = $('#order-id-input').val().trim();
+
+    $.ajax('/api/orders/' + orderId, {
+      method: 'GET',
+      dataType: 'json',
+      contentType: 'application/json'
+    }).then(orderReturn => {
+      console.log(orderReturn);
+      $('#order-form').toggle();
+      // $('#tech-assign-button').toggle();
+      $('#order-form-id').text('Order ID#: ' + orderReturn.id);
+      $('#order-form-jobdesc').text('Job: ' + orderReturn.jobDescription);
+      $('#order-form-laborcost').text('Cost: ' + orderReturn.laborCost);
+      $('#order-form-vehicle').text('Vehicle: ' + orderReturn.vehicle);
+      $('#order-form-techassigned').prepend(orderReturn.technicianAssigned);
+    });
+  });
+
+  $(document).on('click', '#tech-assign-button', function() {
+    
+  });
 });

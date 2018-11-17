@@ -46,6 +46,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     quartsCapacity: {
       type: DataTypes.STRING
+    },
+    technicianAssigned: {
+      type: DataTypes.STRING,
+      defaultValue: 'No Technician Assigned'
     }
   });
 

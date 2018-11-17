@@ -13,7 +13,7 @@ const stripe = require("stripe")(keySecret);
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = process.env.PORT || 8088;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -39,7 +39,7 @@ require('./routes/quote-api-routes')(app);
 let syncOptions = { force: false };
 
 if (env === 'test' || env === 'development') {
-  syncOptions.force = true;
+  // syncOptions.force = true;
 }
 
 db.sequelize.sync(syncOptions).then(function() {

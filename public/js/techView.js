@@ -6,9 +6,9 @@ $(document).ready( () => {
     $.get("/api/orders", orderData).then(showOrders)
   }
 
-  const saveOrder = (orderId) => {
-    $.put("/api/orders/:id", data).then(showOrders)
-  }
+  // const saveOrder = (orderId) => {
+  //   $.put("/api/orders/:id", data).then(showOrders)
+  // }
 
   const showOrders = () => {
       

@@ -111,7 +111,7 @@ $(document).ready(function(){
 			if(!isAvailable(date, time)) {
 				showErrMessage("You must select an upcoming date and a time between 9 - 5");
 			} else {
-				console.log("Booked!!")
+				// console.log("Booked!!")
 				// send information to server for work order
 				/*
 				send the following information to server:
@@ -137,7 +137,7 @@ $(document).ready(function(){
 				// 		phone: car.customer.phone
 				// 	}
 				// )})
-				console.log(car);
+				// console.log(car);
 				//updating the order with the date and time the user set
 				$.ajax('/api/orders', {
 					method: 'PUT',

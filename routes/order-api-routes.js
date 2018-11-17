@@ -1,12 +1,12 @@
 const db = require('../models');
 
 module.exports = function(app) {
-  // app.post('/api/orders', function(req, res) {
-  //   console.log(req.body);
-  //   db.Order.create(req.body).then(function(dbOrder) {
-  //     res.json(dbOrder)
-  //   });
-  // });
+  app.post('/api/orders', function(req, res) {
+    console.log(req.body);
+    db.Order.create(req.body).then(function(dbOrder) {
+      res.json(dbOrder)
+    });
+  });
 
   app.put('/api/orders', function(req, res) {
     db.Order.update(
