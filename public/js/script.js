@@ -1,4 +1,4 @@
-
+// template loading formula
 $(document).ready(()=>{
 
     //template loading functions
