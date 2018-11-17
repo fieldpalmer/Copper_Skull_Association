@@ -89,7 +89,7 @@ $(document).ready(function(){
 		console.log(newUser);
 
 		$.post("/api/register", newUser).then(function(response) {
-			// console.log(response);
+			console.log(response);
 		});
 
 		$("#fName").val("");
