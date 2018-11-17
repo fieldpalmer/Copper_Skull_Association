@@ -7,30 +7,46 @@ module.exports = function(app) {
 
   //takes object with email and password
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    res.json("/profile");
   });
 
   //do something after successful login
-  app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
-  });
 
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
 
+  //checks their role and sends them to the appropriate profile page
+  app.get("/profile", function(req, res) {
+    if (!req.user) {
+      res.sendFile(path.join(__dirname), "../public/templates/auth.html/#register");
+    }
+    else {
+      if(req.user.role === "technician"){
+        res.sendFile(path.join(__dirname, "../public/templates/techProfile.html"));
+      } else {
+        res.sendFile(path.join(__dirname, "../public/templates/userProfile.html"));
+      }
+    }
+  });
+
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
+      // The user is not logged in, send back an empty object
       res.json({});
     }
     else {
+      // Otherwise send back the user's info
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        name: req.user.name,
+        location: req.user.location
       });
     }
   });
+
   
   app.post('/api/register', function(req, res) {
     console.log(req);

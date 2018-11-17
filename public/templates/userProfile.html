@@ -10,8 +10,9 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script src="../js/userProfile.js"></script>
 
-  <script id="user-page-template" type="text/x-handlebars-template">
+  <!-- <script id="user-page-template" type="text/x-handlebars-template">
     <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="section">
         <div class="container">
@@ -22,7 +23,7 @@
                   <img src="../images/dude-with-car.jpg" id="userProfPic">
                 </div>
                 <div class="card-content indigo-text text-darken-3">
-                  <p>{{userCar}}</p>
+                  <p>{{carMake}}</p>
                   <p>{{userLocation}}</p>
                   <p>{{memberSince}}</p>
                 </div>
@@ -30,7 +31,7 @@
             </div>
             <div class="col s12 m7">
               
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{userName}}</h1>
+              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h5>
               </div>
@@ -41,10 +42,11 @@
       </div>
       <div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
     </div>
+  </script> -->
 
 
-  </script>
 </head>
+
 
 <body>
   <main>
@@ -77,7 +79,7 @@
     </ul>
 
     <!-- jumbotron header -->
-
+    <script id="user-page-template" type="text/x-handlebars-template">
     <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="section">
         <div class="container">
@@ -88,7 +90,7 @@
                   <img src="../images/dude-with-car.jpg" id="userProfPic">
                 </div>
                 <div class="card-content indigo-text text-darken-3">
-                  <p>{{userCar}}</p>
+                  <p>{{carMake}}</p>
                   <p>{{userLocation}}</p>
                   <p>{{memberSince}}</p>
                 </div>
@@ -96,7 +98,7 @@
             </div>
             <div class="col s12 m7">
               
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{userName}}</h1>
+              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h5>
               </div>
@@ -222,95 +224,26 @@
     
         <div class="col s1 m4" id="technicians-list">
           <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
+            {{#each technicians}}
             <li class="collection-item avatar valign-wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Earnheardt-headshot-m-1.jpg" class="circle">
                 <ul>
                   <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
+                      <h5 class="techName">{{this.techName}}</h5>
+                      <p class="techSkills">{{this.techSkills}}</p>
+                      <p class="techRating">{{this.techRating}}</p>
                   </li>
                 </ul>
             </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Joichi_Ito_Headshot_2007.jpg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Babe_Ruth_Red_Sox_1918_headshot_crop.jpg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-    
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-            <li class="collection-item avatar valign-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Emojione_1F477.svg" class="circle">
-                <ul>
-                  <li>
-                      <h5 id="techName">{{technicianName}}</h5>
-                      <p id="techSkills">{{technicianSkills}}</p>
-                      <p id="techRating">{{technicianRating}}</p>
-                  </li>
-                </ul>
-            </li>
-          </ul>
+            {{/each}}
+          </ul>         
         </div>
       </div>
     </div>
   </main>
 
+</script>
+<div id="app"></div>
   <!-- footer section -->
   <footer class="section indigo darken-4 white-text">
 
@@ -332,6 +265,7 @@
         <p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
       </div>
     </div>
+ 
 
   </footer>
 

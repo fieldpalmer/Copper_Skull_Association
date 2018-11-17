@@ -5,7 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     workHistory: {
       type: DataTypes.TEXT
-    }
+    },
+    // rating: {
+    //   type: DataTypes.DECIMAL
+    // }
   });
 
   Technician.associate = function(models) {
