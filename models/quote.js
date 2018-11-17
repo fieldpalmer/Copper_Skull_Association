@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    carEngine: {
+    carYear: {
       type: DataTypes.STRING,
       allowNull: false
     },

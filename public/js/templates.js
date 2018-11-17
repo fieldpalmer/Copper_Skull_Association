@@ -44,7 +44,8 @@ $(document).ready(function(){
 				make: car.make,
 				model: car.model,
 				services: car.services.join(', '),
-				quartsCapacity: car.info.quartsCapacity
+				quartsCapacity: car.info.quartsCapacity,
+				oilType: car.info.oilType
 			}).then(function(response) {
 				console.log(response);
 				car.uid = response.id;
