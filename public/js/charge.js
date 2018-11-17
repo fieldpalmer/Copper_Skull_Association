@@ -1,19 +1,4 @@
-<html>
-  <head>
-    <title>Stripe Checkout Integration</title>
-    <script src="https://checkout.stripe.com/checkout.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-  </head>
-  <body>
-    <h2>Stripe Checkout Example</h2>
-
-    <div id="shop">
-      <button id="buttonCheckout">Checkout</button>
-    </div>
-  </body>
-
-  <script>
-    var checkoutHandler = StripeCheckout.configure({
+var checkoutHandler = StripeCheckout.configure({
   key: "pk_test_fHJB9fIE30QMwnuL4WQAT8jG",
   locale: "auto"
 });
@@ -39,5 +24,3 @@ function handleToken(token) {
       document.getElementById("shop").innerHTML = "<p>Purchase complete!</p>";
   })
 }
-  </script>
-</html>

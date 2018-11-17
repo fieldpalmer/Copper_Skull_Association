@@ -40,7 +40,7 @@ const displayModel = (car, loc) => {
 		loc.formSelect(); // initiane materialize styles
 
 		// when user selects a model
-		$('select#model').change(function(e){
+		$(loc).change(function(e){
 			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store make/year/model link
@@ -71,7 +71,7 @@ const displayYear = (car, loc) => {
 		loc.formSelect(); // initiate materialize styles
 
 		// when user selects a year
-		$('select#year').change(function(e){
+		$(loc).change(function(e){
 			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store car make & year link
@@ -95,7 +95,7 @@ const displayMake = loc => {
 		loc.formSelect(); // initiate materialize styles
 
 		// when a user selects a make
-		$('select#make').change(function(e){
+		$(loc).change(function(e){
 			$('#errMessage').hide(); // hide err message
 			e.stopImmediatePropagation(); // stops double execution
 			let link = $(this).val(); // store the link
@@ -104,6 +104,3 @@ const displayMake = loc => {
 		})
 	});
 }
-
-
-

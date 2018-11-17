@@ -3,7 +3,7 @@ require('dotenv').config();
 const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const session = require("express-session");
-const passport = require("./config/passport");
+const passport = require("./config/passport.js");
 const db = require('./models');
 
 const keyPublishable = process.env.PUBLISHABLE_KEY;
@@ -13,7 +13,7 @@ const stripe = require("stripe")(keySecret);
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8088;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

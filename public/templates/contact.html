@@ -41,56 +41,47 @@
       <li><a id="side-nav-contact" href="./contact.html">Contact</a></li>
       <li><a id="side-nav-auth" href="./auth.html">Login/Register</a></li>
     </ul>
-
-    <div class="section">
-      <div class="container white">
-        <h3 class="center">Enter vehicle information</h3><br>
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <div class="input-field col s12 m3">
-                <select id="make">
-                  <option value="" disabled selected>Make</option>
-                </select>
-                <label>Select your car make</label>
+    
+    <!-- get in touch section  -->
+    <div class="container">
+      <div class="row flex">
+        <div class="col s6">
+          <div class="section white" id="contactSection">
+            <div class="container">
+              <h3 id="contact">Contact Us</h3>
+              <hr>
+              <p class="flow-text">Your satisfaction is our motivation. Don't hesitate to get in touch with questions or comments!</p>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12 m4">
+                      <input type="text" id="txtFeedName">
+                      <label>Name</label>
+                    </div>
+                    <div class="input-field col s12 m8">
+                      <input type="email" id="txtFeedEmail">
+                      <label>Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
+                      <label>Message/Feedback</label>
+                    </div>
+                  </div>
+                  <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+                </form>
               </div>
-              <div class="input-field col s12 m3">
-                <select id="year">
-                  <option value="" disabled selected>Year</option>
-                </select>
-                <label>Select year</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <select id="model">
-                  <option value="" disabled selected>Model</option>
-                </select>
-                <label>Select model</label>
-              </div>
-            </div>
-          </div>
-          <div class="col s12">
-            <div class="input-field">
-              <select id="services" multiple>
-                <option value="" disabled selected>Select a service</option>
-                <option value="oil">Oil and Filter</option>
-                <option value="rotation">Tire Rotation</option>
-                <option value="air filter">Air filter replacement</option>
-                <option value="wiper">Wiper blades replacement</option>
-                <option value="bulb">Bulb replacement</option>
-              </select>
-              <label>Select a service</label>
             </div>
           </div>
         </div>
-        
-        <div class="center">
-          <p class="flow-text red-text" id="errMessage"></p>
-          <button class="btn-large blue waves-effect waves-light" id="btnQuoteMe">Get Quote</button><br><br><br>
+    
+        <div class="col s6">
+          <div class="parallax-container" id="quote-reveal-container">
+            <div class="parallax"><img src="../images/Blue-Collar-Workers.jpg"></div>
+          </div>
         </div>
       </div>
     </div>
   </main>
-
   <!-- footer section -->
   <footer class="page-footer section indigo darken-4 white-text">
     <div class="row">
@@ -110,7 +101,7 @@
       </div>
     </div>
   </footer>
-  
+    
   <!-- my scripts -->
   
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -121,6 +112,6 @@
     });
   </script>
   <script src="/js/car.js"></script>
-  
+    
 </body>
 </html>

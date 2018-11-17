@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Mechanic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
+  <script src="../js/templates.js"></script>
+</head>
+
+<body>
+  <main>
+    <!-- top nav bar -->
+    <div class="navbar-fixed">
+      <nav class="indigo darken-4" role="navigation">
+        <div class="nav-wrapper container">
+          <a href="../index.html" class="brand-logo"><img src="../images/mobileMechLogo2.png"></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a id="top-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+            <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
+            <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
+            <li><a id="top-nav-about" href="./about.html">About Us</a></li>
+            <li><a id="top-nav-auth" href="./auth.html">Login/Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- sidebar nav on shrink -->
+    <ul class="sidenav" id="mobile-demo">
+      <li class="active"><a href="../index.html">Home</a></li>
+      <li><a id="side-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+      <li><a id="side-nav-users" href="./userHome.html">Users</a></li>
+      <li><a id="side-nav-techs" href="./techHome.html">Technicians</a></li>
+      <li><a id="side-nav-about" href="./about.html">About Us</a></li>
+      <li><a id="side-nav-contact" href="./contact.html">Contact</a></li>
+      <li><a id="side-nav-auth" href="./auth.html">Login/Register</a></li>
+    </ul>
+
+    <div class="container white z-depth-2">
+      <div class="row" style="padding: 2%">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/dog-1149964_1280.jpg">
+            </div>
+          </div>
+          <div class="card-content center">
+            <h5 class="indigo-text text-darken-2">Discover all the new opportunities through Mobile Mechanic!</h5>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <ul class="tabs indigo">
+            <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
+            <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
+          </ul>
+          <div id="login" class="col s12">
+            <form class="col s12">
+              <div class="form-container">
+                <h3 class="cyan-text text-lighten-2">Hello</h3>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email">
+                    <label for="email">Email</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <br>
+                <center>
+                  <button class="btn waves-effect waves-light orange" type="submit" name="action">Enter</button>
+                  <br>
+                  <br>
+                  <a href="#">Forgotten password?</a>
+                </center>
+              </div>
+            </form>
+          </div>
+          <div id="register" class="col s12">
+            <form class="col s12">
+              <div class="form-container">
+                <h3 class="cyan-text text-lighten-2">Welcome</h3>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="fName" type="text">
+                    <label for="fName">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="lName" type="text">
+                    <label for="lName">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="search" id="txtAddress" placeholder="Select your address..." />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m6">
+                    <input id="emailReg" type="email">
+                    <label for="emailReg">Email</label>
+                  </div>
+                  <div class="input-field col s12 m6">
+                    <input id="phone" type="number">
+                    <label for="phone">Phone</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m6">
+                    <input id="passwordReg" type="password">
+                    <label for="passwordReg">Password</label>
+                  </div>
+                  <div class="input-field col s12 m6">
+                    <input id="pwConfirm" type="password">
+                    <label for="pwConfirm">Password Confirmation</label>
+                  </div>
+                </div>
+                <center>
+                  <button class="btn waves-effect waves-light orange text-darken-2" type="submit" name="action">Submit</button>
+                </center>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+    
+  <!-- footer section -->
+  <footer class="page-footer section indigo darken-4 white-text" style="margin-top: 10%">
+
+    <div class="row">
+
+      <div class="col s12 m4">
+        <div class="container">
+          <ul>
+            <li><a class="white-text" href="workorder.html">Get Serviced Now</a></li>
+            <li><a class="white-text" href="about.html">About Us</a></li>
+            <li><a class="white-text" href="contact.html">Contact Us</a></li>
+            <li><a class="white-text" href="auth.html">Login/Register</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col s12 m4 offset-m4">
+        <a href="index.html"><img src="../images/mobileMechLogo2.png"></a>
+        <p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
+      </div>
+    </div>
+
+  </footer>
+	
+<!-- my scripts -->
+
+	<script src="./js/script.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        M.AutoInit();
+    });
+    </script>
+</body>
+</html>
