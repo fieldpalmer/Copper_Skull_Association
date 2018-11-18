@@ -273,7 +273,7 @@ $(document).on("click", "#btnPay", function() {
     // $("#main").load("templates/workorder.html");
     checkoutHandler.open({
       name: "Oil Change",
-      description: car.quoteAmt,
+      description: "$" + car.quoteAmt,
       token: handleToken
     });
     console.log(appointment);
@@ -283,7 +283,7 @@ $(document).on("click", "#btnPay", function() {
 
 function handleToken(token) {
 	let newToken = token;
-	token.quoteId = car.quoteId;
+	newToken.quoteId = car.quoteId;
   fetch("/charge", {
     method: "POST",
 		headers: {"Content-Type": "application/json"},
