@@ -20,10 +20,6 @@ $(document).ready(function(){
    $(document).on("click", "#bottom-nav-work", () => {loadAuth()});
 
 	$(document).on("click", "#btnQuoteMe", function() {
-		$.post('/api/quote/', {
-			quarts: car.info.quartsCapacity
-		}).then(response => {
-			console.log(response);
 			if(!car.make || !car.year || !car.model) {
 				showErrMessage("You must select your car make/year/model");
 			}
@@ -33,24 +29,27 @@ $(document).ready(function(){
 			}
 			// if everything passes...
 			else {
-				$("#calculator").load('/templates/estimate.html', function() {
-					$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
-					$('#oilType').text(car.info.oilType);
-					$('#oilCapacity').text(car.info.quartsCapacity);
-					$('#totalCost').text(`$${response}`);
+				$.post('/api/quote/', {
+					quarts: car.info.quartsCapacity
+				}).then(response => {
+					console.log(response);
+					$("#calculator").load('/templates/estimate.html', function() {
+						$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
+						$('#oilType').text(car.info.oilType);
+						$('#oilCapacity').text(car.info.quartsCapacity);
+						$('#totalCost').text(`$${response}`);
 
-					if(isLogin){
-						$('#btnBook').text('Schedule Appointment');
-					}
+						if(isLogin()){
+							$('#btnBook').text('Schedule Appointment');
+						}
+					});
 				});
 			}
-		})
 	});
 
 	$(document).on("click", "#btnBook", function() {
 		// check if user is logged in
-		if(isLogin) {
-			$('#calculator').after($('<div>').attr('id', 'appt'))
+		if(isLogin()) {
 			$("#appt").load("appointment.html", function () {
 				M.AutoInit();
 			});
@@ -77,6 +76,8 @@ $(document).ready(function(){
 			// send information to server
 			// when response
 			// $("#main").load("templates/workorder.html");
+			console.log(appointment);
+			$('#order').load('/templates/workorder.html');
 		}
 	});
 	$(document).on('click', '#btnPrint', function(){
