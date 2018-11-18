@@ -30,15 +30,16 @@ $(document).ready(function(){
 			// if everything passes...
 			else {
 				$.post('/api/quote/', {
-					make: car.make,
-					model: car.model,
-					year: car.year,
+					carMake: car.make,
+					carModel: car.model,
+					carYear: car.year,
 					oilType: car.info.oilType,
 					oilAmount: car.info.quartsCapacity
 				}).then(response => {
 					//pull quoteId from response to be used later
 					car.quoteId = response.id;
-					console.log(response);
+					//add quoteAmt to car object
+					car.quoteAmt = response.quoteAmt;
 					$("#calculator").load('/templates/estimate.html', function() {
 						$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 						$('#oilType').text(car.info.oilType);

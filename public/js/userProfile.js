@@ -3,6 +3,7 @@ $(document).ready(function() {
   $.get("/api/user_data").then(function(userData) {
     sessionStorage.setItem('userName', userData.name); // stores session user
     sessionStorage.setItem('userEmail', userData.email); // stores session email
+    sessionStorage.setItem('id', userData.id); //store user's ID
     user.name = userData.name;
     user.email = userData.email;
     user.id = userData.id;

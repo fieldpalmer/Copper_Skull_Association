@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Mechanic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
+  <script src="../js/templates.js"></script>
+</head>
+
+<body>
+  <main>
+    <!-- top nav bar -->
+    <div class="navbar-fixed">
+      <nav class="indigo darken-4" role="navigation">
+        <div class="nav-wrapper container">
+          <a href="/index.html" class="brand-logo"><img src="../images/MobileMechLogo2.png"></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a id="top-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+            <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
+            <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
+            <li><a id="top-nav-about" href="./about.html">About Us</a></li>
+            <li><a id="top-nav-auth" href="./auth.html">Login/Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!-- sidebar nav on shrink -->
+    <ul class="sidenav" id="mobile-demo">
+      <li class="active"><a href="/index.html">Home</a></li>
+      <li><a id="side-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+      <li><a id="side-nav-users" href="./userHome.html">Users</a></li>
+      <li><a id="side-nav-techs" href="./techHome.html">Technicians</a></li>
+      <li><a id="side-nav-about" href="./about.html">About Us</a></li>
+      <li><a id="side-nav-contact" href="./contact.html">Contact</a></li>
+      <li><a id="side-nav-auth" href="./auth.html">Login/Register</a></li>
+    </ul>
+
+    <!-- template load here -->
+
+    <!-- jumbotron header -->
+
+    <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="section">
+        <div class="container">
+          <div class="row valign-wrapper">
+            <div class="col s12 m4">
+              <div class="card" style="border-radius: 5px; background-color: #f9b65385">
+                <div class="card-image">
+                  <img src="https://cdn.pixabay.com/photo/2015/12/24/12/59/mechanic-1106773_960_720.jpg" id="userProfPic">
+                </div>
+                <div class="card-content indigo-text text-darken-3">
+                  <p>{{techTitle}}</p>
+                  <p>{{techLocation}}</p>
+                  <p>{{memberSince}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m7">
+              
+              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{techName}}</h1>
+              <div class="row">
+                <h5 class="header orange-text text-lighten-2">What will you do with Mobile Mechanic™ today?</h5>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="https://cdn.pixabay.com/photo/2014/06/04/16/36/car-repair-362150_960_720.jpg"></div>
+    </div>
+
+    <!-- how does it work container  -->
+    <div class="container">
+      <div class="section">
+        <h3 class="center">Make the Most of Your Time and Skills</h3>
+        <div class="row">
+
+          <div class="col s6 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">done</i></h2>
+              <h5 class="center">Attract Customers</h5>
+              <p class="light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
+              <div class="row center">
+                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Update Profile</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s6 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
+              <h5 class="center">Maintain Calendar</h5>
+              <p class="light">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
+              <div class="row center">
+                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Edit Availability</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">attach_money</i></h2>
+              <h5 class="center">Sharpen Skills</h5>
+              <p class="light">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              </p>
+              <div class="row center">
+                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Learn More</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- view work orders section  -->
+    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+    <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
+      <div class="row flex" id="job-display">
+
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 flex">
+          <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Save Job</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- education section section  -->
+    <!-- <div class="row flex">
+      <div class="col s5 flex">
+        <div class="section white" id="contactSection">
+          <div class="container">
+            <h3 id="contact">Stay Current</h3>
+            <hr>
+            <p class="flow-text">Keeping up with the latest tips, tricks, and trends in auto maintenance is critical! Follow our </p>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m4">
+                    <input type="text" id="txtFeedName">
+                    <label>Name</label>
+                  </div>
+                  <div class="input-field col s12 m8">
+                    <input type="email" id="txtFeedEmail">
+                    <label>Email</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea class="materialize-textarea" id="txtFeedMessage"></textarea>
+                    <label>Message/Feedback</label>
+                  </div>
+                </div>
+                <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s7 flex">
+        <div class="parallax-container" id="quote-reveal-container">
+          <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
+        </div>
+
+      </div>
+
+    </div> -->
+
+  </main>
+
+  <!-- template ends here -->
+  <!-- footer section -->
+  <footer class="page-footer section indigo darken-4 white-text">
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="container">
+          <ul>
+            <li><a class="white-text" href="./quote.html">Get Serviced Now</a></li>
+            <li><a class="white-text" href="./about.html">About Us</a></li>
+            <li><a class="white-text" href="./contact.html">Contact Us</a></li>
+            <li><a class="white-text" href="./auth.html">Login/Register</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m4 offset-m4">
+        <a href="/index.html"><img src="../images/MobileMechLogo2.png"></a>
+        <p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
+      </div>
+    </div>
+  </footer>
+
+<!-- my scripts -->
+
+  <script src="/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+  <script src="/js/functions.js"></script>
+  <script src="/js/car.js"></script>
+  <script src="/js/cleave.js"></script>
+</body>
+</html>
