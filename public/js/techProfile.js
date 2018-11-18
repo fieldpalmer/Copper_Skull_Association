@@ -1,7 +1,43 @@
 $(document).ready(function() {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
+
+  var tech = {};
+
+  $.get("/api/technician").then(function(techData){
+    tech.name = techData.name;
+  })
+
+  $.get("/api/user_data").then(function(userData) {
+    user.name = userData.name;
+    user.email = userData.email;
+    user.id = userData.id;
+    user.location = userData.location;
+    $.get("/api/vehicle/" + userData.id).then(function(carData){
+      // console.log(carData);
+      user.carMake = carData[0].make;
+      user.carModel = carData[0].model;
+      user.carYear = carData[0].year;
+      $.get("/api/orders/ + userData.id").then(function(orderData){
+        user.orders = orderData;
+        $.get("/api/technician").then(function(techData){
+          user.technicians = [];
+          for(let i=0; i<10 && i<techData.length; i++){
+            tech = {};
+            tech.techSkills = techData[i].skills;
+            // tech.techRating = techData[i].rating;
+            user.technicians.push(tech);
+          }
+          renderTemplate(user);
+        });
+      });
+    });
   });
+
+  function renderTemplate(data) {
+    console.log(data);
+    var source = $("#tech-page-template").text();
+    var template = Handlebars.compile(source);
+    var html = template(data);
+    $("#app").html(html);
+  }
 });
+
