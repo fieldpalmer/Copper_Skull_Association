@@ -8,6 +8,7 @@ $(document).ready(function() {
     user.email = userData.email;
     user.id = userData.id;
     user.location = userData.location;
+    user.role = userData.role;
     $.get("/api/vehicle/" + userData.id).then(function(carData){
       // console.log(carData);
       if(carData.length > 0){
@@ -47,4 +48,5 @@ $(document).ready(function() {
     var html = template(data);
     $("#app").html(html);
   }
+
 });
