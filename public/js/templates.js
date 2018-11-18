@@ -30,14 +30,20 @@ $(document).ready(function(){
 			// if everything passes...
 			else {
 				$.post('/api/quote/', {
-					quarts: car.info.quartsCapacity
+					make: car.make,
+					model: car.model,
+					year: car.year,
+					oilType: car.info.oilType,
+					oilAmount: car.info.quartsCapacity
 				}).then(response => {
+					//pull quoteId from response to be used later
+					car.quoteId = response.id;
 					console.log(response);
 					$("#calculator").load('/templates/estimate.html', function() {
 						$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 						$('#oilType').text(car.info.oilType);
 						$('#oilCapacity').text(car.info.quartsCapacity);
-						$('#totalCost').text(`$${response}`);
+						$('#totalCost').text(response.quoteAmt);
 
 						if(isLogin()){
 							$('#btnBook').text('Schedule Appointment');
@@ -58,28 +64,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on("click", "#btnPay", function() {
-		// when user clicks the appointment verify every field and payment information
-		// when the user has verified their dates
-		// send the car information to server
-		// make work order on server and let them enter pay information
-		let date = $('#txtDate').val().trim();
-		let time = $('#txtTime').val().trim();
-		let appointment = {
-			date: date,
-			time: time
-		}
-		if(!date || !time) {
-			showErrMessage("Please select a day and a time");
-		} else {
-			car.appointment = appointment;
-			// send information to server
-			// when response
-			// $("#main").load("templates/workorder.html");
-			console.log(appointment);
-			$('#order').load('/templates/workorder.html');
-		}
-	});
+	
 	$(document).on('click', '#btnPrint', function(){
 		window.print();
 	})

@@ -9,7 +9,9 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
-  <script src="../js/templates.js"></script>
+	<script src="../js/templates.js"></script>
+	<!-- <script src="../js/charge.js"></script> -->
+	<script src="https://checkout.stripe.com/checkout.js"></script>
 	<style>
 		html {
 			scroll-behavior: smooth;
@@ -244,6 +246,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/js/functions.js"></script>
 <script src="/js/car.js"></script>
+<script>
+var checkoutHandler = StripeCheckout.configure({
+  key: "pk_test_fHJB9fIE30QMwnuL4WQAT8jG",
+  locale: "auto"
+});
+
+$(document).on("click", "#btnPay", function() {
+  // when user clicks the appointment verify every field and payment information
+  // when the user has verified their dates
+  // send the car information to server
+  // make work order on server and let them enter pay information
+  let date = $('#txtDate').val().trim();
+  let time = $('#txtTime').val().trim();
+  let appointment = {
+    date: date,
+    time: time
+  }
+  if(!date || !time) {
+    showErrMessage("Please select a day and a time");
+  } else {
+    car.appointment = appointment;
+    // send information to server
+    // when response
+    // $("#main").load("templates/workorder.html");
+    checkoutHandler.open({
+      name: "Oil Change",
+      description: car.quoteAmt,
+      token: handleToken
+    });
+    console.log(appointment);
+    
+  }
+});
+
+function handleToken(token) {
+	let newToken = token;
+	token.quoteId = car.quoteId;
+  fetch("/charge", {
+    method: "POST",
+		headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newToken)
+  }).then(output => {
+    if (output.status === 200)
+      $('#order').load('/templates/workorder.html');
+    else{
+      alert("Your payment was not accepted, please try again");
+    }
+  })
+}
+</script>
 
 </body>
 </html>
