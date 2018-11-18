@@ -8,7 +8,7 @@ const axios = require("axios");
 module.exports = function(app) {
   app.post("/charge", function(req, res) {
       console.log(req.body.quoteId);  
-      axios.get("http://mobile-mechanic.herokuapp.com/api/quote/" + req.body.quoteId).then(function(response){
+      axios.get("http://mobile-mechanics.herokuapp.com/api/quote/" + req.body.quoteId).then(function(response){
       console.log(response.data.quoteAmt);
       var amount = response.data.quoteAmt * 100;
       stripe.customers.create({
