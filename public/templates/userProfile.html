@@ -155,8 +155,12 @@
       </div>
 
       <div class="col s12 m9">
-        <div class="parallax-container" id="car-display-container">
-          <div class="parallax"><img src="../images/aston-2118857_1280.jpg"></div>
+        <div class="parallax-container" id="order-display-container">
+          <div>Your upcoming appointments: 
+            <ul>
+              {{#each orders}}
+              <li>{{service}} | {{date}} | {{time}} | {{technician}}</li>
+              {{/each}}
         </div>
       </div>
 

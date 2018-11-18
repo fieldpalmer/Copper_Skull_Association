@@ -262,7 +262,8 @@ $(document).on("click", "#btnPay", function() {
   let appointment = {
     date: date,
     time: time
-  }
+	}
+	car.appointment = appointment;
   if(!date || !time) {
     showErrMessage("Please select a day and a time");
   } else {
@@ -288,12 +289,28 @@ function handleToken(token) {
 		headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newToken)
   }).then(output => {
-    if (output.status === 200)
-      $('#order').load('/templates/workorder.html');
-    else{
-      alert("Your payment was not accepted, please try again");
-    }
-  })
+		if (output.status === 200){
+			$.post('/api/orders/', {
+				customer_id: sessionStorage.getItem("id"),
+				carYear: car.year,
+				carModel: car.model,
+				carMake: car.make,
+				oilType: car.info.oilType,
+				oilAmount: car.info.quartsCapacity,
+				time: car.appointment.time,
+				date: car.appointment.date,
+				laborCost: car.quoteAmt
+			}).then(function(response){
+				$('#appt').load('/templates/workorder.html', function(){
+					$("#confirmation").text(response.id);
+					$("#cost").text(car.quoteAmt);
+					$("#appointment").text(car.appointment.time + " " + car.appointment.date);
+				});
+			});
+		} else{
+			alert("Your payment was not accepted, please try again");
+		}
+	});
 }
 </script>
 

@@ -7,11 +7,11 @@ module.exports = function(app) {
       quote += 5; // cost of oil filter
       quote += 35; // cost of labor + trip
       quote.toFixed(2);
-    
+      console.log(req.body);
     db.Quote.create({
-      carMake: req.body.make,
-      carModel: req.body.model,
-      carYear: req.body.year,
+      carMake: req.body.carMake,
+      carModel: req.body.carModel,
+      carYear: req.body.carYear,
       quoteAmt: quote,
       oilType: req.body.oilType,
       oilAmount: req.body.oilAmount

@@ -3,21 +3,41 @@ module.exports = function(sequelize, DataTypes) {
   const Order = sequelize.define('Order', {
 
     jobComplete: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 'Pending'
+      defaultValue: false
     },
-
-    jobDescription: {
-      type: DataTypes.TEXT,
+    carMake: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-
+    carModel: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    carYear: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     laborCost: {
       type: DataTypes.DECIMAL,
       allowNull: false
+    },
+    time: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    oilType: DataTypes.STRING,
+    oilAmount: DataTypes.STRING,
+    service: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "Oil Change"
     }
-
   });
 
   Order.associate = function(models) {
