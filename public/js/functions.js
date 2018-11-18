@@ -1,3 +1,7 @@
+$(function(){
+	// ability to display make when user is on quotes section
+	displayMake($('select#make'));
+})
 const displayQuoteTemplate = (location) => {
 	$(location).load('/templates/quote.html', function() {
 		// initiate mapquest search
@@ -48,4 +52,11 @@ const isAvailable = (date, time) => {
 	else {
 		return true; // return true
 	}
+}
+
+const isLogin = () => {
+	if(sessionStorage.length === 0)
+		return false;
+	else
+		return true;
 }
