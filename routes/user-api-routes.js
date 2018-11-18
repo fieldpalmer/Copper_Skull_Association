@@ -19,8 +19,9 @@ module.exports = function(app) {
 
   //checks their role and sends them to the appropriate profile page
   app.get("/profile", function(req, res) {
+    console.log(req);
     if (!req.user) {
-      res.sendFile(path.join(__dirname), "../public/templates/register.html");
+      res.sendFile(path.join(__dirname), "../public/templates/auth.html");
     }
     else {
       if(req.user.role === "technician"){
@@ -42,7 +43,8 @@ module.exports = function(app) {
         email: req.user.email,
         id: req.user.id,
         name: req.user.name,
-        location: req.user.location
+        location: req.user.location,
+        role: req.user.role
       });
     }
   });

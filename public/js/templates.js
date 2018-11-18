@@ -68,6 +68,18 @@ $(document).ready(function(){
 	
 	$(document).on('click', '#btnPrint', function(){
 		window.print();
+	});
+
+	$(document).on('click', '#top-nav-auth', function(){
+		$.get('/api/user_data').then(function(response){
+			if (response.role == "technician"){
+				window.location.href = "/templates/techProfile.html";
+			} else if (response.role == "User"){
+				window.location.href = "/templates/userProfile.html";
+			} else {
+				window.location.href = "/templates/auth.html";
+			}
+		})
 	})
 
 	$(document).on("click", "#registerBtn", function(event) {
@@ -125,5 +137,16 @@ $(document).ready(function(){
 		// $("#picture").src("");
 
 	});
+
+	function checkLogin(){
+		$.get('/api/user_data').then(function(response){
+			console.log(response);
+			if(response.email && $("#top-nav-auth").text() != "Logout"){
+				$("#top-nav-auth").text("My Account");
+				}
+		});
+	}
+	checkLogin();
+
 
 });
