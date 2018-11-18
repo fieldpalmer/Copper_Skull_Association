@@ -39,7 +39,7 @@ require('./routes/quote-api-routes')(app);
 let syncOptions = { force: false };
 
 if (env === 'test' || env === 'development') {
-  // syncOptions.force = true;
+  syncOptions.force = true;
 }
 
 db.sequelize.sync(syncOptions).then(function() {

@@ -26,6 +26,7 @@ $(document).ready(function() {
                 user.technicians.push(tech);
             }
           }
+          registerPartial('order-partial', '#order-partial');
           renderTemplate(user);
         });
       });
@@ -38,6 +39,11 @@ $(document).ready(function() {
     var template = Handlebars.compile(source);
     var html = template(data);
     $("#app").html(html);
+  }
+
+  function registerPartial(name, partialId) {
+    let source = $(partialId).text();
+    Handlebars.registerPartial(name, source);
   }
 });
 

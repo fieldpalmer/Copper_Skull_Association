@@ -52,6 +52,8 @@ module.exports = function(app) {
     console.log(req);
     db.User.create({
       name: req.body.fName + " " + req.body.lName,
+      // firstName: req.body.fName,
+      // lastName: req.body.lName,
       email: req.body.email,
       phone: req.body.phone,
       location: req.body.areaCode,

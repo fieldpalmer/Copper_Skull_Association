@@ -49,3 +49,10 @@ const isAvailable = (date, time) => {
 		return true; // return true
 	}
 }
+
+const isLogin = () => {
+	if(sessionStorage.length === 0)
+		return false;
+	else
+		return true;
+}

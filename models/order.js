@@ -1,18 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
 
   const Order = sequelize.define('Order', {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    // firstName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
+    // lastName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
+    // address: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
     jobComplete: {
       type: DataTypes.STRING,
       allowNull: false,

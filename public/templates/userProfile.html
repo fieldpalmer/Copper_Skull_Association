@@ -12,38 +12,15 @@
   <script src="../js/templates.js"></script>
   <script src="../js/userProfile.js"></script>
 
-  <!-- <script id="user-page-template" type="text/x-handlebars-template">
-    <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
-      <div class="section">
-        <div class="container">
-          <div class="row valign-wrapper">
-            <div class="col s12 m4">
-              <div class="card" style="border-radius: 5px; background-color: #f9b65385">
-                <div class="card-image">
-                  <img src="../images/dude-with-car.jpg" id="userProfPic">
-                </div>
-                <div class="card-content indigo-text text-darken-3">
-                  <p>{{carMake}}</p>
-                  <p>{{userLocation}}</p>
-                  <p>{{memberSince}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m7">
-              
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
-              <div class="row">
-                <h5 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h5>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
-    </div>
-  </script> -->
-
+  <script id="order-partial" type="text/x-handlebars-template">
+    <li class="collection-item avatar valign-wrapper">
+      <p>Order ID: {{order_id}}</p>
+      <p>Job: {{job_description}}</p>
+      <p>Cost: {{labor_cost}}</p>
+      <p>Date: {{date}}</p>
+      <p>Time: {{time}}</p>
+    </li>
+  </script>
 
 </head>
 
@@ -167,6 +144,19 @@
           </ul>
 
         </div>
+      </div>
+    </div>
+
+    <div class="row flex">
+      <h4 class="center" style="padding-bottom: 5px;">Your Orders</h4>
+      <h5 class="center" style="padding-bottom: 5px;">View and update your current orders</h5>
+
+      <div class="col s12 m8">
+        <ul class="collection with-header">
+          {{each orders}}
+            {{> order-partial}}
+          {{/each}}
+        </ul>
       </div>
     </div>
     
