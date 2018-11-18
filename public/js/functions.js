@@ -55,9 +55,7 @@ const isAvailable = (date, time) => {
 }
 
 const isLogin = () => {
-	let user = sessionStorage.userName;
-	let email = sessionStorage.userEmail;
-	if(!user || !email)
+	if(sessionStorage.length === 0)
 		return false;
 	else
 		return true;
