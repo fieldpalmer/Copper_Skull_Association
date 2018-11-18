@@ -71,15 +71,20 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#top-nav-auth', function(){
-		$.get('/api/user_data').then(function(response){
-			if (response.role == "technician"){
-				window.location.href = "/templates/techProfile.html";
-			} else if (response.role == "User"){
-				window.location.href = "/templates/userProfile.html";
-			} else {
-				window.location.href = "/templates/auth.html";
-			}
-		})
+		if ($("#top-nav-auth").text() == "Logout"){
+			$.get("/logout");
+			window.location.href = "/";
+		} else { 
+			$.get('/api/user_data').then(function(response){
+				if (response.role == "technician"){
+					window.location.href = "/templates/techProfile.html";
+				} else if (response.role == "User"){
+					window.location.href = "/templates/userProfile.html";
+				} else {
+					window.location.href = "/templates/auth.html";
+				}
+			});
+		}
 	})
 
 	$(document).on("click", "#registerBtn", function(event) {
