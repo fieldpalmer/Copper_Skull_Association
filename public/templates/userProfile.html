@@ -157,11 +157,18 @@
       <div class="col s12 m9">
         <div class="parallax-container" id="order-display-container">
           <div>Your upcoming appointments: 
-            <ul>
+            <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
               {{#each orders}}
-              <li>{{service}} | {{date}} | {{time}} | {{technician}}</li>
+              <li data-order-id="{{this.id}}">
+                <h5>{{this.date}} | {{this.time}}</h5>
+                <h5>{{this.service}}</h5>
+                {{#if technician_id}}
+                <h5>{{technician_id}}</h5>
+                {{else}}
+                <button class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
+                {{/if}}
+              </li>
               {{/each}}
-        </div>
       </div>
 
     </div>

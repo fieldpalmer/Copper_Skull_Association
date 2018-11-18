@@ -77,11 +77,9 @@ $(document).ready(function(){
 			lName: $("#lName").val().trim(),
 			email: $("#emailReg").val().trim(),
 			phone: $("#phone").val().trim(),
-			// areaCode: $("#areaCode").val().trim(),
-			password: $("#passwordReg").val().trim(),
-			// picture: $("#picture").src()
+			password: $("#passwordReg").val().trim()
 		}
-		console.log(newUser);
+	
 
 		$.post("/api/register", newUser).then(function(response) {
 			window.location.replace(response);
