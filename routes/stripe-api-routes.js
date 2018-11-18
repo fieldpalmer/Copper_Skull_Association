@@ -7,11 +7,10 @@ const axios = require("axios");
 
 module.exports = function(app) {
   app.post("/charge", function(req, res) {
-//       console.log(req.body.quoteId);  
-//       axios.get("http://mobile-mechanic.herokuapp.com/api/quote/" + req.body.quoteId).then(function(response){
-//       console.log(response.data.quoteAmt);
-//       var amount = response.data.quoteAmt * 100;
-    var amount = 100;
+      console.log(req.body.quoteId);  
+      axios.get("http://mobile-mechanics.herokuapp.com/api/quote/" + req.body.quoteId).then(function(response){
+      console.log(response.data.quoteAmt);
+      var amount = response.data.quoteAmt * 100;
       stripe.customers.create({
         email: req.body.email,
         card: req.body.id
