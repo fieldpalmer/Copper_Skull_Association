@@ -102,4 +102,14 @@ module.exports = function(app) {
       });
   });
 
+  app.get('/api/users/orders/:id', function(req, res) {
+    db.Order.findAll({
+      where: {
+        customer_id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
 };
