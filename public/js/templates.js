@@ -98,7 +98,36 @@ $(document).ready(function(){
 		console.log(newUser);
 
 		$.post("/api/register", newUser).then(function(response) {
-			console.log(response);
+			window.location.replace(response);
+		});
+
+		$("#fName").val("");
+		$("#lName").val("");
+		$("#emailReg").val("");
+		$("#phone").val("");
+		$("#txtAddress").val("");
+		$("#areaCode").val("");
+		$("#passwordReg").val("");
+		$("#pwConfirm").val("");
+		// $("#picture").src("");
+
+	});
+
+	$(document).on("click", "#techRegisterBtn", function(event) {
+		event.preventDefault();
+		let newUser = {
+			name: $("#fName").val().trim() + $("#lName").val().trim(),
+			email: $("#emailReg").val().trim(),
+			phone: $("#phone").val().trim(),
+			// areaCode: $("#areaCode").val().trim(),
+			password: $("#passwordReg").val().trim(),
+			role: "technician"
+			// picture: $("#picture").src()
+		}
+		console.log(newUser);
+
+		$.post("/api/technician", newUser).then(function(response) {
+			window.location.replace(response);
 		});
 
 		$("#fName").val("");

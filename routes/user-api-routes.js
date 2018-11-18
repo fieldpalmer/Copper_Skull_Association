@@ -54,8 +54,7 @@ module.exports = function(app) {
       name: req.body.fName + " " + req.body.lName,
       email: req.body.email,
       phone: req.body.phone,
-      location: req.body.areaCode,
-      password: req.body.password
+      password: req.body.password,
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
