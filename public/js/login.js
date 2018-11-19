@@ -26,7 +26,6 @@ $(document).ready(function() {
       email: email,
       password: password
     }).then(function(data) {
-      console.log("data: " + data);
       window.location.replace(data);
     }).fail(function(error){
       if(error.status === 401){

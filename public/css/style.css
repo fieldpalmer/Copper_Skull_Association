@@ -6,8 +6,4 @@ body {
 
 main {
     flex: 1 0 auto;
-}
-
-.parallax-container {
-    background-color: rgba(0, 0, 0, 0.338);
-}
+  }
