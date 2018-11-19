@@ -140,13 +140,16 @@
             <li data-order-id="{{this.id}}">
               <h5>{{this.date}} | {{this.time}}</h5>
               <h5>{{this.service}}</h5>
-              {{#if technician_id}}
-              <h5>{{technician_id}}</h5>
-              {{else}}
-              <button class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
-              {{/if}}
+              <h5>{{this.customer.name}}</h5>
+              <h5>{{this.carMake}}</h5>
+              <h5>{{this.carModel}}</h5>
+              <h5>{{this.carYear}}</h5>
+              {{#unless jobComplete}}
+              <button id="order-complete-button" class="btn-large blue waves-effect waves-light cyan lighten-1">Order Complete</button>
+              {{/unless}}
             </li>
             {{/each}}
+    </div>
     </div>
 
     <!-- view work orders section  -->

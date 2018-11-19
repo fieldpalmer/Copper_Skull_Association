@@ -15,14 +15,14 @@ $(document).ready(function() {
         user.carModel = carData[0].model;
         user.carYear = carData[0].year;
       }
-      $.get("/api/orders/" + userData.id).then(function(orderData){
+      $.get("/api/technician/orders/" + userData.id).then(function(orderData){
         if(orderData){
           for(let j=0; j<orderData.length; j++){
             orderData[j].date = orderData[j].date.split("T")[0];
           }
-          console.log(orderData);
+          console.log('order data', orderData);
           user.orders = orderData
-        };
+        }
         // $.get("/api/technician").then(function(techData){
         //   if(techData.length > 0){
         //   user.technicians = [];
@@ -42,10 +42,11 @@ $(document).ready(function() {
   });
 
   function renderTemplate(data) {
-    console.log(data);
+    // console.log(data);
     var source = $("#tech-page-template").text();
     var template = Handlebars.compile(source);
     var html = template(data);
+    console.log('data', data);
     $("#app").html(html);
   }
 });
