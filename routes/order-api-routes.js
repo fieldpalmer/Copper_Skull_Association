@@ -25,10 +25,6 @@ module.exports = function(app) {
       });
   });
 
-  app.post('/api/orders/complete/:id', function(req, res) {
-    
-  });
-
   app.get('/api/orders/:id', function(req, res) {
     db.Order.findOne({
       where: {
