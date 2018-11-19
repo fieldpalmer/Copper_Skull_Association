@@ -21,32 +21,60 @@ $(document).ready(function() {
           for(let j=0; j<orderData.length; j++){
             orderData[j].date = orderData[j].date.split("T")[0];
           }
-          console.log(orderData);
           user.orders = orderData
         };
         $.get("/api/technician").then(function(techData){
           if(techData.length > 0){
-          user.technicians = [];
+            user.technicians = [];
             for(let i=0; i<10 && i<techData.length; i++){
-              tech = {};
-                tech.techSkills = techData[i].skills;
-                // tech.techRating = techData[i].rating;
-                user.technicians.push(tech);
+              var tech = {};
+              tech.techID = techData[i].id;
+              tech.techSkills = techData[i].skills;
+              tech.userId = techData[i].UserId;
+              user.technicians.push(tech);
+              // console.log(tech);
+              // tech.techRating = techData[i].rating;
+            }
+            for(let j=0; j<user.technicians.length; j++){
+              $.get("/api/users/" + user.technicians[j].userId).then(function(response){
+                user.technicians[j].name = response.name;
+                for(let h=0; h<user.orders.length; h++){
+                  if(user.orders[h].technician_id == user.technicians[j].techID){
+                    user.orders[h].techName = user.technicians[j].name;
+                  }
+                }
+                renderTemplate(user);
+              });
+
             }
           }
-          console.log(user);
-          renderTemplate(user);
         });
       });
     });
   });
 
   function renderTemplate(data) {
-    console.log(data);
+    // console.log(data);
     var source = $("#user-page-template").text();
     var template = Handlebars.compile(source);
     var html = template(data);
     $("#app").html(html);
   }
 
+  //get order ID
+  //show technicians
+  //on tech select, get tech id
+  //update order with tech id
+
+  $(document).on("click", ".addTech", function(){
+    var order = {};
+    order.id = $(this).attr("data-order-id");
+    $("#tech-select-container").show();
+    $(document).on("click", ".selectTech", function(){
+      order.technician_id = $(this).attr("data-tech-id");
+      $.post("/api/orders/tech", order).then(function(){
+        location.reload();
+      });
+    });
+  });
 });

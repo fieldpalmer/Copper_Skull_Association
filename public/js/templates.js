@@ -145,7 +145,7 @@ $(document).ready(function(){
 
 	function checkLogin(){
 		$.get('/api/user_data').then(function(response){
-			console.log(response);
+			// console.log(response);
 			if(response.email && $("#top-nav-auth").text() != "Logout"){
 				$("#top-nav-auth").text("My Account");
 				}

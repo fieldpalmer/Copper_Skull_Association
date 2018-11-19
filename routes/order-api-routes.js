@@ -45,4 +45,18 @@ module.exports = function(app) {
       res.json(dbOrder);
     });
   });
+
+  app.post('/api/orders/tech', function(req, res) {
+    db.Order.update(
+      {
+        technician_id: req.body.technician_id
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbOrder) {
+        res.json(dbOrder);
+      })
+  });
 };
