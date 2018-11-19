@@ -14,42 +14,40 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     jobComplete: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 'Pending'
+      defaultValue: false
     },
-    jobDescription: {
-      type: DataTypes.TEXT,
+    carMake: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    carModel: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    carYear: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     laborCost: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    date: {
-      type: DataTypes.STRING
-    },
     time: {
-      type: DataTypes.STRING
-    },
-    vehicle: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    phone: {
-      type: DataTypes.STRING,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false
     },
-    email: {
+    oilType: DataTypes.STRING,
+    oilAmount: DataTypes.STRING,
+    service: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    quartsCapacity: {
-      type: DataTypes.STRING
-    },
-    technicianAssigned: {
-      type: DataTypes.STRING,
-      defaultValue: 'No Technician Assigned'
+      allowNull: false,
+      defaultValue: "Oil Change"
     }
   });
 

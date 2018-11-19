@@ -32,7 +32,7 @@
             <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
             <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
             <li><a id="top-nav-about" href="./about.html">About Us</a></li>
-            <li><a id="top-nav-auth" href="./auth.html">Login/Register</a></li>
+            <li><a id="top-nav-auth">Login/Register</a></li>
           </ul>
         </div>
       </nav>
@@ -41,7 +41,7 @@
     <!-- sidebar nav on shrink -->
     <ul class="sidenav" id="mobile-demo">
       <li class="active"><a href="/index.html">Home</a></li>
-      <li><a id="side-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+      <li><a id="side-nav-quote" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
       <li><a id="side-nav-users" href="./userHome.html">Users</a></li>
       <li><a id="side-nav-techs" href="./techHome.html">Technicians</a></li>
       <li><a id="side-nav-about" href="./about.html">About Us</a></li>
@@ -224,7 +224,7 @@
 		  <div class="col s12 m4">
 			<div class="container">
 			  <ul>
-				<li><a class="white-text" href="./quote.html">Get Serviced Now</a></li>
+				<li><a class="white-text" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
 				<li><a class="white-text" href="./about.html">About Us</a></li>
 				<li><a class="white-text" href="./contact.html">Contact Us</a></li>
 				<li><a class="white-text" href="./auth.html">Login/Register</a></li>
@@ -246,6 +246,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/js/functions.js"></script>
 <script src="/js/car.js"></script>
+<!-- wasn't working with JS in separate file - issue loading stripe cdn referenced in this file. Will try to move to separate file if there's time. Issue loadin-->
 <script>
 var checkoutHandler = StripeCheckout.configure({
   key: "pk_test_fHJB9fIE30QMwnuL4WQAT8jG",
@@ -262,7 +263,8 @@ $(document).on("click", "#btnPay", function() {
   let appointment = {
     date: date,
     time: time
-  }
+	}
+	car.appointment = appointment;
   if(!date || !time) {
     showErrMessage("Please select a day and a time");
   } else {
@@ -272,7 +274,7 @@ $(document).on("click", "#btnPay", function() {
     // $("#main").load("templates/workorder.html");
     checkoutHandler.open({
       name: "Oil Change",
-      description: car.quoteAmt,
+      description: "$" + car.quoteAmt,
       token: handleToken
     });
     console.log(appointment);
@@ -282,18 +284,34 @@ $(document).on("click", "#btnPay", function() {
 
 function handleToken(token) {
 	let newToken = token;
-	token.quoteId = car.quoteId;
+	newToken.quoteId = car.quoteId;
   fetch("/charge", {
     method: "POST",
 		headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newToken)
   }).then(output => {
-    if (output.status === 200)
-      $('#order').load('/templates/workorder.html');
-    else{
-      alert("Your payment was not accepted, please try again");
-    }
-  })
+		if (output.status === 200){
+			$.post('/api/orders/', {
+				customer_id: sessionStorage.getItem("id"),
+				carYear: car.year,
+				carModel: car.model,
+				carMake: car.make,
+				oilType: car.info.oilType,
+				oilAmount: car.info.quartsCapacity,
+				time: car.appointment.time,
+				date: car.appointment.date,
+				laborCost: car.quoteAmt
+			}).then(function(response){
+				$('#appt').load('/templates/workorder.html', function(){
+					$("#confirmation").text(response.id);
+					$("#cost").text(car.quoteAmt);
+					$("#appointment").text(car.appointment.time + " " + car.appointment.date);
+				});
+			});
+		} else{
+			alert("Your payment was not accepted, please try again");
+		}
+	});
 }
 </script>
 

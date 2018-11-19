@@ -30,15 +30,16 @@ $(document).ready(function(){
 			// if everything passes...
 			else {
 				$.post('/api/quote/', {
-					make: car.make,
-					model: car.model,
-					year: car.year,
+					carMake: car.make,
+					carModel: car.model,
+					carYear: car.year,
 					oilType: car.info.oilType,
 					oilAmount: car.info.quartsCapacity
 				}).then(response => {
 					//pull quoteId from response to be used later
 					car.quoteId = response.id;
-					console.log(response);
+					//add quoteAmt to car object
+					car.quoteAmt = response.quoteAmt;
 					$("#calculator").load('/templates/estimate.html', function() {
 						$('#carInfo').text(`${car.year} ${car.make} ${car.model}`);
 						$('#oilType').text(car.info.oilType);
@@ -67,6 +68,28 @@ $(document).ready(function(){
 	
 	$(document).on('click', '#btnPrint', function(){
 		window.print();
+	});
+
+	$(document).on('click', '#top-nav-auth', function(){
+		if ($("#top-nav-auth").text() == "Logout"){
+			$.get("/logout");
+			window.location.href = "/";
+		} else { 
+			$.get('/api/user_data').then(function(response){
+				if (response.role == "technician"){
+					window.location.href = "/templates/techProfile.html";
+				} else if (response.role == "User"){
+					window.location.href = "/templates/userProfile.html";
+				} else {
+					window.location.href = "/templates/auth.html";
+				}
+			});
+		}
+	});
+
+	
+	$(document).on('click', '#btnPrint', function(){
+		window.print();
 	})
 
 	$(document).on("click", "#registerBtn", function(event) {
@@ -76,11 +99,9 @@ $(document).ready(function(){
 			lName: $("#lName").val().trim(),
 			email: $("#emailReg").val().trim(),
 			phone: $("#phone").val().trim(),
-			// areaCode: $("#areaCode").val().trim(),
-			password: $("#passwordReg").val().trim(),
-			// picture: $("#picture").src()
+			password: $("#passwordReg").val().trim()
 		}
-		console.log(newUser);
+	
 
 		$.post("/api/register", newUser).then(function(response) {
 			window.location.replace(response);
@@ -101,7 +122,9 @@ $(document).ready(function(){
 	$(document).on("click", "#techRegisterBtn", function(event) {
 		event.preventDefault();
 		let newUser = {
-			name: $("#fName").val().trim() + $("#lName").val().trim(),
+			// name: $("#fName").val().trim() + $("#lName").val().trim(),
+			fName: $("#fName").val().trim(),
+			lName: $("#lName").val().trim(),
 			email: $("#emailReg").val().trim(),
 			phone: $("#phone").val().trim(),
 			// areaCode: $("#areaCode").val().trim(),
@@ -126,5 +149,16 @@ $(document).ready(function(){
 		// $("#picture").src("");
 
 	});
+
+	function checkLogin(){
+		$.get('/api/user_data').then(function(response){
+			console.log(response);
+			if(response.email && $("#top-nav-auth").text() != "Logout"){
+				$("#top-nav-auth").text("My Account");
+				}
+		});
+	}
+	checkLogin();
+
 
 });
