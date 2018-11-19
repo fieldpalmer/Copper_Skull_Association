@@ -155,20 +155,44 @@
       </div>
 
       <div class="col s12 m4">
-        <div class="parallax-container" id="order-display-container">
-            <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
-              {{#each orders}}
-              <li>
-                <h5>{{this.date}} | {{this.time}}</h5>
-                <h5>{{this.service}}</h5>
-                {{#if technician_id}}
+        <div class="row">
+          <div id="order-display-container">
+              <h5>Upcoming appointments</h5> 
+              <ul class="collection with-header" style="height: 200px; overflow-y: scroll">
+                {{#each orders}}
+                  {{#unless jobComplete}}
+                    <li>
+                      <h5>{{this.date}} | {{this.time}}</h5>
+                      <h5>{{this.service}}</h5>
+                      {{#if technician_id}}
+                            <h5>Technician: {{this.techName}}</h5>
+                      {{else}}
+                      <button data-order-id="{{this.id}}" class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
+                      {{/if}}
+                    </li>
+                __________________________________
+                  {{/unless}}
+                {{/each}}
+              </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="parallax-container" id="order-display-container">
+              <h5>Past orders</h5>
+              <ul class="collection with-header" style="height: 200px; overflow-y: scroll">
+                {{#each orders}} 
+                  {{#if jobComplete}}
+                    <li>
+                      <h5>{{this.date}} </h5>
+                      <h5>{{this.service}}</h5>
                       <h5>Technician: {{this.techName}}</h5>
-                {{else}}
-                <button data-order-id="{{this.id}}" class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
-                {{/if}}
-              </li>
-              __________________________________
-              {{/each}}
+                      <button data-user-id="{{this.custId}}" data-tech-id="{{this.technician_id}}" class="reviewOrder btn-large blue waves-effect waves-light cyan lighten-1">Leave a review</button>
+                    </li>
+                  __________________________________
+                  {{/if}}
+                {{/each}}
+              </ul>
+          </div>
         </div>
       </div>
       <div class="col s12 m5">
@@ -188,6 +212,32 @@
                 </li>
                 {{/each}}
               </ul>
+        </div>
+      </div>
+      <div class="col s12 m5">
+        <div class="parallax-container" hidden id="review-box">
+          <h4 id="review-header"></h4>
+          <div class="collection with-header" style="height: 450px; overflow-y: scroll">
+              <form id="review-form">
+                <div class="form-container">
+                  <div class="row">
+                    <div class="input-field col s12">
+                        <h4>Rating (1-5)</h4>
+                        <div class="col s1">
+                      <input type="number" min="1" max="5" id="review-rating">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <h4>Tell us about your experience</h4>
+                      <textarea id="review-text" cols="50" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <button id="addReview" class="btn-large blue waves-effect waves-light cyan lighten-1">Post your review</button>
+                </div>
+              </form>
+          </div>
         </div>
       </div>
     </div>
