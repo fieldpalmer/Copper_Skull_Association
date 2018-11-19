@@ -19,6 +19,7 @@ $(document).ready(function() {
       $.get("/api/users/orders/" + userData.id).then(function(orderData){
         if(orderData){
           for(let j=0; j<orderData.length; j++){
+            orderData[j].custId = user.id;
             orderData[j].date = orderData[j].date.split("T")[0];
           }
           user.orders = orderData
@@ -45,9 +46,8 @@ $(document).ready(function() {
                 }
                 renderTemplate(user);
               });
-
             }
-          }
+          } else{renderTemplate(user)};
         });
       });
     });
@@ -74,6 +74,21 @@ $(document).ready(function() {
       order.technician_id = $(this).attr("data-tech-id");
       $.post("/api/orders/tech", order).then(function(){
         location.reload();
+      });
+    });
+  });
+
+  $(document).on("click", ".reviewOrder", function(){
+    var review= {};
+    review.order_id = $(this).attr("data-order-id");
+    review.technician_id = parseInt($(this).attr("data-tech-id")); //tech's userId, not their ID from tech table
+    review.customer_id = parseInt($(this).attr("data-user-id")); 
+    $("#review-box").show();
+    $(document).on("click", "#addReview", function(){
+      review.rating = $("#review-rating").val();
+      review.reviewText = $("#review-text").val();
+      $.post("/api/review/", review).then(function(){
+          location.reload();
       });
     });
   });

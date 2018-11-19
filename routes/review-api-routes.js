@@ -3,9 +3,25 @@ const db = require('../models');
 module.exports = function(app) {
   //post route, build the body with 'technician_id' for technician and 'customer_id' for customer
   app.post('/api/review', function(req, res) {
-    db.Review.create(req.body).then(function(dbReview) {
-      res.json(dbReview);
+    db.Review.create({
+      technician_id: req.body.technician_id,
+      customer_id: req.body.customer_id,
+      rating: req.body.rating,
+      reviewText: req.body.reviewText
+    }).then(function(dbReview) {
+      db.Order.update(
+        {
+          reviewed: true
+        },
+        {
+          where: {
+            id: req.body.order_id
+          }
+      }).then(function(){
+        res.json(dbReview);
+      });
     });
+    
   });
 
   //find all reviews related to a specific technician
