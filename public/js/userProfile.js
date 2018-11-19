@@ -89,9 +89,7 @@ $(document).ready(function() {
       review.rating = $("#review-rating").val();
       review.reviewText = $("#review-text").val();
       $.post("/api/review", review).then(function(){
-        $.post("/api/orders/review/" + review.order_id).then(function(){
         location.reload();
-        });
       });
     });
   });
