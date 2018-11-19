@@ -154,23 +154,42 @@
         </ul>
       </div>
 
-      <div class="col s12 m9">
+      <div class="col s12 m4">
         <div class="parallax-container" id="order-display-container">
-          <div>Your upcoming appointments: 
             <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
               {{#each orders}}
-              <li data-order-id="{{this.id}}">
+              <li>
                 <h5>{{this.date}} | {{this.time}}</h5>
                 <h5>{{this.service}}</h5>
                 {{#if technician_id}}
-                <h5>{{technician_id}}</h5>
+                      <h5>Technician: {{this.techName}}</h5>
                 {{else}}
-                <button class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
+                <button data-order-id="{{this.id}}" class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
                 {{/if}}
               </li>
+              __________________________________
               {{/each}}
+        </div>
       </div>
-
+      <div class="col s12 m5">
+        <div class="parallax-container" hidden id="tech-select-container">
+            <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
+                {{#each technicians}}
+                <li class="collection-item avatar valign-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Earnheardt-headshot-m-1.jpg" class="circle">
+                    <ul>
+                      <li>
+                          <h5 class="techName">{{this.name}}</h5>
+                          <p class="techSkills">{{this.techSkills}}</p>
+                          <p class="techRating">{{this.techRating}}</p>
+                          <button data-tech-name="{{this.name}}" data-tech-id="{{this.userId}}" class="selectTech btn-large blue waves-effect waves-light cyan lighten-1">Choose this technician</button>
+                      </li>
+                    </ul>
+                </li>
+                {{/each}}
+              </ul>
+        </div>
+      </div>
     </div>
 
     <!-- explore technicians -->
@@ -191,7 +210,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Earnheardt-headshot-m-1.jpg" class="circle">
                 <ul>
                   <li>
-                      <h5 class="techName">{{this.techName}}</h5>
+                      <h5 class="techName">{{this.name}}</h5>
                       <p class="techSkills">{{this.techSkills}}</p>
                       <p class="techRating">{{this.techRating}}</p>
                   </li>

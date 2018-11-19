@@ -15,8 +15,14 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(dbOrder) {
-        res.json(dbOrder);
-      })
+        db.Order.findOne({
+          where: {
+            id: req.body.id
+          }
+        }).then(function(dbOrder) {
+          res.json(dbOrder);
+        });
+      });
   });
 
   app.get('/api/orders/:id', function(req, res) {
@@ -44,5 +50,19 @@ module.exports = function(app) {
     }).then(function(dbOrder) {
       res.json(dbOrder);
     });
+  });
+
+  app.post('/api/orders/tech', function(req, res) {
+    db.Order.update(
+      {
+        technician_id: req.body.technician_id
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbOrder) {
+        res.json(dbOrder);
+      })
   });
 };
