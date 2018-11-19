@@ -46,42 +46,36 @@
 
     <!-- jumbotron header -->
     <script id="user-page-template" type="text/x-handlebars-template">
-    <div class="parallax-container" style="background-color: rgba(0, 0, 0, 0.5)">
-      <div class="section">
-        <div class="container">
-          <div class="row valign-wrapper">
+    <!-- <div class="parallax-container"> -->
+      <div class="container">
+        <div class="section">
+          <div class="row">
             <div class="col s12 m4">
               <div class="card" style="border-radius: 5px; background-color: #f9b65385">
                 <div class="card-image">
-                  <img src="../images/dude-with-car.jpg" id="userProfPic">
-                </div>
-                <div class="card-content indigo-text text-darken-3">
-                  <p>{{carMake}}</p>
-                  <p>{{userLocation}}</p>
-                  <p>{{memberSince}}</p>
+                  <img src="../images/profile-728591_1280.jpg" id="userProfPic">
                 </div>
               </div>
             </div>
-            <div class="col s12 m7">
-
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
+            <div class="col s12 m7 offset-m1">
+              <h2 class="header indigo-text text-darken-2 "> Welcome<br> {{name}}<hr></h2>
               <div class="row">
-                <h5 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h5>
+                <h3 class="header orange-text text-lighten-2">What can Mobile Mechanic™ help you with today?</h3>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-      <div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
-    </div>
+      <hr>
+      <!-- <div class="parallax"><img src="../images/dog-1149964_1280.jpg" id="userBgPic"></div> -->
+    <!-- </div> -->
 
     <!-- how does it work container  -->
     <div class="container">
       <div class="section">
         <div class="row">
 
-          <div class="col s6 m4">
+          <div class="col s12 m4">
             <div class="icon-block">
               <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">attach_money</i></h2>
               <h5 class="center">Get a Quote</h5>
@@ -105,7 +99,7 @@
             </div>
           </div>
 
-          <div class="col s6 m4">
+          <div class="col s12 m4">
             <div class="icon-block">
               <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">assignment_ind</i></h2>
               <h5 class="center">Update Info</h5>
@@ -123,10 +117,10 @@
 
     <!-- User's Car Detail Section -->
     <div class="row flex">
-      <h4 class="center" style="padding-bottom: 5px;">Your Car</h4>
-      <h5 class="center" style="padding-bottom: 5px;">Browse services and upgrades for your car</h5>
+      <h4 class="center" style="padding-bottom: 5px;">Your Accounts</h4>
+      <h5 class="center" style="padding-bottom: 5px;">Browse services, orders, and technicians</h5>
 
-      <div class="col s12 m3">
+      <div class="col s12 m4">
         <ul class="collection with-header">
           <li class="collection-item avatar valign-wrapper">
             <img src="https://cdn4.iconfinder.com/data/icons/bold-car-element-1/512/drawing8-512.png" class="circle">
@@ -149,7 +143,7 @@
             <p class="flow-text">Bulb Replacements</p>
           </li>
           <li class="collection-item avatar valign-wrapper">
-            <a href="#exploreTechnicians"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="getQuote">Start New Order</button></a>
+            <a href="./userHome.html#quoteSection"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="getQuote">Start New Order</button></a>
           </li>
         </ul>
       </div>
@@ -197,8 +191,8 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m5">
-        <div class="parallax-container" hidden id="tech-select-container">
+      <div class="col s12 m4">
+        <div class="container" hidden id="tech-select-container">
             <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
                 {{#each technicians}}
                 <li class="collection-item avatar valign-wrapper">
@@ -251,11 +245,11 @@
         <h4 class="center" style="padding: 15px;">Our Technicians</h4>
         <h5 class="center" style="padding-bottom: 5px;">Find the best service providers near you, and add them to your Favorites!</h5>
 
-        <div class="col s11 m8">
+        <div class="col s12 m8">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103487.0474471834!2d-78.5421855!3d35.84973345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5a49f3912e6f%3A0xb9c9bbed7cf69f36!2sNortheast+Raleigh%2C+Raleigh%2C+NC!5e0!3m2!1sen!2sus!4v1541797643434" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
 
-        <div class="col s1 m4" id="technicians-list">
+        <div class="col s12 m4" id="technicians-list">
           <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
             {{#each technicians}}
             <li class="collection-item avatar valign-wrapper">
