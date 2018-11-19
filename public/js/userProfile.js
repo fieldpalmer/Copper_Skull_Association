@@ -80,16 +80,15 @@ $(document).ready(function() {
 
   $(document).on("click", ".reviewOrder", function(){
     var review= {};
-    review.order_id = parseInt($(this).attr("data-order-id"));
-    console.log(review.order_id);
+    review.order_id = $(this).attr("data-order-id");
     review.technician_id = parseInt($(this).attr("data-tech-id")); //tech's userId, not their ID from tech table
     review.customer_id = parseInt($(this).attr("data-user-id")); 
     $("#review-box").show();
     $(document).on("click", "#addReview", function(){
       review.rating = $("#review-rating").val();
       review.reviewText = $("#review-text").val();
-      $.post("/api/review", review).then(function(){
-        location.reload();
+      $.post("/api/review/", review).then(function(){
+          location.reload();
       });
     });
   });

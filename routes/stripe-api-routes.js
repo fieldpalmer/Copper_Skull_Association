@@ -8,7 +8,7 @@ const axios = require("axios");
 module.exports = function(app) {
   app.post("/charge", function(req, res) {
       //get quoted amount from database to determin charge amount - prevents charge amt from being changed on front end
-      axios.get("http://mobile-mechanics.herokuapp.com/api/quote/" + req.body.quoteId).then(function(response){
+      axios.get("http://localhost:8088/api/quote/" + req.body.quoteId).then(function(response){
       var amount = response.data.quoteAmt * 100;
       //stripe stuff
       stripe.customers.create({
