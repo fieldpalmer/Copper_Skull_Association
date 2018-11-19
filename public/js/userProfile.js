@@ -39,7 +39,7 @@ $(document).ready(function() {
               $.get("/api/users/" + user.technicians[j].userId).then(function(response){
                 user.technicians[j].name = response.name;
                 for(let h=0; h<user.orders.length; h++){
-                  if(user.orders[h].technician_id == user.technicians[j].techID){
+                  if(user.orders[h].technician_id == user.technicians[j].userId){
                     user.orders[h].techName = user.technicians[j].name;
                   }
                 }
