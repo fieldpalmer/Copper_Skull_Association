@@ -4,6 +4,8 @@ module.exports = function(app) {
   app.post('/api/technician', function(req, res) {
     //spread operator '...'
     let user = {...req.body};
+    user.name = user.fName + ' ' + user.lName;
+    console.log('user', user);
     user.Technician = {};
     db.User.create(user, {
       include: [db.Technician]

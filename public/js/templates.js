@@ -117,7 +117,9 @@ $(document).ready(function(){
 	$(document).on("click", "#techRegisterBtn", function(event) {
 		event.preventDefault();
 		let newUser = {
-			name: $("#fName").val().trim() + $("#lName").val().trim(),
+			// name: $("#fName").val().trim() + $("#lName").val().trim(),
+			fName: $("#fName").val().trim(),
+			lName: $("#lName").val().trim(),
 			email: $("#emailReg").val().trim(),
 			phone: $("#phone").val().trim(),
 			// areaCode: $("#areaCode").val().trim(),

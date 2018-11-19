@@ -25,7 +25,7 @@ module.exports = function(app) {
         id: req.params.id
       },
       include: [
-        {model: db.User, as: 'customer'},
+        {model: db.User, as: 'customer', attributes: { exclude: ['password'] }},
         {
           model: db.User, as: 'technician',
           include: [{model: db.Technician}]

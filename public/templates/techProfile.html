@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script src="../js/techProfile.js"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
             <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
             <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
             <li><a id="top-nav-about" href="./about.html">About Us</a></li>
-            <li><a id="top-nav-auth">Login/Register</a></li>
+            <li><a id="top-nav-auth">Logout</a></li>
           </ul>
         </div>
       </nav>
@@ -43,6 +44,7 @@
     </ul>
 
     <!-- template load here -->
+    <script id="tech-page-template" type="text/x-handlebars-template">
 
     <!-- jumbotron header -->
 
@@ -53,7 +55,7 @@
             <div class="col s12 m4">
               <div class="card" style="border-radius: 5px; background-color: #f9b65385">
                 <div class="card-image">
-                  <img src="https://cdn.pixabay.com/photo/2015/12/24/12/59/mechanic-1106773_960_720.jpg" id="userProfPic">
+                  <img src="https://cdn.trade-schools.net/static/graphics/automotive-mechanic.jpg" id="userProfPic">
                 </div>
                 <div class="card-content indigo-text text-darken-3">
                   <p>{{techTitle}}</p>
@@ -64,7 +66,7 @@
             </div>
             <div class="col s12 m7">
               
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{techName}}</h1>
+              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What will you do with Mobile Mechanic™ today?</h5>
               </div>
@@ -73,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="parallax"><img src="https://cdn.pixabay.com/photo/2014/06/04/16/36/car-repair-362150_960_720.jpg"></div>
+      <div class="parallax"><img src="https://rivergatemuffler.com/wp-content/uploads/home_mechanic_slide_bg.jpg"></div>
     </div>
 
     <!-- how does it work container  -->
@@ -128,6 +130,23 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col s12 m9">
+      <div class="parallax-container" id="order-display-container">
+        <div>Your assigned orders: 
+          <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
+            {{#each orders}}
+            <li data-order-id="{{this.id}}">
+              <h5>{{this.date}} | {{this.time}}</h5>
+              <h5>{{this.service}}</h5>
+              {{#if technician_id}}
+              <h5>{{technician_id}}</h5>
+              {{else}}
+              <button class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
+              {{/if}}
+            </li>
+            {{/each}}
     </div>
 
     <!-- view work orders section  -->
@@ -300,6 +319,8 @@
     </div> -->
 
   </main>
+</script>
+<div id="app"></div>
 
   <!-- template ends here -->
   <!-- footer section -->
