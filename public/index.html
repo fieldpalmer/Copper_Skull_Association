@@ -48,22 +48,21 @@
       <li><a id="side-nav-auth" href="templates/auth.html">Login/Register</a></li>
     </ul>
 
-    <!-- template load here -->
     <div id="main">
+
       <!-- welcome jumbotron header  -->
       <div class="parallax-container">
-        <div class="section no-pad-bot">
+        <div class="section">
           <div class="container">
-            <br><br><br>
             <h1 class="header center orange-text text-darken-2">A New World of <br>Automobile Maintenance</h1>
             <div class="row center">
               <a class="btn-large waves-effect waves-light cyan lighten-1" href="templates/about.html">
-                Learn More
+                Who We Are
               </a>
             </div>
           </div>
         </div>
-        <div class="parallax"><img src="images/mercedes-841465_1280.jpg"></div>
+        <div class="parallax"><img src="images/rainbow-1149610_1280.jpg"></div>
       </div>
 
       <!-- how does it work container  -->
@@ -85,9 +84,9 @@
                 <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">mood</i></h2>
                 <h5 class="center">Personal & Professional</h5>
                 <p class="light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  Mobile Mechanic™ connects individuals in need of car care with local 
+                  technicians for an easy automotive maintenance experience without the 
+                  hassle of waitlists, duplicitous practices, or unpleasant interactions.
                 </p>
               </div>
             </div>
@@ -97,9 +96,9 @@
                 <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
                 <h5 class="center">Convenient & Reliable</h5>
                 <p class="light">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    Mobile Mechanic™ allows you to find the best available time according to your schedule.  
+                    Appointment timings can be immediate or in the near future, depending on your needs and
+                    the availability of your local Mobile Mechanics™.
                 </p>
               </div>
             </div>
@@ -109,9 +108,9 @@
                 <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">favorite_border</i></h2>
                 <h5 class="center">Enjoyable & Affordable</h5>
                 <p class="light">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    The personal accountability and comfortable setting make the Mobile Mechanic™ auto  
+                    maintenance experience uniquely effective. We've turned <i>regular</i> maintenance
+                    into an efficient and informative experience. Try it out!
                 </p>
               </div>
             </div>
@@ -121,13 +120,13 @@
 
       <!-- customer/technician portal -->
       <div class="parallax-container">
-        <h2 class="header center cyan-text text-lighten-4">Discover What We Can Do For You</h2>
+        <h2 class="header center cyan-text text-lighten-3">Discover What We Can Do For You</h2>
         <div class="container">
-        <div class="row">
+          <div class="row">
             <!-- customer portal -->
-            <div class="col s6">
+            <div class="col s12 m6">
 
-              <div class="card">
+              <div class="card hide-on-small-only">
                 <div class="card-content center-align">
                   <h5>Are you a car owner looking for a hassle-free car care experience?</h5>
                   <br>
@@ -139,10 +138,21 @@
                   <a href="templates/userHome.html">Learn More</a>
                 </div>
               </div>
+              <!-- mobile button -->
+              <div class="row show-on-small hide-on-med-and-up">
+                <div class="card">
+                  <div class="card-action center">
+                    <a href="templates/userHome.html" class="indigo darken-4 btn-large">
+                      I Need Auto Service
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <!-- technician portal -->
-            <div class="col s6">
-              <div class="card">
+            <div class="col s12 m6">
+              <div class="card hide-on-small-only">
                 <div class="card-content center-align">
                   <h5>Are you an automotive technician looking for a side-hustle?</h5>
                   <br>
@@ -154,7 +164,18 @@
                   <a href="templates/techHome.html">Learn More</a>
                 </div>
               </div>
+              <!-- mobile button -->
+              <div class="row show-on-small hide-on-med-and-up">
+                <div class="card">
+                  <div class="card-action center">
+                    <a href="templates/techHome.html" class="btn-large orange darken-4">
+                      I Want To Work
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
         <div class="parallax"><img src="./images/car-932455_1920.jpg"></div>
@@ -162,38 +183,57 @@
       </div>
 
       <!-- reviews & promos section -->
-      <div class="container" style="height: 50vh;">
-
+      <div class="container">
         <div class="row center">
           <!-- customer reviews -->
           <div class="col s12 m6">
-            <p class="blockquote flow-text indigo-text text-darken-4">
-              <i>"This was the greatest car care exprience of my entire life.
-              This business model will undoubtedly revolutionize the way cars and
-              automobiles are serviced"<br>-Jane<br>Car Owner</i>
-            </p>
+            <h5 class="blockquote indigo-text text-darken-4">
+              <i>"What a great idea! I know my car is overdue for service. If it really existed I'd use it for sure! "</i><br>
+                <p>-My Mom<br>Car Owner</p>
+            </h5>
           </div>
         <!-- technician reviews -->
           <div class="col s12 m6">
-            <p class="blockquote flow-text indigo-text text-darken-4">
-              <i>"I love making my own hours and using my skills to help out my neighbors
-              with their cars. It doesn't hurt that I'm getting a ton of experience and
-              making great extra cash on the side!"<br>-John<br>Technician</i>
-            </p>
+            <h5 class="blockquote indigo-text text-darken-4">
+              <i>"This concept could definitely work. It solves real problems. Many technicians I've talked to said they would sign up."</i><br>
+              <p>-Alfonso<br>Technician</p>
+            </h5>
           </div>
         </div>
       </div>
 
       <!-- get in touch section  -->
       <div class="row flex">
-        <div class="col s5 flex">
+        <div class="show-on-small hide-on-med-and-up col s12">
+          <div class="parallax-container valign-wrapper">
+            <div class="container">
+              <div class="row">
+                <div class="col s12">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="./images/Blue-Collar-Workers.jpg">
+                    </div>
+                    <div class="card-action center">
+                      <a href="templates/about.html" class="btn-large orange darken-4">
+                        Learn More About Us
+                      </a>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+            <div class="parallax"><img src="./images/pile-1868894_1280.jpg"></div>
+          </div>
+        </div>
+        <div class="col s12 m5 flex">
           <div class="section white" id="contactSection">
             <div class="container">
               <h3 id="contact">Contact Us</h3>
               <hr>
               <p class="flow-text">Your satisfaction is our motivation. Don't hesitate to get in touch with questions or comments!</p>
               <div class="row">
-                <form class="col s12">
+                <form class="col s12" action="mailto:copperskullassociation@gmail.com">
                   <div class="row">
                     <div class="input-field col s12 m4">
                       <input type="text" id="txtFeedName">
@@ -208,14 +248,14 @@
                       <label>Message/Feedback</label>
                     </div>
                   </div>
-                  <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
+                  <button type="submit" id="btnFeedSubmit" class="btn-large blue waves-effect waves-light" value="Submit">Submit</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col s7 flex">
+        <div class="col s7 flex hide-on-small-only">
           <div class="parallax-container" id="quote-reveal-container">
             <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
           </div>
@@ -236,7 +276,7 @@
       <div class="col s12 m4">
         <div class="container">
           <ul>
-            <li><a class="white-text" href="templates/quote.html">Get Serviced Now</a></li>
+            <li><a class="white-text" href="templates/userHome.html#quoteSection">Get Serviced Now</a></li>
             <li><a class="white-text" href="templates/about.html">About Us</a></li>
             <li><a class="white-text" href="templates/contact.html">Contact Us</a></li>
             <li><a class="white-text" href="templates/auth.html">Login/Register</a></li>

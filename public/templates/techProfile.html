@@ -71,61 +71,47 @@
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What will you do with Mobile Mechanic™ today?</h5>
               </div>
-              
             </div>
           </div>
         </div>
+        <div class="parallax"><img src="https://cdn.pixabay.com/photo/2014/06/04/16/36/car-repair-362150_960_720.jpg"></div>
       </div>
       <div class="parallax"><img src="https://rivergatemuffler.com/wp-content/uploads/home_mechanic_slide_bg.jpg"></div>
     </div>
 
-    <!-- how does it work container  -->
-    <div class="container">
-      <div class="section">
-        <h3 class="center">Make the Most of Your Time and Skills</h3>
-        <div class="row">
+      <!-- how does it work container  -->
+      <div class="container">
+        <div class="section">
+          <h3 class="center">Make the Most of Your Time and Skills</h3>
+          <div class="row">
 
-          <div class="col s6 m4">
-            <div class="icon-block">
-              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">done</i></h2>
-              <h5 class="center">Attract Customers</h5>
-              <p class="light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              </p>
-              <div class="row center">
-                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Update Profile</button></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s6 m4">
-            <div class="icon-block">
-              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
-              <h5 class="center">Maintain Calendar</h5>
-              <p class="light">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">done</i></h2>
+                <h5 class="center">Attract Customers</h5>
+                <p class="light">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              </p>
-              <div class="row center">
-                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Edit Availability</button></a>
+                </p>
+                <div class="row center">
+                  <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Update Profile</button></a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">attach_money</i></h2>
-              <h5 class="center">Sharpen Skills</h5>
-              <p class="light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              </p>
-              <div class="row center">
-                <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Learn More</button></a>
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
+                <h5 class="center">Maintain Calendar</h5>
+                <p class="light">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+                <div class="row center">
+                  <a href="#"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="">Edit Availability</button></a>
+                </div>
               </div>
             </div>
           </div>
@@ -247,21 +233,39 @@
                     <label>Message/Feedback</label>
                   </div>
                 </div>
-                <button class="btn-large blue waves-effect waves-ligh" id="btnFeedSubmit">Submit</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col s7 flex">
-        <div class="parallax-container" id="quote-reveal-container">
-          <div class="parallax"><img src="./images/Blue-Collar-Workers.jpg"></div>
+     <-- view work orders section  -->
+      <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+      <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
+        <div class="row flex" id="job-display">
+          {{#each Orders}}
+            <div class="col s12 m4 l3 flex">
+              <div class="card sticky-action">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+                </div>
+                <div class="card-action">
+                  <span class="card-title activator grey-text text-darken-4">{{this.vehicle}}<i class="material-icons right">add</i></span>
+                  <p><a id="saveJob" href="#">Save Job</a></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{this.jobDescription}}<i class="material-icons small right">close</i></span>
+                  <p>User: {{this.firstName}}</p>
+                  <p>Location: {{this.address}}</p>
+                  <p>When: {{this.date}} {{this.time}}</p>
+                </div>
+              </div>
+            </div>
+          {{/each}}
         </div>
-
       </div>
 
-    </div> -->
+    </div>
 
   </main>
 </script>
