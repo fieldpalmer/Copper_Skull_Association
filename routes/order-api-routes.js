@@ -25,6 +25,18 @@ module.exports = function(app) {
       });
   });
 
+  app.get('/api/orders/review/:id', function(req, res) {
+    db.Order.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbOrder) {
+          res.json(dbOrder);
+      });
+  });
+
   app.get('/api/orders/:id', function(req, res) {
     db.Order.findOne({
       where: {

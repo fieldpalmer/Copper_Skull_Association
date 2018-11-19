@@ -80,6 +80,8 @@ $(document).ready(function() {
 
   $(document).on("click", ".reviewOrder", function(){
     var review= {};
+    review.order_id = parseInt($(this).attr("data-order-id"));
+    console.log(review.order_id);
     review.technician_id = parseInt($(this).attr("data-tech-id")); //tech's userId, not their ID from tech table
     review.customer_id = parseInt($(this).attr("data-user-id")); 
     $("#review-box").show();

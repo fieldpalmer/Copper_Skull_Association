@@ -186,7 +186,9 @@
                       <h5>{{this.date}} </h5>
                       <h5>{{this.service}}</h5>
                       <h5>Technician: {{this.techName}}</h5>
-                      <button data-user-id="{{this.custId}}" data-tech-id="{{this.technician_id}}" class="reviewOrder btn-large blue waves-effect waves-light cyan lighten-1">Leave a review</button>
+                      {{#unless reviewed}}
+                      <button data-order-id="{{this.id}}" data-user-id="{{this.custId}}" data-tech-id="{{this.technician_id}}" class="reviewOrder btn-large blue waves-effect waves-light cyan lighten-1">Leave a review</button>
+                      {{/unless}}
                     </li>
                   __________________________________
                   {{/if}}
