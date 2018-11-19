@@ -1,7 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
   const Order = sequelize.define('Order', {
-
     jobComplete: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -20,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     laborCost: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     time: {
@@ -53,6 +52,10 @@ module.exports = function(sequelize, DataTypes) {
     Order.belongsTo(models.User, {
       as: 'customer',
       foreignKey: 'customer_id'
+    });
+
+    Order.hasOne(models.Vehicle, {
+      onDelete: 'cascade'
     });
 
     //belongs to product
