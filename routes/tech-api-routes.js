@@ -49,5 +49,15 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/technician/orders/:id', function(req, res) {
+    db.Order.findAll({
+      where: {
+        technician_id: req.params.id
+      },
+      include: {model: db.User, as: 'customer', attributes: { exclude: ['password'] }}
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 
 };

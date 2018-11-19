@@ -15,8 +15,14 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(dbOrder) {
-        res.json(dbOrder);
-      })
+        db.Order.findOne({
+          where: {
+            id: req.body.id
+          }
+        }).then(function(dbOrder) {
+          res.json(dbOrder);
+        });
+      });
   });
 
   app.get('/api/orders/:id', function(req, res) {
