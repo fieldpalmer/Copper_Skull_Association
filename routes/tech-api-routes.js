@@ -53,7 +53,8 @@ module.exports = function(app) {
     db.Order.findAll({
       where: {
         technician_id: req.params.id
-      }
+      },
+      include: {model: db.User, as: 'customer', attributes: { exclude: ['password'] }}
     }).then(function(dbUser) {
       res.json(dbUser);
     });

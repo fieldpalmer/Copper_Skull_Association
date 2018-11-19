@@ -41,6 +41,19 @@ $(document).ready(function() {
     });
   });
 
+  $(document).on('click', '.order-complete-button', function() {
+    $.ajax('/api/orders', {
+      method: 'PUT',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        id: $(this).data('order-id'),
+        jobComplete: true
+      })
+    }).then(function() {
+      location.reload();
+    });
+  });
+
   function renderTemplate(data) {
     // console.log(data);
     var source = $("#tech-page-template").text();
