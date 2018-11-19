@@ -154,6 +154,4 @@ $(document).ready(function(){
 		});
 	}
 	checkLogin();
-
-
 });
