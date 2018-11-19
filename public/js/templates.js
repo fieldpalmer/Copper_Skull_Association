@@ -154,14 +154,4 @@ $(document).ready(function(){
 		});
 	}
 	checkLogin();
-
-	// function allows to search a street address using mapquest api
-	placeSearch({
-		key: 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24',
-		container: document.querySelector('#txtAddress'),
-		collection: [
-			'address'
-		]
-	});
-
 });
