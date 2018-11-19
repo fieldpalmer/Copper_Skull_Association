@@ -66,7 +66,8 @@
             </div>
             <div class="col s12 m7">
               
-              <h1 class="header cyan-text text-lighten-4"> Welcome back, {{name}}</h1>
+              <h1 class="header cyan-text text-lighten-4">Welcome back, </h1>
+              <h1 class="header cyan-text text-lighten-4">{{name}}</h1>
               <div class="row">
                 <h5 class="header orange-text text-lighten-2">What will you do with Mobile Mechanic™ today?</h5>
               </div>
@@ -132,29 +133,64 @@
       </div>
     </div>
 
-    <div class="col s12 m9">
+    <!-- <div class="col s12 m9">
       <div class="parallax-container" id="order-display-container">
         <div>Your assigned orders: 
           <ul class="collection with-header" style="height: 450px; overflow-y: scroll">
             {{#each orders}}
             <li data-order-id="{{this.id}}">
-              <h5>{{this.date}} | {{this.time}}</h5>
-              <h5>{{this.service}}</h5>
-              {{#if technician_id}}
-              <h5>{{technician_id}}</h5>
-              {{else}}
-              <button class="addTech btn-large blue waves-effect waves-light cyan lighten-1">Choose your technician</button>
-              {{/if}}
+              <h5>Date: {{this.date}} | {{this.time}}</h5>
+              <h5>Job: {{this.service}}</h5>
+              <h5>Customer Name: {{this.customer.name}}</h5>
+              <h5>Vehicle Make: {{this.carMake}}</h5>
+              <h5>Vehicle Model: {{this.carModel}}</h5>
+              <h5>Vehicle Year: {{this.carYear}}</h5>
+              <h5>Job Complete: {{this.jobComplete}}</h5>
+              {{#unless jobComplete}}
+              <button id="order-complete-button" class="btn-large blue waves-effect waves-light cyan lighten-1">Job Complete</button>
+              {{/unless}}
             </li>
             {{/each}}
     </div>
+    </div> -->
 
     <!-- view work orders section  -->
-    <h3 class="center" style="padding-bottom: 10px;">Discover Open Jobs</h3>
+    <h3 class="center" style="padding-bottom: 10px;">Your Jobs</h3>
     <div  style="height: 80vh; overflow-y: auto; width: 90vw; margin: 0 auto;" class="section">
       <div class="row flex" id="job-display">
-
-        <div class="col s12 m4 l3 flex">
+        {{#each orders}}
+        <div id="order-display-container" class="col s12 m4 l3 flex">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
+            </div>
+            <div class="card-action">
+              <span class="card-title activator grey-text text-darken-4">{{this.customer.name}}<i class="material-icons right">add</i></span>
+              {{#if jobComplete}}
+              <div>
+                <i class="material-icons">check</i>
+              </div>
+              {{/if}}
+              {{#unless jobComplete}}
+              <div>
+                <button class="order-complete-button btn-small blue waves-effect waves-light cyan lighten-1" data-order-id="{{this.id}}">Job Complete</button>
+              </div>
+              {{/unless}}
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Job ID#: {{this.id}}<i class="material-icons small right">close</i></span>
+              <p>Date: {{this.date}} | {{this.time}}</p>
+              <p>Job: {{this.service}}</p>
+              <!-- <p>Customer Name: {{this.customer.name}}</p> -->
+              <p>Vehicle Make: {{this.carMake}}</p>
+              <p>Vehicle Model: {{this.carModel}}</p>
+              <p>Vehicle Year: {{this.carYear}}</p>
+              <p>Job Complete: {{this.jobComplete}}</p>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        <!-- <div class="col s12 m4 l3 flex">
           <div class="card sticky-action">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
@@ -175,37 +211,6 @@
               <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
             </div>
             <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">add</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
               <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
               <p><a href="#">Save Job</a></p>
             </div>
@@ -214,67 +219,7 @@
               <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
-        </div>
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4 l3 flex">
-          <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="https://static.tvtropes.org/pmwiki/pub/images/ecto-1_1.jpg">
-            </div>
-            <div class="card-action">
-              <span class="card-title activator grey-text text-darken-4">User Car<i class="material-icons right">more_vert</i></span>
-              <p><a href="#">Save Job</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Job Type<i class="material-icons small right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
     
