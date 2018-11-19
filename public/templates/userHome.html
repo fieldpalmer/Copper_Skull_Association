@@ -9,7 +9,14 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
-  <script src="../js/templates.js"></script>
+	<script src="../js/templates.js"></script>
+	<!-- <script src="../js/charge.js"></script> -->
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+	</style>
 </head>
 
 <body>
@@ -18,14 +25,14 @@
     <div class="navbar-fixed">
       <nav class="indigo darken-4" role="navigation">
         <div class="nav-wrapper container">
-          <a href="../index.html" class="brand-logo"><img src="../images/mobileMechLogo2.png"></a>
+          <a href="/index.html" class="brand-logo"><img src="/images/MobileMechLogo2.png"></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a id="top-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+            <li><a id="top-nav-quote" href="#quoteSection">Get Serviced Now</a></li>
             <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
             <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
             <li><a id="top-nav-about" href="./about.html">About Us</a></li>
-            <li><a id="top-nav-auth" href="./auth.html">Login/Register</a></li>
+            <li><a id="top-nav-auth">Login/Register</a></li>
           </ul>
         </div>
       </nav>
@@ -33,8 +40,8 @@
 
     <!-- sidebar nav on shrink -->
     <ul class="sidenav" id="mobile-demo">
-      <li class="active"><a href="../index.html">Home</a></li>
-      <li><a id="side-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+      <li class="active"><a href="/index.html">Home</a></li>
+      <li><a id="side-nav-quote" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
       <li><a id="side-nav-users" href="./userHome.html">Users</a></li>
       <li><a id="side-nav-techs" href="./techHome.html">Technicians</a></li>
       <li><a id="side-nav-about" href="./about.html">About Us</a></li>
@@ -54,19 +61,17 @@
 			<div class="row center">
 				<a href="#quoteSection"><button class="btn-large blue waves-effect waves-light cyan lighten-1" id="btnQuote">Get a quote</button></a>
 			</div>
-			<h3 class="center cyan-text text-lighten-4">How Does it Work?</h3>
-				
 			</div>
 		</div>
 			<div class="parallax"><img src="../images/car-1149997_1280.jpg"></div>
 		</div>
-		
+
 		<!-- how does it work container  -->
 		<div class="container">
 			<div class="section">
 				<div class="row">
-
-					<div class="col s6 m4">
+					<h3 class="center">How Does it Work?</h3>
+					<div class="col s12 m4">
 						<div class="icon-block">
 							<h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">done</i></h2>
 							<h5 class="center">Get a Quote</h5>
@@ -78,7 +83,7 @@
 						</div>
 					</div>
 
-					<div class="col s6 m4">
+					<div class="col s12 m4">
 						<div class="icon-block">
 							<h2 class="center cyan-text text-lighten-2"><i class="medium material-icons">date_range</i></h2>
 							<h5 class="center">Set a Date</h5>
@@ -105,11 +110,14 @@
 			</div>
 		</div>
 
-	<!-- our technicians and services section -->
-		<div class="row">
-			<h4 class="center" style="padding-bottom: 5px;">Our Technicians</h4>
-			<h5 class="center" style="padding-bottom: 5px;">Skilled professionals providing routine maintenance in a convenient and reliable setting</h5>
-			
+	<div class="section">
+		<div class="container center">
+			<h3>Our Location</h3>
+			<div class="col s12 m9">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103487.0474471834!2d-78.5421855!3d35.84973345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5a49f3912e6f%3A0xb9c9bbed7cf69f36!2sNortheast+Raleigh%2C+Raleigh%2C+NC!5e0!3m2!1sen!2sus!4v1541797643434" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+			<h3>Our Services</h3>
+
 			<div class="col s12 m3">
 				<ul class="collection with-header">
 					<li class="collection-item avatar valign-wrapper">
@@ -134,82 +142,76 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="col s12 m9">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103487.0474471834!2d-78.5421855!3d35.84973345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5a49f3912e6f%3A0xb9c9bbed7cf69f36!2sNortheast+Raleigh%2C+Raleigh%2C+NC!5e0!3m2!1sen!2sus!4v1541797643434" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-			</div>
-		
-		
 		</div>
+	</div>
 
 	<!-- get a quote section  -->
+	<div class="section container">
 		<h3 id="quoteSection" class="center" style="padding-bottom: 10px;">Get a Free Quote Now</h3>
 			<div class="row" >
-
-				<div class="col s6">
-					<div class="section">
-						<div class="container white">
-							<h3 class="center">Enter vehicle information</h3><br>
-							<div class="row">
-								<div class="col s12">
-									<div class="row">
-										<div class="input-field col s12 m3">
-											<select id="make">
-												<option value="" disabled selected>Make</option>
-											</select>
-											<label>Select your car make</label>
-										</div>
-										<div class="input-field col s12 m3">
-											<select id="year">
-												<option value="" disabled selected>Year</option>
-											</select>
-											<label>Select year</label>
-										</div>
-										<div class="input-field col s12 m6">
-											<select id="model">
-												<option value="" disabled selected>Model</option>
-											</select>
-											<label>Select model</label>
-										</div>
-									</div>
-								</div>
-								<div class="col s12">
-									<div class="input-field">
-										<select id="services" multiple>
-											<option value="" disabled selected>Select a service</option>
-											<option value="oil">Oil and Filter</option>
-											<option value="rotation">Tire Rotation</option>
-											<option value="air filter">Air filter replacement</option>
-											<option value="wiper">Wiper blades replacement</option>
-											<option value="bulb">Bulb replacement</option>
+				<div class="col s12 m6">
+						<h3 class="">Enter vehicle information</h3><br>
+						<div class="row">
+							<div class="col s12">
+								<div class="row">
+									<div class="input-field col s12 m6">
+										<select id="make">
+											<option value="" disabled selected>Make</option>
 										</select>
-										<label>Select a service</label>
+										<label>Select your car make</label>
+									</div>
+									<div class="input-field col s12 m6">
+										<select id="year">
+											<option value="" disabled selected>Year</option>
+										</select>
+										<label>Select year</label>
+									</div>
+									<div class="input-field col s12">
+										<select id="model">
+											<option value="" disabled selected>Model</option>
+										</select>
+										<label>Select model</label>
 									</div>
 								</div>
 							</div>
-							<div class="center">
-								<p class="flow-text red-text" id="errMessage"></p>
-								<button class="btn-large blue waves-effect waves-light" id="btnQuoteMe">Get Quote</button><br><br><br>
+							<div class="col s12">
+								<div class="input-field">
+									<select id="services" multiple>
+										<option value="" disabled selected>Select a service</option>
+										<option value="oil">Oil and Filter</option>
+										<option value="rotation">Tire Rotation</option>
+										<option value="air filter">Air filter replacement</option>
+										<option value="wiper">Wiper blades replacement</option>
+										<option value="bulb">Bulb replacement</option>
+									</select>
+									<label>Select a service</label>
+								</div>
 							</div>
 						</div>
-					</div>
+						<div class="center">
+							<p class="flow-text red-text" id="errMessage"></p>
+							<button class="btn-large blue waves-effect waves-light" id="btnQuoteMe">Get Quote</button><br><br><br>
+						</div>
 				</div>
 
-				<div class="col s6 flex">
+				<div class="col s12 m6 flex" id="calculator">
 					<div class="parallax-container" id="quote-reveal-container">
-							
+
 						<div class="valign-wrapper" style="height: 100%; background-color: rgba(0, 0, 0, 0.345);color: white; padding: 15px">
 							<div class="container cyan-text text-lighten-4">
-								<h3>We're here to make your car ownership expreience as enjoyable as possible. Get a free quote by entering your car's info into our handy calculator.</h3>
+								<h4>We're here to make your car ownership expreience as enjoyable as possible. Get a free quote by entering your car's info into our handy calculator.</h4>
 							</div>
 						</div>
-		
+
 						<div class="parallax"><img src="http://allstarautoservice.net/wp-content/uploads/2015/06/engine-repair.jpg"></div>
 					</div>
-						
-				</div>
-			</div>
 
+				</div>
+
+				<div class="col s12 m6 left-align" id="appt"></div>
+				<div class="col s12 m6 right-align" id="order"></div>
+			</div>
+		</div>
 
 		</div>
 	</main>
@@ -218,37 +220,100 @@
   <footer class="page-footer section indigo darken-4 white-text">
 
 		<div class="row">
-	
+
 		  <div class="col s12 m4">
 			<div class="container">
 			  <ul>
-				<li><a class="white-text" href="./quote.html">Get Serviced Now</a></li>
+				<li><a class="white-text" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
 				<li><a class="white-text" href="./about.html">About Us</a></li>
 				<li><a class="white-text" href="./contact.html">Contact Us</a></li>
 				<li><a class="white-text" href="./auth.html">Login/Register</a></li>
 			  </ul>
 			</div>
 		  </div>
-	
+
 		  <div class="col s12 m4 offset-m4">
-			<a href="../index.html"><img src="../images/mobileMechLogo2.png"></a>
+			<a href="/index.html"><img src="/images/MobileMechLogo2.png"></a>
 			<p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
 		  </div>
 		</div>
-	
+
   </footer>
-	
+
 
 <!-- my scripts -->
-
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
-	$(document).ready(function(){
-			M.AutoInit();
-	});
-</script>
+<script src="/js/functions.js"></script>
 <script src="/js/car.js"></script>
+<!-- wasn't working with JS in separate file - issue loading stripe cdn referenced in this file. Will try to move to separate file if there's time. Issue loadin-->
+<script>
+var checkoutHandler = StripeCheckout.configure({
+  key: "pk_test_fHJB9fIE30QMwnuL4WQAT8jG",
+  locale: "auto"
+});
+
+$(document).on("click", "#btnPay", function() {
+  // when user clicks the appointment verify every field and payment information
+  // when the user has verified their dates
+  // send the car information to server
+  // make work order on server and let them enter pay information
+  let date = $('#txtDate').val().trim();
+  let time = $('#txtTime').val().trim();
+  let appointment = {
+    date: date,
+    time: time
+	}
+	car.appointment = appointment;
+  if(!date || !time) {
+    showErrMessage("Please select a day and a time");
+  } else {
+    car.appointment = appointment;
+    // send information to server
+    // when response
+    // $("#main").load("templates/workorder.html");
+    checkoutHandler.open({
+      name: "Oil Change",
+      description: "$" + car.quoteAmt,
+      token: handleToken
+    });
+    console.log(appointment);
+    
+  }
+});
+
+function handleToken(token) {
+	let newToken = token;
+	newToken.quoteId = car.quoteId;
+  fetch("/charge", {
+    method: "POST",
+		headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newToken)
+  }).then(output => {
+		if (output.status === 200){
+			$.post('/api/orders/', {
+				customer_id: sessionStorage.getItem("id"),
+				carYear: car.year,
+				carModel: car.model,
+				carMake: car.make,
+				oilType: car.info.oilType,
+				oilAmount: car.info.quartsCapacity,
+				time: car.appointment.time,
+				date: car.appointment.date,
+				laborCost: car.quoteAmt
+			}).then(function(response){
+				$('#appt').load('/templates/workorder.html', function(){
+					$("#confirmation").text(response.id);
+					$("#cost").text(car.quoteAmt);
+					$("#appointment").text(car.appointment.time + " " + car.appointment.date);
+				});
+			});
+		} else{
+			alert("Your payment was not accepted, please try again");
+		}
+	});
+}
+</script>
 
 </body>
 </html>

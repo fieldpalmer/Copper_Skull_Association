@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/>
   <script src="../js/templates.js"></script>
+  <script src="../js/login.js"></script>
 </head>
 
 <body>
@@ -18,14 +19,14 @@
     <div class="navbar-fixed">
       <nav class="indigo darken-4" role="navigation">
         <div class="nav-wrapper container">
-          <a href="../index.html" class="brand-logo"><img src="../images/mobileMechLogo2.png"></a>
+          <a href="/index.html" class="brand-logo"><img src="/images/MobileMechLogo2.png"></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a id="top-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+            <li><a id="top-nav-quote" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
             <li><a id="top-nav-users" href="./userHome.html">Users</a></li>
             <li><a id="top-nav-techs" href="./techHome.html">Technicians</a></li>
             <li><a id="top-nav-about" href="./about.html">About Us</a></li>
-            <li><a id="top-nav-auth" href="./auth.html">Login/Register</a></li>
+            <li><a id="top-nav-auth">Login/Register</a></li>
           </ul>
         </div>
       </nav>
@@ -33,8 +34,8 @@
 
     <!-- sidebar nav on shrink -->
     <ul class="sidenav" id="mobile-demo">
-      <li class="active"><a href="../index.html">Home</a></li>
-      <li><a id="side-nav-quote" href="./quote.html">Get Serviced Now</a></li>
+      <li class="active"><a href="/index.html">Home</a></li>
+      <li><a id="side-nav-quote" href="/templates/userHome.html#quoteSection">Get Serviced Now</a></li>
       <li><a id="side-nav-users" href="./userHome.html">Users</a></li>
       <li><a id="side-nav-techs" href="./techHome.html">Technicians</a></li>
       <li><a id="side-nav-about" href="./about.html">About Us</a></li>
@@ -60,7 +61,8 @@
             <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
           </ul>
           <div id="login" class="col s12">
-            <form class="col s12">
+            <form id="login-form" class="col s12">
+
               <div class="form-container">
                 <h3 class="cyan-text text-lighten-2">Hello</h3>
                 <div class="row">
@@ -75,9 +77,12 @@
                     <label for="password">Password</label>
                   </div>
                 </div>
+                <div class="row">
+                  <div hidden style="color: red" id="badLogin">Your username or password is incorrect</div>
+                </div>
                 <br>
                 <center>
-                  <button class="btn waves-effect waves-light orange" type="submit" name="action">Enter</button>
+                  <button id="login" class="btn waves-effect waves-light orange" type="submit" name="action">Enter</button>
                   <br>
                   <br>
                   <a href="#">Forgotten password?</a>
@@ -100,14 +105,14 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s12">
+                  <div class="input-field col s12 m12">
                     <input type="search" id="txtAddress" placeholder="Select your address..." />
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m6">
                     <input id="emailReg" type="email">
-                    <label for="emailReg">Email</label>
+                    <label for="email">Email</label>
                   </div>
                   <div class="input-field col s12 m6">
                     <input id="phone" type="number">
@@ -117,7 +122,7 @@
                 <div class="row">
                   <div class="input-field col s12 m6">
                     <input id="passwordReg" type="password">
-                    <label for="passwordReg">Password</label>
+                    <label for="password">Password</label>
                   </div>
                   <div class="input-field col s12 m6">
                     <input id="pwConfirm" type="password">
@@ -125,7 +130,7 @@
                   </div>
                 </div>
                 <center>
-                  <button class="btn waves-effect waves-light orange text-darken-2" type="submit" name="action">Submit</button>
+                  <button id="registerBtn" class="btn waves-effect waves-light orange text-darken-2" type="submit" name="action">Submit</button>
                 </center>
               </div>
             </form>
@@ -134,7 +139,7 @@
       </div>
     </div>
   </main>
-    
+
   <!-- footer section -->
   <footer class="page-footer section indigo darken-4 white-text" style="margin-top: 10%">
 
@@ -152,16 +157,16 @@
       </div>
 
       <div class="col s12 m4 offset-m4">
-        <a href="index.html"><img src="../images/mobileMechLogo2.png"></a>
+        <a href="index.html"><img src="../images/MobileMechLogo2.png"></a>
         <p>For all intents and purposes herein, Mobile Mechanic™ is a licensed subsidiary of Copper Skull Association, Inc. All rights reserved © 2018. </p>
       </div>
     </div>
 
   </footer>
-	
+
 <!-- my scripts -->
 
-	<script src="./js/script.js"></script>
+	<script src="/js/script.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>

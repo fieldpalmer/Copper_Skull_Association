@@ -19,8 +19,9 @@ module.exports = function(app) {
 
   //checks their role and sends them to the appropriate profile page
   app.get("/profile", function(req, res) {
+    console.log(req);
     if (!req.user) {
-      res.sendFile(path.join(__dirname), "../public/templates/register.html");
+      res.sendFile(path.join(__dirname), "../public/templates/auth.html");
     }
     else {
       if(req.user.role === "technician"){
@@ -42,20 +43,20 @@ module.exports = function(app) {
         email: req.user.email,
         id: req.user.id,
         name: req.user.name,
-        location: req.user.location
+        location: req.user.location,
+        role: req.user.role
       });
     }
   });
 
-  
+
   app.post('/api/register', function(req, res) {
     console.log(req);
     db.User.create({
       name: req.body.fName + " " + req.body.lName,
       email: req.body.email,
       phone: req.body.phone,
-      location: req.body.areaCode,
-      password: req.body.password
+      password: req.body.password,
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
@@ -80,7 +81,7 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  
+
   app.delete('/api/users/:id', function(req, res) {
     db.User.destroy({
       where: {
@@ -101,6 +102,16 @@ module.exports = function(app) {
       }).then(function(dbUser) {
         res.json(dbUser);
       });
+  });
+
+  app.get('/api/users/orders/:id', function(req, res) {
+    db.Order.findAll({
+      where: {
+        customer_id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
 };

@@ -1,39 +1,80 @@
 $(document).ready(function() {
-
-  var user = {};
-
+  window.user = {};
   $.get("/api/user_data").then(function(userData) {
+    sessionStorage.setItem('userName', userData.name); // stores session user
+    sessionStorage.setItem('userEmail', userData.email); // stores session email
+    sessionStorage.setItem('id', userData.id); //store user's ID
     user.name = userData.name;
     user.email = userData.email;
     user.id = userData.id;
     user.location = userData.location;
+    user.role = userData.role;
     $.get("/api/vehicle/" + userData.id).then(function(carData){
       // console.log(carData);
-      user.carMake = carData[0].make;
-      user.carModel = carData[0].model;
-      user.carYear = carData[0].year;
-      $.get("/api/orders/ + userData.id").then(function(orderData){
-        user.orders = orderData;
-        $.get("/api/technician").then(function(techData){
-          user.technicians = [];
-          for(let i=0; i<10 && i<techData.length; i++){
-            tech = {};
-            tech.techSkills = techData[i].skills;
-            // tech.techRating = techData[i].rating;
-            user.technicians.push(tech);
+      if(carData.length > 0){
+        user.carMake = carData[0].make;
+        user.carModel = carData[0].model;
+        user.carYear = carData[0].year;
+      }
+      $.get("/api/users/orders/" + userData.id).then(function(orderData){
+        if(orderData){
+          for(let j=0; j<orderData.length; j++){
+            orderData[j].date = orderData[j].date.split("T")[0];
           }
-          renderTemplate(user);
+          user.orders = orderData
+        };
+        $.get("/api/technician").then(function(techData){
+          if(techData.length > 0){
+            user.technicians = [];
+            for(let i=0; i<10 && i<techData.length; i++){
+              var tech = {};
+              tech.techID = techData[i].id;
+              tech.techSkills = techData[i].skills;
+              tech.userId = techData[i].UserId;
+              user.technicians.push(tech);
+              // console.log(tech);
+              // tech.techRating = techData[i].rating;
+            }
+            for(let j=0; j<user.technicians.length; j++){
+              $.get("/api/users/" + user.technicians[j].userId).then(function(response){
+                user.technicians[j].name = response.name;
+                for(let h=0; h<user.orders.length; h++){
+                  if(user.orders[h].technician_id == user.technicians[j].userId){
+                    user.orders[h].techName = user.technicians[j].name;
+                  }
+                }
+                renderTemplate(user);
+              });
+
+            }
+          }
         });
       });
     });
   });
 
   function renderTemplate(data) {
-    console.log(data);
+    // console.log(data);
     var source = $("#user-page-template").text();
     var template = Handlebars.compile(source);
     var html = template(data);
     $("#app").html(html);
   }
-});
 
+  //get order ID
+  //show technicians
+  //on tech select, get tech id
+  //update order with tech id
+
+  $(document).on("click", ".addTech", function(){
+    var order = {};
+    order.id = $(this).attr("data-order-id");
+    $("#tech-select-container").show();
+    $(document).on("click", ".selectTech", function(){
+      order.technician_id = $(this).attr("data-tech-id");
+      $.post("/api/orders/tech", order).then(function(){
+        location.reload();
+      });
+    });
+  });
+});

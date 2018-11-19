@@ -4,8 +4,9 @@ module.exports = function(app) {
   app.post('/api/technician', function(req, res) {
     //spread operator '...'
     let user = {...req.body};
-    user.Technician = {}
-
+    user.name = user.fName + ' ' + user.lName;
+    console.log('user', user);
+    user.Technician = {};
     db.User.create(user, {
       include: [db.Technician]
     }).then(function() {
@@ -48,5 +49,15 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/technician/orders/:id', function(req, res) {
+    db.Order.findAll({
+      where: {
+        technician_id: req.params.id
+      },
+      include: {model: db.User, as: 'customer', attributes: { exclude: ['password'] }}
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 
 };
